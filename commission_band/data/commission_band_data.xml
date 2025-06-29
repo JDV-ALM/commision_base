@@ -11,23 +11,19 @@
             <field name="user_id" ref="base.user_root"/>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
-            <field name="numbercall">-1</field>
             <field name="active" eval="True"/>
-            <field name="doall" eval="False"/>
         </record>
         
         <!-- Cron Job for Auto-validation of Commissions -->
         <record id="ir_cron_validate_commissions" model="ir.cron">
             <field name="name">Commission Band: Auto-validate Commissions</field>
-            <field name="model_id" ref="commission_band.model_commission_calculation"/>
+            <field name="model_id" ref="model_commission_calculation"/>
             <field name="state">code</field>
             <field name="code">model.cron_validate_commissions()</field>
             <field name="user_id" ref="base.user_root"/>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
-            <field name="numbercall">-1</field>
             <field name="active" eval="False"/>
-            <field name="doall" eval="False"/>
         </record>
         
     </data>
