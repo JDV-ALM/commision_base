@@ -8,7 +8,7 @@
         <field name="name">commission.rule.tree</field>
         <field name="model">commission.rule</field>
         <field name="arch" type="xml">
-            <tree string="Commission Rules" decoration-muted="not active">
+            <list string="Commission Rules" decoration-muted="not active">
                 <field name="priority"/>
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
@@ -20,7 +20,7 @@
                 <field name="calculation_count"/>
                 <field name="active" widget="boolean_toggle"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
-            </tree>
+            </list>
         </field>
     </record>
     

@@ -129,7 +129,7 @@ class AccountPayment(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('payment_id', '=', self.id)],
             'context': {
                 'default_payment_id': self.id,
