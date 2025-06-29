@@ -19,7 +19,7 @@
         <!-- Cron Job for Auto-validation of Commissions -->
         <record id="ir_cron_validate_commissions" model="ir.cron">
             <field name="name">Commission Band: Auto-validate Commissions</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="state">code</field>
             <field name="code">model.cron_validate_commissions()</field>
             <field name="user_id" ref="base.user_root"/>
@@ -33,7 +33,7 @@
         <!-- Email Template for Commission Approval -->
         <record id="email_template_commission_approval" model="mail.template">
             <field name="name">Commission Band: Approval Required</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="subject">Commission Approval Required - ${object.display_name}</field>
             <field name="email_from">${(object.company_id.email or user.email)|safe}</field>
             <field name="partner_to">${object.salesperson_id.partner_id.id}</field>
@@ -66,7 +66,7 @@
         <!-- Email Template for Commission Payment -->
         <record id="email_template_commission_paid" model="mail.template">
             <field name="name">Commission Band: Commission Paid</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="subject">Commission Paid - ${object.display_name}</field>
             <field name="email_from">${(object.company_id.email or user.email)|safe}</field>
             <field name="partner_to">${object.salesperson_id.partner_id.id}</field>

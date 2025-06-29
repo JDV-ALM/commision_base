@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
+from dateutil.relativedelta import relativedelta
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -61,7 +62,7 @@ class ResUsers(models.Model):
             )
             user.current_commission_config_id = config[0] if config else False
 
-    @api.depends('commission_calculation_ids')
+    @api.depends('commission_config_ids')
     def _compute_commission_stats(self):
         """Compute commission statistics for the user"""
         for user in self:

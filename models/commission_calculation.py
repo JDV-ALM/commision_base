@@ -97,7 +97,8 @@ class CommissionCalculation(models.Model):
         string='Payment Amount (Company Currency)',
         currency_field='company_currency_id',
         compute='_compute_amounts_company',
-        store=True
+        store=True,
+        compute_sudo=True
     )
     commission_rate = fields.Float(
         string='Commission Rate (%)',
@@ -114,7 +115,8 @@ class CommissionCalculation(models.Model):
         string='Commission Amount (Company Currency)',
         currency_field='company_currency_id',
         compute='_compute_amounts_company',
-        store=True
+        store=True,
+        compute_sudo=True
     )
     
     # Currency fields

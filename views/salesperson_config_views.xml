@@ -15,7 +15,7 @@
                 <field name="override_commission_type"/>
                 <field name="calculation_count"/>
                 <field name="total_commission" widget="monetary"/>
-                <field name="avg_collection_days" widget="float_time"/>
+                <field name="avg_collection_days" widget="float" digits="[5,1]"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
                 <button name="action_toggle_active" type="object" string="Toggle Active" class="btn-link"/>
             </tree>

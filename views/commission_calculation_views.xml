@@ -125,8 +125,8 @@
                 <filter string="On Time" name="ontime" domain="[('days_overdue', '&gt;', 0), ('days_overdue', '&lt;=', 15)]"/>
                 <filter string="Late Payment" name="late" domain="[('days_overdue', '&gt;', 30)]"/>
                 <separator/>
-                <filter string="Current Month" name="current_month" domain="[('payment_date', '&gt;=', (context_today() + relativedelta(day=1)).strftime('%Y-%m-%d')), ('payment_date', '&lt;', (context_today() + relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
-                <filter string="Current Year" name="current_year" domain="[('payment_date', '&gt;=', (context_today() + relativedelta(month=1, day=1)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Current Month" name="current_month" date="payment_date"/>
+                <filter string="Current Year" name="current_year" date="payment_date"/>
                 <group expand="0" string="Group By">
                     <filter string="Salesperson" name="group_salesperson" context="{'group_by': 'salesperson_id'}"/>
                     <filter string="Customer" name="group_customer" context="{'group_by': 'partner_id'}"/>

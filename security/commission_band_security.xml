@@ -21,7 +21,7 @@
             <field name="name">Manager</field>
             <field name="category_id" ref="module_category_commission_band"/>
             <field name="implied_ids" eval="[(4, ref('group_commission_band_user'))]"/>
-            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
             <field name="comment">Can manage commission bands, rules, and calculations</field>
         </record>
         
@@ -30,7 +30,7 @@
         <!-- Commission Calculation - Users can only see their own -->
         <record id="commission_calculation_personal_rule" model="ir.rule">
             <field name="name">Personal Commission Calculations</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="domain_force">[('salesperson_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('group_commission_band_user'))]"/>
             <field name="perm_read" eval="True"/>
@@ -42,7 +42,7 @@
         <!-- Commission Calculation - Managers can see all -->
         <record id="commission_calculation_manager_rule" model="ir.rule">
             <field name="name">All Commission Calculations</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="domain_force">[(1, '=', 1)]</field>
             <field name="groups" eval="[(4, ref('group_commission_band_manager'))]"/>
         </record>
@@ -50,7 +50,7 @@
         <!-- Salesperson Config - Users can only see their own -->
         <record id="salesperson_config_personal_rule" model="ir.rule">
             <field name="name">Personal Salesperson Config</field>
-            <field name="model_id" ref="model_salesperson_config"/>
+            <field name="model_id" ref="commission_band.model_salesperson_config"/>
             <field name="domain_force">[('user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('group_commission_band_user'))]"/>
             <field name="perm_read" eval="True"/>
@@ -62,7 +62,7 @@
         <!-- Salesperson Config - Managers can see all -->
         <record id="salesperson_config_manager_rule" model="ir.rule">
             <field name="name">All Salesperson Configs</field>
-            <field name="model_id" ref="model_salesperson_config"/>
+            <field name="model_id" ref="commission_band.model_salesperson_config"/>
             <field name="domain_force">[(1, '=', 1)]</field>
             <field name="groups" eval="[(4, ref('group_commission_band_manager'))]"/>
         </record>
@@ -70,28 +70,28 @@
         <!-- Multi-company Rules -->
         <record id="commission_band_company_rule" model="ir.rule">
             <field name="name">Commission Band Multi-company</field>
-            <field name="model_id" ref="model_commission_band"/>
+            <field name="model_id" ref="commission_band.model_commission_band"/>
             <field name="global" eval="True"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
         </record>
         
         <record id="commission_rule_company_rule" model="ir.rule">
             <field name="name">Commission Rule Multi-company</field>
-            <field name="model_id" ref="model_commission_rule"/>
+            <field name="model_id" ref="commission_band.model_commission_rule"/>
             <field name="global" eval="True"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
         </record>
         
         <record id="commission_calculation_company_rule" model="ir.rule">
             <field name="name">Commission Calculation Multi-company</field>
-            <field name="model_id" ref="model_commission_calculation"/>
+            <field name="model_id" ref="commission_band.model_commission_calculation"/>
             <field name="global" eval="True"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
         </record>
         
         <record id="salesperson_config_company_rule" model="ir.rule">
             <field name="name">Salesperson Config Multi-company</field>
-            <field name="model_id" ref="model_salesperson_config"/>
+            <field name="model_id" ref="commission_band.model_salesperson_config"/>
             <field name="global" eval="True"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
         </record>
