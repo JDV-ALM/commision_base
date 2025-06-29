@@ -8,7 +8,7 @@
         <field name="name">salesperson.config.tree</field>
         <field name="model">salesperson.config</field>
         <field name="arch" type="xml">
-            <tree string="Salesperson Configurations" decoration-muted="not commission_active">
+            <list string="Salesperson Configurations" decoration-muted="not commission_active">
                 <field name="user_id" widget="many2one_avatar_user"/>
                 <field name="commission_active" widget="boolean_toggle"/>
                 <field name="default_rule_id"/>
@@ -18,7 +18,7 @@
                 <field name="avg_collection_days" widget="float" digits="[5,1]"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
                 <button name="action_toggle_active" type="object" string="Toggle Active" class="btn-link"/>
-            </tree>
+            </list>
         </field>
     </record>
     
