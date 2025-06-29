@@ -31,7 +31,7 @@ Main Components:
     'author': 'Your Company',
     'website': 'https://www.yourcompany.com',
     'depends': [
-        'sale_commission',
+        'sale',  # Cambiado de sale_commission que puede no existir
         'account',
         'sales_team',
         'sale_management',
