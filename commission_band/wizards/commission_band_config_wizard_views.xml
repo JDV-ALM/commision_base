@@ -10,7 +10,7 @@
                 <field name="state" invisible="1"/>
                 
                 <!-- Welcome Step -->
-                <group attrs="{'invisible': [('state', '!=', 'welcome')]}">
+                <group invisible="state != 'welcome'">
                     <div class="oe_title">
                         <h1>Welcome to Commission Band Configuration</h1>
                     </div>
@@ -34,7 +34,7 @@
                 </group>
                 
                 <!-- Bands Step -->
-                <group attrs="{'invisible': [('state', '!=', 'bands')]}">
+                <group invisible="state != 'bands'">
                     <div class="oe_title">
                         <h1>Create Commission Bands</h1>
                     </div>
@@ -47,7 +47,7 @@
                     <group>
                         <field name="create_default_bands"/>
                     </group>
-                    <div attrs="{'invisible': [('create_default_bands', '=', False)]}">
+                    <div invisible="not create_default_bands">
                         <p>The following standard bands will be created:</p>
                         <ul>
                             <li><strong>Premium Sales Band (Type A)</strong> - For top performers with rates from 0.5% to 2.8%</li>
@@ -55,14 +55,14 @@
                             <li><strong>Office Band (Type C)</strong> - For office staff with rates from 0% to 1.5%</li>
                         </ul>
                     </div>
-                    <group attrs="{'invisible': [('band_ids', '=', [])]}">
+                    <group invisible="not band_ids">
                         <separator string="Created Bands"/>
                         <field name="band_ids" readonly="1" nolabel="1"/>
                     </group>
                 </group>
                 
                 <!-- Rules Step -->
-                <group attrs="{'invisible': [('state', '!=', 'rules')]}">
+                <group invisible="state != 'rules'">
                     <div class="oe_title">
                         <h1>Create Commission Rules</h1>
                     </div>
@@ -75,17 +75,17 @@
                     <group>
                         <field name="create_default_rules"/>
                     </group>
-                    <div attrs="{'invisible': [('create_default_rules', '=', False)]}">
+                    <div invisible="not create_default_rules">
                         <p>Default rules will be created for each band type.</p>
                     </div>
-                    <group attrs="{'invisible': [('rule_ids', '=', [])]}">
+                    <group invisible="not rule_ids">
                         <separator string="Created Rules"/>
                         <field name="rule_ids" readonly="1" nolabel="1"/>
                     </group>
                 </group>
                 
                 <!-- Users Step -->
-                <group attrs="{'invisible': [('state', '!=', 'users')]}">
+                <group invisible="state != 'users'">
                     <div class="oe_title">
                         <h1>Configure Salespersons</h1>
                     </div>
@@ -98,13 +98,13 @@
                     <group>
                         <field name="activate_all_users"/>
                     </group>
-                    <group attrs="{'invisible': [('activate_all_users', '=', True)]}">
+                    <group invisible="activate_all_users">
                         <field name="user_ids" widget="many2many_tags" options="{'no_create': True}"/>
                     </group>
                 </group>
                 
                 <!-- Done Step -->
-                <group attrs="{'invisible': [('state', '!=', 'done')]}">
+                <group invisible="state != 'done'">
                     <div class="oe_title">
                         <h1>Configuration Complete!</h1>
                     </div>
@@ -118,9 +118,9 @@
                 </group>
                 
                 <footer>
-                    <button name="action_previous" type="object" string="Previous" class="btn-secondary" attrs="{'invisible': [('state', 'in', ['welcome', 'done'])]}"/>
-                    <button name="action_next" type="object" string="Next" class="btn-primary" attrs="{'invisible': [('state', '=', 'done')]}"/>
-                    <button name="action_close" type="object" string="Close" class="btn-primary" attrs="{'invisible': [('state', '!=', 'done')]}"/>
+                    <button name="action_previous" type="object" string="Previous" class="btn-secondary" invisible="state in ['welcome', 'done']"/>
+                    <button name="action_next" type="object" string="Next" class="btn-primary" invisible="state == 'done'"/>
+                    <button name="action_close" type="object" string="Close" class="btn-primary" invisible="state != 'done'"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
