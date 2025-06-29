@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Salesperson Config Views -->
+    
+    <!-- Tree View -->
+    <record id="view_salesperson_config_tree" model="ir.ui.view">
+        <field name="name">salesperson.config.tree</field>
+        <field name="model">salesperson.config</field>
+        <field name="arch" type="xml">
+            <tree string="Salesperson Configurations" decoration-muted="not commission_active">
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="commission_active" widget="boolean_toggle"/>
+                <field name="default_rule_id"/>
+                <field name="override_commission_type"/>
+                <field name="calculation_count"/>
+                <field name="total_commission" widget="monetary"/>
+                <field name="avg_collection_days" widget="float_time"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+                <button name="action_toggle_active" type="object" string="Toggle Active" class="btn-link"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form View -->
+    <record id="view_salesperson_config_form" model="ir.ui.view">
+        <field name="name">salesperson.config.form</field>
+        <field name="model">salesperson.config</field>
+        <field name="arch" type="xml">
+            <form string="Salesperson Configuration">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-calculator">
+                            <div class="o_stat_info">
+                                <field name="calculation_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Calculations</span>
+                            </div>
+                        </button>
+                        <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-money">
+                            <div class="o_stat_info">
+                                <field name="total_commission" class="o_stat_value" widget="monetary"/>
+                                <span class="o_stat_text">Total Commission</span>
+                            </div>
+                        </button>
+                        <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-clock-o">
+                            <div class="o_stat_info">
+                                <field name="avg_collection_days" class="o_stat_value" widget="float" digits="[5,1]"/>
+                                <span class="o_stat_text">Avg. Days</span>
+                            </div>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Inactive" attrs="{'invisible': [('commission_active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <label for="user_id"/>
+                        <h1>
+                            <field name="user_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="commission_active" widget="boolean_toggle"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="default_rule_id" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Override Settings" name="override">
+                            <group>
+                                <field name="override_commission_type" widget="radio"/>
+                            </group>
+                            <group attrs="{'invisible': [('override_commission_type', '=', 'none')]}">
+                                <field name="override_percentage" widget="percentage" attrs="{'invisible': [('override_commission_type', '!=', 'percentage')], 'required': [('override_commission_type', '=', 'percentage')]}"/>
+                                <field name="override_fixed_amount" attrs="{'invisible': [('override_commission_type', '!=', 'fixed')], 'required': [('override_commission_type', '=', 'fixed')]}"/>
+                                <field name="override_band_id" attrs="{'invisible': [('override_commission_type', '!=', 'band')], 'required': [('override_commission_type', '=', 'band')]}" options="{'no_create': True}"/>
+                            </group>
+                        </page>
+                        
+                        <page string="Commission Limits" name="limits">
+                            <group>
+                                <group>
+                                    <field name="min_commission_amount"/>
+                                    <field name="max_commission_amount"/>
+                                </group>
+                            </group>
+                        </page>
+                        
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Add any relevant notes about this salesperson's commission configuration..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search View -->
+    <record id="view_salesperson_config_search" model="ir.ui.view">
+        <field name="name">salesperson.config.search</field>
+        <field name="model">salesperson.config</field>
+        <field name="arch" type="xml">
+            <search string="Salesperson Configurations">
+                <field name="user_id"/>
+                <field name="default_rule_id"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('commission_active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('commission_active', '=', False)]"/>
+                <separator/>
+                <filter string="Has Override" name="has_override" domain="[('override_commission_type', '!=', 'none')]"/>
+                <filter string="Has Limits" name="has_limits" domain="['|', ('min_commission_amount', '>', 0), ('max_commission_amount', '>', 0)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Active Status" name="group_active" context="{'group_by': 'commission_active'}"/>
+                    <filter string="Default Rule" name="group_rule" context="{'group_by': 'default_rule_id'}"/>
+                    <filter string="Override Type" name="group_override" context="{'group_by': 'override_commission_type'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_salesperson_config" model="ir.actions.act_window">
+        <field name="name">Salesperson Configurations</field>
+        <field name="res_model">salesperson.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_salesperson_config_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure salesperson commission settings
+            </p>
+            <p>
+                Set up individual commission configurations for each salesperson,
+                including default rules, overrides, and commission limits.
+            </p>
+        </field>
+    </record>
+    
+</odoo>

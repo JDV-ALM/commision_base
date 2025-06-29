@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Commission Band Configuration Wizard Form -->
+    <record id="view_commission_band_config_wizard_form" model="ir.ui.view">
+        <field name="name">commission.band.config.wizard.form</field>
+        <field name="model">commission.band.config.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Commission Band Configuration Wizard">
+                <field name="state" invisible="1"/>
+                
+                <!-- Welcome Step -->
+                <group attrs="{'invisible': [('state', '!=', 'welcome')]}">
+                    <div class="oe_title">
+                        <h1>Welcome to Commission Band Configuration</h1>
+                    </div>
+                    <separator/>
+                    <div class="alert alert-info" role="alert">
+                        <p>
+                            This wizard will help you set up the commission band system with:
+                        </p>
+                        <ul>
+                            <li>Default commission bands based on your requirements</li>
+                            <li>Commission rules to apply bands automatically</li>
+                            <li>Salesperson configurations</li>
+                        </ul>
+                        <p>
+                            Click <strong>Next</strong> to begin the configuration.
+                        </p>
+                    </div>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </group>
+                
+                <!-- Bands Step -->
+                <group attrs="{'invisible': [('state', '!=', 'bands')]}">
+                    <div class="oe_title">
+                        <h1>Create Commission Bands</h1>
+                    </div>
+                    <separator/>
+                    <div class="alert alert-info" role="alert">
+                        <p>
+                            Commission bands define percentage scales based on payment collection time.
+                        </p>
+                    </div>
+                    <group>
+                        <field name="create_default_bands"/>
+                    </group>
+                    <div attrs="{'invisible': [('create_default_bands', '=', False)]}">
+                        <p>The following standard bands will be created:</p>
+                        <ul>
+                            <li><strong>Premium Sales Band (Type A)</strong> - For top performers with rates from 0.5% to 2.8%</li>
+                            <li><strong>Supervision Band (Type B)</strong> - For supervisors with rates from 0.25% to 2.0%</li>
+                            <li><strong>Office Band (Type C)</strong> - For office staff with rates from 0% to 1.5%</li>
+                        </ul>
+                    </div>
+                    <group attrs="{'invisible': [('band_ids', '=', [])]}">
+                        <field name="band_ids" readonly="1" nolabel="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="range_ids" widget="many2many_tags"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                
+                <!-- Rules Step -->
+                <group attrs="{'invisible': [('state', '!=', 'rules')]}">
+                    <div class="oe_title">
+                        <h1>Create Commission Rules</h1>
+                    </div>
+                    <separator/>
+                    <div class="alert alert-info" role="alert">
+                        <p>
+                            Commission rules determine how commissions are calculated based on various criteria.
+                        </p>
+                    </div>
+                    <group>
+                        <field name="create_default_rules"/>
+                    </group>
+                    <div attrs="{'invisible': [('create_default_rules', '=', False)]}">
+                        <p>Default rules will be created for each band type.</p>
+                    </div>
+                    <group attrs="{'invisible': [('rule_ids', '=', [])]}">
+                        <field name="rule_ids" readonly="1" nolabel="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="priority"/>
+                                <field name="commission_type"/>
+                                <field name="band_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+                
+                <!-- Users Step -->
+                <group attrs="{'invisible': [('state', '!=', 'users')]}">
+                    <div class="oe_title">
+                        <h1>Configure Salespersons</h1>
+                    </div>
+                    <separator/>
+                    <div class="alert alert-info" role="alert">
+                        <p>
+                            Select which salespersons should have commission calculation enabled.
+                        </p>
+                    </div>
+                    <group>
+                        <field name="activate_all_users"/>
+                    </group>
+                    <group attrs="{'invisible': [('activate_all_users', '=', True)]}">
+                        <field name="user_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    </group>
+                </group>
+                
+                <!-- Done Step -->
+                <group attrs="{'invisible': [('state', '!=', 'done')]}">
+                    <div class="oe_title">
+                        <h1>Configuration Complete!</h1>
+                    </div>
+                    <separator/>
+                    <div class="alert alert-success" role="alert">
+                        <p>
+                            <i class="fa fa-check-circle"/> The commission band system has been configured successfully.
+                        </p>
+                    </div>
+                    <field name="summary" readonly="1" nolabel="1"/>
+                </group>
+                
+                <footer>
+                    <button name="action_previous" type="object" string="Previous" class="btn-secondary" attrs="{'invisible': [('state', 'in', ['welcome', 'done'])]}"/>
+                    <button name="action_next" type="object" string="Next" class="btn-primary" attrs="{'invisible': [('state', '=', 'done')]}"/>
+                    <button name="action_close" type="object" string="Close" class="btn-primary" attrs="{'invisible': [('state', '!=', 'done')]}"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_commission_band_config_wizard" model="ir.actions.act_window">
+        <field name="name">Commission Band Configuration Wizard</field>
+        <field name="res_model">commission.band.config.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_commission_band_config_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+    
+</odoo>

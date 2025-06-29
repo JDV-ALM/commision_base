@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Main Menu -->
+    <menuitem id="menu_commission_band_root"
+              name="Commission Bands"
+              parent="sale.sale_menu_root"
+              sequence="40"
+              groups="commission_band.group_commission_band_user"/>
+    
+    <!-- My Commissions (for all users) -->
+    <menuitem id="menu_my_commission_calculation"
+              name="My Commissions"
+              parent="menu_commission_band_root"
+              action="action_my_commission_calculation"
+              sequence="10"
+              groups="commission_band.group_commission_band_user"/>
+    
+    <!-- All Commissions (for managers) -->
+    <menuitem id="menu_commission_calculation"
+              name="All Commissions"
+              parent="menu_commission_band_root"
+              action="action_commission_calculation"
+              sequence="20"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <!-- Configuration Menu -->
+    <menuitem id="menu_commission_band_config"
+              name="Configuration"
+              parent="menu_commission_band_root"
+              sequence="100"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <!-- Commission Bands -->
+    <menuitem id="menu_commission_band"
+              name="Commission Bands"
+              parent="menu_commission_band_config"
+              action="action_commission_band"
+              sequence="10"/>
+    
+    <!-- Commission Rules -->
+    <menuitem id="menu_commission_rule"
+              name="Commission Rules"
+              parent="menu_commission_band_config"
+              action="action_commission_rule"
+              sequence="20"/>
+    
+    <!-- Salesperson Config -->
+    <menuitem id="menu_salesperson_config"
+              name="Salesperson Config"
+              parent="menu_commission_band_config"
+              action="action_salesperson_config"
+              sequence="30"/>
+    
+    <!-- Configuration Wizard -->
+    <menuitem id="menu_commission_band_wizard"
+              name="Configuration Wizard"
+              parent="menu_commission_band_config"
+              action="action_commission_band_config_wizard"
+              sequence="100"/>
+    
+    <!-- Add to Sales Configuration -->
+    <menuitem id="menu_sale_config_commission_band"
+              name="Commission Bands"
+              parent="sale.menu_sale_config"
+              sequence="50"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <menuitem id="menu_sale_config_commission_band_bands"
+              name="Commission Bands"
+              parent="menu_sale_config_commission_band"
+              action="action_commission_band"
+              sequence="10"/>
+    
+    <menuitem id="menu_sale_config_commission_band_rules"
+              name="Commission Rules"
+              parent="menu_sale_config_commission_band"
+              action="action_commission_rule"
+              sequence="20"/>
+    
+    <!-- Reports Menu -->
+    <menuitem id="menu_commission_band_reports"
+              name="Commission Reports"
+              parent="sale.menu_sale_report"
+              sequence="40"
+              groups="commission_band.group_commission_band_user"/>
+    
+    <menuitem id="menu_commission_calculation_report"
+              name="Commission Analysis"
+              parent="menu_commission_band_reports"
+              action="action_commission_calculation"
+              sequence="10"/>
+    
+</odoo>

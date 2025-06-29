@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_commission_band_user,commission.band.user,model_commission_band,group_commission_band_user,1,0,0,0
+access_commission_band_manager,commission.band.manager,model_commission_band,group_commission_band_manager,1,1,1,1
+access_commission_range_user,commission.range.user,model_commission_range,group_commission_band_user,1,0,0,0
+access_commission_range_manager,commission.range.manager,model_commission_range,group_commission_band_manager,1,1,1,1
+access_commission_rule_user,commission.rule.user,model_commission_rule,group_commission_band_user,1,0,0,0
+access_commission_rule_manager,commission.rule.manager,model_commission_rule,group_commission_band_manager,1,1,1,1
+access_salesperson_config_user,salesperson.config.user,model_salesperson_config,group_commission_band_user,1,0,0,0
+access_salesperson_config_manager,salesperson.config.manager,model_salesperson_config,group_commission_band_manager,1,1,1,1
+access_commission_calculation_user,commission.calculation.user,model_commission_calculation,group_commission_band_user,1,0,0,0
+access_commission_calculation_manager,commission.calculation.manager,model_commission_calculation,group_commission_band_manager,1,1,1,1
+access_commission_band_config_wizard,commission.band.config.wizard,model_commission_band_config_wizard,group_commission_band_manager,1,1,1,1

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Extend User Form View -->
+    <record id="view_users_form_commission_band" model="ir.ui.view">
+        <field name="name">res.users.form.commission.band</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <!-- Add smart button in button box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_commission_calculations" 
+                        type="object" 
+                        class="oe_stat_button" 
+                        icon="fa-calculator"
+                        groups="commission_band.group_commission_band_user">
+                    <div class="o_stat_info">
+                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <span class="o_stat_text">Commissions</span>
+                    </div>
+                </button>
+                <button name="action_view_commission_config" 
+                        type="object" 
+                        class="oe_stat_button" 
+                        icon="fa-cog"
+                        groups="commission_band.group_commission_band_manager">
+                    <span>Commission Config</span>
+                </button>
+            </xpath>
+            
+            <!-- Add commission tab in notebook -->
+            <xpath expr="//page[@name='preferences']" position="after">
+                <page string="Commission Settings" name="commission_band" groups="commission_band.group_commission_band_user">
+                    <group>
+                        <group string="Commission Configuration">
+                            <field name="commission_band_active" widget="boolean_toggle"/>
+                            <field name="current_commission_config_id" readonly="1" attrs="{'invisible': [('current_commission_config_id', '=', False)]}"/>
+                        </group>
+                        <group string="Commission Statistics">
+                            <field name="total_commission_amount" widget="monetary"/>
+                            <field name="avg_collection_days" widget="float" digits="[5,1]"/>
+                        </group>
+                    </group>
+                    <group string="Commission Configurations by Company" attrs="{'invisible': [('commission_config_ids', '=', [])]}">
+                        <field name="commission_config_ids" readonly="1" nolabel="1">
+                            <tree>
+                                <field name="company_id"/>
+                                <field name="commission_active" widget="boolean_toggle"/>
+                                <field name="default_rule_id"/>
+                                <field name="calculation_count"/>
+                                <field name="total_commission" widget="monetary"/>
+                                <button name="action_view_calculations" type="object" string="View" class="btn-link"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Extend User Tree View -->
+    <record id="view_users_tree_commission_band" model="ir.ui.view">
+        <field name="name">res.users.tree.commission.band</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='lang']" position="after">
+                <field name="commission_band_active" string="Commission" widget="boolean_toggle" optional="hide" groups="commission_band.group_commission_band_manager"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Extend Account Move Form View -->
+    <record id="view_move_form_commission_band" model="ir.ui.view">
+        <field name="name">account.move.form.commission.band</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Add smart button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_commission_calculations" 
+                        type="object" 
+                        class="oe_stat_button" 
+                        icon="fa-calculator"
+                        attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"
+                        groups="commission_band.group_commission_band_user">
+                    <div class="o_stat_info">
+                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <span class="o_stat_text">Commissions</span>
+                    </div>
+                </button>
+            </xpath>
+            
+            <!-- Add commission fields in other info tab -->
+            <xpath expr="//page[@id='other_tab']//group[@name='accounting_info_group']" position="after">
+                <group string="Commission Information" name="commission_info" groups="commission_band.group_commission_band_user">
+                    <group>
+                        <field name="delivery_date"/>
+                        <field name="skip_commission"/>
+                    </group>
+                    <group>
+                        <field name="commission_override_rule_id" options="{'no_create': True}" groups="commission_band.group_commission_band_manager"/>
+                        <field name="avg_collection_days" widget="float" digits="[5,1]" attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Extend Account Payment Form View -->
+    <record id="view_account_payment_form_commission_band" model="ir.ui.view">
+        <field name="name">account.payment.form.commission.band</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <!-- Add smart button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_commission_calculations" 
+                        type="object" 
+                        class="oe_stat_button" 
+                        icon="fa-calculator"
+                        attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"
+                        groups="commission_band.group_commission_band_user">
+                    <div class="o_stat_info">
+                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <span class="o_stat_text">Commissions</span>
+                    </div>
+                </button>
+            </xpath>
+            
+            <!-- Add commission fields -->
+            <xpath expr="//group[last()]" position="after">
+                <group string="Commission Information" name="commission_info" groups="commission_band.group_commission_band_user" attrs="{'invisible': [('payment_type', '!=', 'inbound')]}">
+                    <group>
+                        <field name="skip_commission_calculation"/>
+                        <field name="has_commission_calculations" readonly="1"/>
+                    </group>
+                    <group attrs="{'invisible': [('has_commission_calculations', '=', False)]}">
+                        <field name="total_commission_amount" widget="monetary"/>
+                        <button name="action_recalculate_commissions" 
+                                type="object" 
+                                string="Recalculate Commissions" 
+                                class="btn-link"
+                                groups="commission_band.group_commission_band_manager"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Extend Account Payment Tree View -->
+    <record id="view_account_payment_tree_commission_band" model="ir.ui.view">
+        <field name="name">account.payment.tree.commission.band</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="before">
+                <field name="has_commission_calculations" string="Commission" widget="boolean_field" optional="show" groups="commission_band.group_commission_band_user"/>
+                <field name="total_commission_amount" widget="monetary" optional="hide" groups="commission_band.group_commission_band_user"/>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

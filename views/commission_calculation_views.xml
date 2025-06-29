@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Commission Calculation Views -->
+    
+    <!-- Tree View -->
+    <record id="view_commission_calculation_tree" model="ir.ui.view">
+        <field name="name">commission.calculation.tree</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <tree string="Commission Calculations" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'" decoration-muted="state == 'cancelled'">
+                <field name="payment_date"/>
+                <field name="salesperson_id" widget="many2one_avatar_user"/>
+                <field name="partner_id"/>
+                <field name="invoice_id"/>
+                <field name="payment_id"/>
+                <field name="days_overdue" decoration-danger="days_overdue > 60" decoration-warning="days_overdue > 30 and days_overdue &lt;= 60" decoration-success="days_overdue &lt;= 0"/>
+                <field name="payment_amount" widget="monetary"/>
+                <field name="commission_rate" widget="percentage"/>
+                <field name="commission_amount" widget="monetary" sum="Total Commission"/>
+                <field name="currency_id" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form View -->
+    <record id="view_commission_calculation_form" model="ir.ui.view">
+        <field name="name">commission.calculation.form</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <form string="Commission Calculation">
+                <header>
+                    <button name="action_calculate" type="object" string="Calculate" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_validate" type="object" string="Validate" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'calculated')]}"/>
+                    <button name="action_approve" type="object" string="Approve" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'validated')]}" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'approved')]}" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('state', 'in', ['cancelled', 'paid'])]}"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" attrs="{'invisible': [('state', 'in', ['draft', 'paid'])]}" groups="commission_band.group_commission_band_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,calculated,validated,approved,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="display_name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Payment Information">
+                            <field name="payment_id" options="{'no_create': True}"/>
+                            <field name="payment_date"/>
+                            <field name="payment_amount" widget="monetary"/>
+                            <field name="currency_id"/>
+                            <field name="journal_id"/>
+                            <field name="is_reconciled" widget="boolean_toggle"/>
+                            <field name="reconciliation_date" attrs="{'invisible': [('is_reconciled', '=', False)]}"/>
+                        </group>
+                        <group string="Invoice Information">
+                            <field name="invoice_id" options="{'no_create': True}"/>
+                            <field name="partner_id"/>
+                            <field name="invoice_date"/>
+                            <field name="due_date"/>
+                            <field name="delivery_date"/>
+                            <field name="days_overdue" decoration-danger="days_overdue > 60" decoration-warning="days_overdue > 30 and days_overdue &lt;= 60" decoration-success="days_overdue &lt;= 0"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Commission Details">
+                            <field name="salesperson_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
+                            <field name="rule_id" options="{'no_create': True}"/>
+                            <field name="band_id" attrs="{'invisible': [('band_id', '=', False)]}" options="{'no_create': True}"/>
+                            <field name="range_id" attrs="{'invisible': [('range_id', '=', False)]}" options="{'no_create': True}"/>
+                        </group>
+                        <group string="Commission Calculation">
+                            <field name="commission_rate" widget="percentage"/>
+                            <field name="commission_amount" widget="monetary"/>
+                            <field name="exchange_rate" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
+                            <field name="payment_amount_company" widget="monetary" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
+                            <field name="commission_amount_company" widget="monetary" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
+                            <field name="company_currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Add any relevant notes about this commission calculation..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search View -->
+    <record id="view_commission_calculation_search" model="ir.ui.view">
+        <field name="name">commission.calculation.search</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <search string="Commission Calculations">
+                <field name="salesperson_id"/>
+                <field name="partner_id"/>
+                <field name="invoice_id"/>
+                <field name="payment_id"/>
+                <field name="rule_id"/>
+                <field name="band_id"/>
+                <separator/>
+                <filter string="My Commissions" name="my_commissions" domain="[('salesperson_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Calculated" name="calculated" domain="[('state', '=', 'calculated')]"/>
+                <filter string="Validated" name="validated" domain="[('state', '=', 'validated')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="Cancelled" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <separator/>
+                <filter string="Early Payment" name="early" domain="[('days_overdue', '&lt;=', 0)]"/>
+                <filter string="On Time" name="ontime" domain="[('days_overdue', '&gt;', 0), ('days_overdue', '&lt;=', 15)]"/>
+                <filter string="Late Payment" name="late" domain="[('days_overdue', '&gt;', 30)]"/>
+                <separator/>
+                <filter string="Current Month" name="current_month" domain="[('payment_date', '&gt;=', (context_today() + relativedelta(day=1)).strftime('%Y-%m-%d')), ('payment_date', '&lt;', (context_today() + relativedelta(months=1, day=1)).strftime('%Y-%m-%d'))]"/>
+                <filter string="Current Year" name="current_year" domain="[('payment_date', '&gt;=', (context_today() + relativedelta(month=1, day=1)).strftime('%Y-%m-%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Salesperson" name="group_salesperson" context="{'group_by': 'salesperson_id'}"/>
+                    <filter string="Customer" name="group_customer" context="{'group_by': 'partner_id'}"/>
+                    <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Rule" name="group_rule" context="{'group_by': 'rule_id'}"/>
+                    <filter string="Band" name="group_band" context="{'group_by': 'band_id'}"/>
+                    <filter string="Payment Date" name="group_payment_date" context="{'group_by': 'payment_date:month'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Graph View -->
+    <record id="view_commission_calculation_graph" model="ir.ui.view">
+        <field name="name">commission.calculation.graph</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <graph string="Commission Analysis" type="bar" stacked="True">
+                <field name="payment_date" interval="month"/>
+                <field name="commission_amount_company" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    
+    <!-- Pivot View -->
+    <record id="view_commission_calculation_pivot" model="ir.ui.view">
+        <field name="name">commission.calculation.pivot</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <pivot string="Commission Analysis">
+                <field name="payment_date" interval="month" type="col"/>
+                <field name="salesperson_id" type="row"/>
+                <field name="commission_amount_company" type="measure"/>
+                <field name="payment_amount_company" type="measure"/>
+                <field name="days_overdue" type="measure" widget="float_avg"/>
+            </pivot>
+        </field>
+    </record>
+    
+    <!-- Actions -->
+    <record id="action_commission_calculation" model="ir.actions.act_window">
+        <field name="name">Commission Calculations</field>
+        <field name="res_model">commission.calculation</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="search_view_id" ref="view_commission_calculation_search"/>
+        <field name="context">{'search_default_current_year': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No commission calculations found
+            </p>
+            <p>
+                Commission calculations are automatically created when customers make payments.
+                The system calculates commissions based on the configured rules and bands.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_my_commission_calculation" model="ir.actions.act_window">
+        <field name="name">My Commissions</field>
+        <field name="res_model">commission.calculation</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="search_view_id" ref="view_commission_calculation_search"/>
+        <field name="domain">[('salesperson_id', '=', uid)]</field>
+        <field name="context">{'search_default_current_year': 1, 'search_default_group_state': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No commissions found
+            </p>
+            <p>
+                Your commissions will appear here once customers make payments for your sales.
+            </p>
+        </field>
+    </record>
+    
+</odoo>

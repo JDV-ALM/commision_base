@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Commission Band Views -->
+    
+    <!-- Tree View -->
+    <record id="view_commission_band_tree" model="ir.ui.view">
+        <field name="name">commission.band.tree</field>
+        <field name="model">commission.band</field>
+        <field name="arch" type="xml">
+            <tree string="Commission Bands" decoration-muted="not active">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="currency_specific" optional="hide"/>
+                <field name="currency_id" optional="show"/>
+                <field name="rule_count"/>
+                <field name="calculation_count"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form View -->
+    <record id="view_commission_band_form" model="ir.ui.view">
+        <field name="name">commission.band.form</field>
+        <field name="model">commission.band</field>
+        <field name="arch" type="xml">
+            <form string="Commission Band">
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_rules" type="object" class="oe_stat_button" icon="fa-list-alt">
+                            <field name="rule_count" widget="statinfo" string="Rules"/>
+                        </button>
+                        <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-calculator">
+                            <field name="calculation_count" widget="statinfo" string="Calculations"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Premium Sales Band"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code" placeholder="e.g. BAND_PREMIUM"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="currency_specific"/>
+                            <field name="currency_id" attrs="{'invisible': [('currency_specific', '=', False)], 'required': [('currency_specific', '=', True)]}"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Describe when and how this band should be used..."/>
+                    </group>
+                    <notebook>
+                        <page string="Day Ranges" name="ranges">
+                            <field name="range_ids" widget="one2many" context="{'default_band_id': active_id}">
+                                <tree editable="bottom" decoration-success="commission_rate >= 3" decoration-warning="commission_rate >= 2 and commission_rate &lt; 3" decoration-danger="commission_rate &lt; 1">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="day_from"/>
+                                    <field name="day_to"/>
+                                    <field name="commission_rate" widget="percentage"/>
+                                    <field name="indicator_rate" widget="percentage" optional="show"/>
+                                    <field name="apply_only_currency_id" optional="hide"/>
+                                    <field name="min_payment_amount" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Search View -->
+    <record id="view_commission_band_search" model="ir.ui.view">
+        <field name="name">commission.band.search</field>
+        <field name="model">commission.band</field>
+        <field name="arch" type="xml">
+            <search string="Commission Bands">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="description"/>
+                <separator/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Currency Specific" name="currency_specific" domain="[('currency_specific', '=', True)]"/>
+                <filter string="General" name="general" domain="[('currency_specific', '=', False)]"/>
+                <separator/>
+                <filter string="Has Rules" name="has_rules" domain="[('rule_count', '>', 0)]"/>
+                <filter string="Has Calculations" name="has_calculations" domain="[('calculation_count', '>', 0)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Currency" name="group_currency" domain="[('currency_specific', '=', True)]" context="{'group_by': 'currency_id'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                    <filter string="Active" name="group_active" context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_commission_band" model="ir.actions.act_window">
+        <field name="name">Commission Bands</field>
+        <field name="res_model">commission.band</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_commission_band_search"/>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first commission band
+            </p>
+            <p>
+                Commission bands define percentage scales based on payment collection time.
+                Each band contains multiple day ranges with their corresponding commission rates.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Commission Range Views (for standalone access if needed) -->
+    
+    <!-- Tree View -->
+    <record id="view_commission_range_tree" model="ir.ui.view">
+        <field name="name">commission.range.tree</field>
+        <field name="model">commission.range</field>
+        <field name="arch" type="xml">
+            <tree string="Commission Ranges" editable="bottom">
+                <field name="band_id"/>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="day_from"/>
+                <field name="day_to"/>
+                <field name="commission_rate" widget="percentage"/>
+                <field name="indicator_rate" widget="percentage"/>
+                <field name="apply_only_currency_id" optional="show"/>
+                <field name="min_payment_amount" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form View -->
+    <record id="view_commission_range_form" model="ir.ui.view">
+        <field name="name">commission.range.form</field>
+        <field name="model">commission.range</field>
+        <field name="arch" type="xml">
+            <form string="Commission Range">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="band_id"/>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="day_from"/>
+                            <field name="day_to"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="commission_rate" widget="percentage"/>
+                            <field name="indicator_rate" widget="percentage"/>
+                        </group>
+                        <group>
+                            <field name="apply_only_currency_id"/>
+                            <field name="min_payment_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>
