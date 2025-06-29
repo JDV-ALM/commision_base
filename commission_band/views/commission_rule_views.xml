@@ -1,110 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <!-- Commission Rule Views -->
+    <!-- Commission Calculation Views -->
     
-    <!-- Tree View -->
-    <record id="view_commission_rule_tree" model="ir.ui.view">
-        <field name="name">commission.rule.tree</field>
-        <field name="model">commission.rule</field>
+    <!-- List View -->
+    <record id="view_commission_calculation_tree" model="ir.ui.view">
+        <field name="name">commission.calculation.tree</field>
+        <field name="model">commission.calculation</field>
         <field name="arch" type="xml">
-            <list string="Commission Rules" decoration-muted="not active">
-                <field name="priority"/>
-                <field name="sequence" widget="handle"/>
-                <field name="name"/>
-                <field name="code"/>
-                <field name="commission_type"/>
-                <field name="band_id" attrs="{'invisible': [('commission_type', '!=', 'band')]}"/>
-                <field name="percentage_rate" widget="percentage" attrs="{'invisible': [('commission_type', '!=', 'percentage')]}"/>
-                <field name="fixed_amount" attrs="{'invisible': [('commission_type', '!=', 'fixed')]}"/>
-                <field name="calculation_count"/>
-                <field name="active" widget="boolean_toggle"/>
+            <list string="Commission Calculations" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'" decoration-muted="state == 'cancelled'">
+                <field name="payment_date"/>
+                <field name="salesperson_id" widget="many2one_avatar_user"/>
+                <field name="partner_id"/>
+                <field name="invoice_id"/>
+                <field name="payment_id"/>
+                <field name="days_overdue" decoration-danger="days_overdue > 60" decoration-warning="days_overdue > 30 and days_overdue &lt;= 60" decoration-success="days_overdue &lt;= 0"/>
+                <field name="payment_amount" widget="monetary"/>
+                <field name="commission_rate" widget="percentage"/>
+                <field name="commission_amount" widget="monetary" sum="Total Commission"/>
+                <field name="currency_id" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
             </list>
         </field>
     </record>
     
     <!-- Form View -->
-    <record id="view_commission_rule_form" model="ir.ui.view">
-        <field name="name">commission.rule.form</field>
-        <field name="model">commission.rule</field>
+    <record id="view_commission_calculation_form" model="ir.ui.view">
+        <field name="name">commission.calculation.form</field>
+        <field name="model">commission.calculation</field>
         <field name="arch" type="xml">
-            <form string="Commission Rule">
+            <form string="Commission Calculation">
+                <header>
+                    <button name="action_calculate" type="object" string="Calculate" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_validate" type="object" string="Validate" class="oe_highlight" invisible="state != 'calculated'"/>
+                    <button name="action_approve" type="object" string="Approve" class="oe_highlight" invisible="state != 'validated'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="oe_highlight" invisible="state != 'approved'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ['cancelled', 'paid']"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state in ['draft', 'paid']" groups="commission_band.group_commission_band_manager"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,calculated,validated,approved,paid"/>
+                </header>
                 <sheet>
-                    <widget name="web_ribbon" title="Archived" attrs="{'invisible': [('active', '=', True)]}"/>
-                    <div class="oe_button_box" name="button_box">
-                        <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-calculator">
-                            <field name="calculation_count" widget="statinfo" string="Calculations"/>
-                        </button>
-                    </div>
                     <div class="oe_title">
-                        <label for="name"/>
                         <h1>
-                            <field name="name" placeholder="e.g. Premium Sales Rule"/>
+                            <field name="display_name" readonly="1"/>
                         </h1>
                     </div>
                     <group>
-                        <group>
-                            <field name="code" placeholder="e.g. RULE_PREMIUM"/>
-                            <field name="priority" help="Lower number = higher priority"/>
-                            <field name="sequence"/>
-                            <field name="active" widget="boolean_toggle"/>
+                        <group string="Payment Information">
+                            <field name="payment_id" options="{'no_create': True}"/>
+                            <field name="payment_date"/>
+                            <field name="payment_amount" widget="monetary"/>
+                            <field name="currency_id"/>
+                            <field name="journal_id"/>
+                            <field name="is_reconciled" widget="boolean_toggle"/>
+                            <field name="reconciliation_date" invisible="not is_reconciled"/>
                         </group>
-                        <group>
-                            <field name="date_from"/>
-                            <field name="date_to"/>
-                            <field name="company_id" groups="base.group_multi_company"/>
+                        <group string="Invoice Information">
+                            <field name="invoice_id" options="{'no_create': True}"/>
+                            <field name="partner_id"/>
+                            <field name="invoice_date"/>
+                            <field name="due_date"/>
+                            <field name="delivery_date"/>
+                            <field name="days_overdue" decoration-danger="days_overdue > 60" decoration-warning="days_overdue > 30 and days_overdue &lt;= 60" decoration-success="days_overdue &lt;= 0"/>
                         </group>
                     </group>
-                    
+                    <group>
+                        <group string="Commission Details">
+                            <field name="salesperson_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
+                            <field name="rule_id" options="{'no_create': True}"/>
+                            <field name="band_id" invisible="not band_id" options="{'no_create': True}"/>
+                            <field name="range_id" invisible="not range_id" options="{'no_create': True}"/>
+                        </group>
+                        <group string="Commission Calculation">
+                            <field name="commission_rate" widget="percentage"/>
+                            <field name="commission_amount" widget="monetary"/>
+                            <field name="exchange_rate" invisible="currency_id == company_currency_id"/>
+                            <field name="payment_amount_company" widget="monetary" invisible="currency_id == company_currency_id"/>
+                            <field name="commission_amount_company" widget="monetary" invisible="currency_id == company_currency_id"/>
+                            <field name="company_currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
                     <notebook>
-                        <page string="Commission Configuration" name="commission">
-                            <group>
-                                <field name="commission_type" widget="radio"/>
-                            </group>
-                            <group attrs="{'invisible': [('commission_type', '!=', 'band')]}">
-                                <field name="band_id" attrs="{'required': [('commission_type', '=', 'band')]}"/>
-                            </group>
-                            <group attrs="{'invisible': [('commission_type', '!=', 'percentage')]}">
-                                <field name="percentage_rate" widget="percentage" attrs="{'required': [('commission_type', '=', 'percentage')]}"/>
-                            </group>
-                            <group attrs="{'invisible': [('commission_type', '!=', 'fixed')]}">
-                                <field name="fixed_amount" attrs="{'required': [('commission_type', '=', 'fixed')]}"/>
-                                <field name="currency_id"/>
-                            </group>
-                        </page>
-                        
-                        <page string="Application Criteria" name="criteria">
-                            <group string="Salespersons">
-                                <field name="salesperson_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <div class="text-muted">Leave empty to apply to all salespersons</div>
-                            </group>
-                            <group string="Sales Teams">
-                                <field name="team_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <div class="text-muted">Leave empty to apply to all teams</div>
-                            </group>
-                            <group string="Products">
-                                <field name="product_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <field name="category_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <div class="text-muted">Leave empty to apply to all products</div>
-                            </group>
-                            <group string="Customers">
-                                <field name="customer_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                <div class="text-muted">Leave empty to apply to all customers</div>
-                            </group>
-                        </page>
-                        
-                        <page string="Additional Conditions" name="conditions">
-                            <group>
-                                <group string="Amount Limits">
-                                    <field name="min_amount"/>
-                                    <field name="max_amount"/>
-                                </group>
-                                <group string="Payment Conditions">
-                                    <field name="payment_term_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                    <field name="journal_ids" widget="many2many_tags" options="{'no_create': True}"/>
-                                </group>
-                            </group>
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Add any relevant notes about this commission calculation..."/>
                         </page>
                     </notebook>
                 </sheet>
@@ -118,50 +100,104 @@
     </record>
     
     <!-- Search View -->
-    <record id="view_commission_rule_search" model="ir.ui.view">
-        <field name="name">commission.rule.search</field>
-        <field name="model">commission.rule</field>
+    <record id="view_commission_calculation_search" model="ir.ui.view">
+        <field name="name">commission.calculation.search</field>
+        <field name="model">commission.calculation</field>
         <field name="arch" type="xml">
-            <search string="Commission Rules">
-                <field name="name"/>
-                <field name="code"/>
-                <field name="salesperson_ids"/>
-                <field name="team_ids"/>
+            <search string="Commission Calculations">
+                <field name="salesperson_id"/>
+                <field name="partner_id"/>
+                <field name="invoice_id"/>
+                <field name="payment_id"/>
+                <field name="rule_id"/>
+                <field name="band_id"/>
                 <separator/>
-                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
-                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="My Commissions" name="my_commissions" domain="[('salesperson_id', '=', uid)]"/>
                 <separator/>
-                <filter string="Band Type" name="type_band" domain="[('commission_type', '=', 'band')]"/>
-                <filter string="Percentage Type" name="type_percentage" domain="[('commission_type', '=', 'percentage')]"/>
-                <filter string="Fixed Type" name="type_fixed" domain="[('commission_type', '=', 'fixed')]"/>
-                <filter string="No Commission" name="type_none" domain="[('commission_type', '=', 'none')]"/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Calculated" name="calculated" domain="[('state', '=', 'calculated')]"/>
+                <filter string="Validated" name="validated" domain="[('state', '=', 'validated')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="Cancelled" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
                 <separator/>
-                <filter string="Valid Today" name="valid_today" domain="[('date_from', '&lt;=', context_today()), '|', ('date_to', '=', False), ('date_to', '&gt;=', context_today())]"/>
+                <filter string="Early Payment" name="early" domain="[('days_overdue', '&lt;=', 0)]"/>
+                <filter string="On Time" name="ontime" domain="[('days_overdue', '&gt;', 0), ('days_overdue', '&lt;=', 15)]"/>
+                <filter string="Late Payment" name="late" domain="[('days_overdue', '&gt;', 30)]"/>
+                <separator/>
+                <filter string="Current Month" name="current_month" date="payment_date"/>
+                <filter string="Current Year" name="current_year" date="payment_date"/>
                 <group expand="0" string="Group By">
-                    <filter string="Type" name="group_type" context="{'group_by': 'commission_type'}"/>
-                    <filter string="Priority" name="group_priority" context="{'group_by': 'priority'}"/>
-                    <filter string="Band" name="group_band" domain="[('commission_type', '=', 'band')]" context="{'group_by': 'band_id'}"/>
+                    <filter string="Salesperson" name="group_salesperson" context="{'group_by': 'salesperson_id'}"/>
+                    <filter string="Customer" name="group_customer" context="{'group_by': 'partner_id'}"/>
+                    <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Rule" name="group_rule" context="{'group_by': 'rule_id'}"/>
+                    <filter string="Band" name="group_band" context="{'group_by': 'band_id'}"/>
+                    <filter string="Payment Date" name="group_payment_date" context="{'group_by': 'payment_date:month'}"/>
                     <filter string="Company" name="group_company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
-                    <filter string="Active" name="group_active" context="{'group_by': 'active'}"/>
                 </group>
             </search>
         </field>
     </record>
     
-    <!-- Action -->
-    <record id="action_commission_rule" model="ir.actions.act_window">
-        <field name="name">Commission Rules</field>
-        <field name="res_model">commission.rule</field>
-        <field name="view_mode">tree,form</field>
-        <field name="search_view_id" ref="view_commission_rule_search"/>
-        <field name="context">{'search_default_active': 1, 'search_default_valid_today': 1}</field>
+    <!-- Graph View -->
+    <record id="view_commission_calculation_graph" model="ir.ui.view">
+        <field name="name">commission.calculation.graph</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <graph string="Commission Analysis" type="bar" stacked="True">
+                <field name="payment_date" interval="month"/>
+                <field name="commission_amount_company" type="measure"/>
+            </graph>
+        </field>
+    </record>
+    
+    <!-- Pivot View -->
+    <record id="view_commission_calculation_pivot" model="ir.ui.view">
+        <field name="name">commission.calculation.pivot</field>
+        <field name="model">commission.calculation</field>
+        <field name="arch" type="xml">
+            <pivot string="Commission Analysis">
+                <field name="payment_date" interval="month" type="col"/>
+                <field name="salesperson_id" type="row"/>
+                <field name="commission_amount_company" type="measure"/>
+                <field name="payment_amount_company" type="measure"/>
+                <field name="days_overdue" type="measure" widget="float_avg"/>
+            </pivot>
+        </field>
+    </record>
+    
+    <!-- Actions -->
+    <record id="action_commission_calculation" model="ir.actions.act_window">
+        <field name="name">Commission Calculations</field>
+        <field name="res_model">commission.calculation</field>
+        <field name="view_mode">list,form,graph,pivot</field>
+        <field name="search_view_id" ref="view_commission_calculation_search"/>
+        <field name="context">{'search_default_current_year': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create your first commission rule
+                No commission calculations found
             </p>
             <p>
-                Commission rules determine how commissions are calculated based on various criteria.
-                Rules are evaluated by priority to find the best match for each payment.
+                Commission calculations are automatically created when customers make payments.
+                The system calculates commissions based on the configured rules and bands.
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_my_commission_calculation" model="ir.actions.act_window">
+        <field name="name">My Commissions</field>
+        <field name="res_model">commission.calculation</field>
+        <field name="view_mode">list,form,graph,pivot</field>
+        <field name="search_view_id" ref="view_commission_calculation_search"/>
+        <field name="domain">[('salesperson_id', '=', uid)]</field>
+        <field name="context">{'search_default_current_year': 1, 'search_default_group_state': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No commissions found
+            </p>
+            <p>
+                Your commissions will appear here once customers make payments for your sales.
             </p>
         </field>
     </record>
