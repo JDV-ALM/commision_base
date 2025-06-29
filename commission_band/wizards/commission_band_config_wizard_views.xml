@@ -56,11 +56,11 @@
                         </ul>
                     </div>
                     <group attrs="{'invisible': [('band_ids', '=', [])]}">
+                        <separator string="Created Bands"/>
                         <field name="band_ids" readonly="1" nolabel="1">
                             <tree>
                                 <field name="name"/>
-                                <field name="code"/>
-                                <field name="range_ids" widget="many2many_tags"/>
+                                <field name="description"/>
                             </tree>
                         </field>
                     </group>
@@ -84,10 +84,10 @@
                         <p>Default rules will be created for each band type.</p>
                     </div>
                     <group attrs="{'invisible': [('rule_ids', '=', [])]}">
+                        <separator string="Created Rules"/>
                         <field name="rule_ids" readonly="1" nolabel="1">
                             <tree>
                                 <field name="name"/>
-                                <field name="code"/>
                                 <field name="priority"/>
                                 <field name="commission_type"/>
                                 <field name="band_id"/>
