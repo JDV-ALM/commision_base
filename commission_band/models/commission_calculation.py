@@ -237,10 +237,7 @@ class CommissionCalculation(models.Model):
     def _compute_reconciliation_date(self):
         for calc in self:
             if calc.is_reconciled and calc.payment_id.reconciled_invoice_ids:
-                # Get the latest reconciliation date
-                move_lines = calc.payment_id.reconciled_invoice_ids
-                reconcile_dates = move_lines.mapped('reconciled_line_ids.max_date')
-                calc.reconciliation_date = max(reconcile_dates) if reconcile_dates else False
+                calc.reconciliation_date = calc.payment_id.date
             else:
                 calc.reconciliation_date = False
 

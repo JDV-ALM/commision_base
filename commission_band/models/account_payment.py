@@ -41,6 +41,12 @@ class AccountPayment(models.Model):
         default=False,
         help="If checked, commission will not be calculated for this payment"
     )
+    
+    can_calculate_commission = fields.Boolean(
+        string='Can Calculate Commission',
+        compute='_compute_can_calculate_commission',
+        help="Indicates if commission can be calculated for this payment"
+    )
 
     @api.depends('commission_calculation_ids')
     def _compute_commission_count(self):
@@ -71,6 +77,25 @@ class AccountPayment(models.Model):
             
             payment.total_commission_amount = total
 
+    @api.depends('payment_type', 'partner_type', 'is_reconciled', 'skip_commission_calculation', 'state')
+    def _compute_can_calculate_commission(self):
+        """Compute if commission can be calculated for this payment"""
+        for payment in self:
+            can_calculate = (
+                payment.payment_type == 'inbound' and
+                payment.partner_type == 'customer' and
+                payment.is_reconciled and
+                not payment.skip_commission_calculation and
+                payment.state == 'posted'
+            )
+            
+            # Check if there are already calculations
+            if can_calculate and payment.commission_calculation_ids:
+                # Only allow if all existing are cancelled
+                can_calculate = all(calc.state == 'cancelled' for calc in payment.commission_calculation_ids)
+            
+            payment.can_calculate_commission = can_calculate
+
     def action_post(self):
         """Override to trigger commission calculation after payment is posted"""
         res = super().action_post()
@@ -78,6 +103,7 @@ class AccountPayment(models.Model):
         # Trigger commission calculation for each payment
         for payment in self:
             if payment.payment_type == 'inbound' and not payment.skip_commission_calculation:
+                # Try to calculate immediately if already reconciled
                 payment._trigger_commission_calculation()
         
         return res
@@ -85,6 +111,8 @@ class AccountPayment(models.Model):
     def _trigger_commission_calculation(self):
         """Trigger commission calculation when payment is reconciled"""
         self.ensure_one()
+        
+        _logger.info("=== Starting commission calculation for payment %s ===", self.name)
         
         # Only process customer payments
         if self.payment_type != 'inbound' or self.partner_type != 'customer':
@@ -106,15 +134,37 @@ class AccountPayment(models.Model):
             lambda c: c.state != 'cancelled'
         )
         if existing_calculations:
-            _logger.info("Commission already calculated for payment %s.", self.name)
+            _logger.info("Commission already calculated for payment %s. Found %d existing calculations.", 
+                        self.name, len(existing_calculations))
             return
         
+        # Get reconciled invoices
+        reconciled_invoices = self.reconciled_invoice_ids
+        if not reconciled_invoices:
+            _logger.warning("No reconciled invoices found for payment %s", self.name)
+            return
+        
+        _logger.info("Found %d reconciled invoices for payment %s", len(reconciled_invoices), self.name)
+        
         # Delegate to commission calculation model
-        self.env['commission.calculation']._calculate_commission_from_payment(self.id)
+        calculation_model = self.env['commission.calculation']
+        calculation_model._calculate_commission_from_payment(self.id)
+        
+        # Check if calculations were created
+        new_calculations = self.commission_calculation_ids.filtered(
+            lambda c: c.state != 'cancelled'
+        )
+        if new_calculations:
+            _logger.info("Successfully created %d commission calculations for payment %s", 
+                        len(new_calculations), self.name)
+        else:
+            _logger.warning("No commission calculations were created for payment %s", self.name)
 
     def _reconcile_create_hook(self, counterpart_aml, payment_aml):
         """Hook called when payment is reconciled"""
         res = super()._reconcile_create_hook(counterpart_aml, payment_aml)
+        
+        _logger.info("Payment %s reconciled. Triggering commission calculation.", self.name)
         
         # Trigger commission calculation after reconciliation
         if not self.skip_commission_calculation:
@@ -137,6 +187,39 @@ class AccountPayment(models.Model):
             }
         }
 
+    def action_calculate_commission(self):
+        """Manual action to calculate commission for this payment"""
+        self.ensure_one()
+        
+        if not self.can_calculate_commission:
+            # Provide specific error message
+            if self.payment_type != 'inbound':
+                raise UserError(_("Commission can only be calculated for incoming payments."))
+            elif not self.is_reconciled:
+                raise UserError(_("Payment must be reconciled before calculating commission."))
+            elif self.skip_commission_calculation:
+                raise UserError(_("Commission calculation is disabled for this payment."))
+            elif self.commission_calculation_ids.filtered(lambda c: c.state != 'cancelled'):
+                raise UserError(_("Commission has already been calculated for this payment."))
+            else:
+                raise UserError(_("Cannot calculate commission for this payment."))
+        
+        # Force trigger calculation
+        _logger.info("Manual commission calculation triggered for payment %s", self.name)
+        self._trigger_commission_calculation()
+        
+        # Refresh the view
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': _('Commission Calculation'),
+                'message': _('Commission calculation process has been executed for payment %s') % self.name,
+                'type': 'success',
+                'sticky': False,
+            }
+        }
+
     def action_recalculate_commissions(self):
         """Action to recalculate commissions for this payment"""
         self.ensure_one()
@@ -145,6 +228,10 @@ class AccountPayment(models.Model):
         existing_calculations = self.commission_calculation_ids.filtered(
             lambda c: c.state not in ['paid', 'cancelled']
         )
+        
+        if not existing_calculations:
+            raise UserError(_("No commissions to recalculate."))
+        
         existing_calculations.action_cancel()
         
         # Trigger recalculation
@@ -203,3 +290,45 @@ class AccountPayment(models.Model):
                     payment._trigger_commission_calculation()
         
         return res
+
+    # Debug method
+    def action_debug_commission_info(self):
+        """Debug method to check why commission is not calculated"""
+        self.ensure_one()
+        
+        info = []
+        info.append(f"Payment: {self.name}")
+        info.append(f"Type: {self.payment_type}")
+        info.append(f"Partner Type: {self.partner_type}")
+        info.append(f"Is Reconciled: {self.is_reconciled}")
+        info.append(f"Skip Commission: {self.skip_commission_calculation}")
+        info.append(f"State: {self.state}")
+        
+        # Check invoices
+        invoices = self.reconciled_invoice_ids
+        info.append(f"\nReconciled Invoices: {len(invoices)}")
+        
+        for inv in invoices:
+            info.append(f"  - {inv.name}")
+            info.append(f"    Salesperson: {inv.invoice_user_id.name if inv.invoice_user_id else 'NOT SET'}")
+            info.append(f"    Skip Commission: {inv.skip_commission}")
+        
+        # Check existing calculations
+        calcs = self.commission_calculation_ids
+        info.append(f"\nExisting Calculations: {len(calcs)}")
+        for calc in calcs:
+            info.append(f"  - State: {calc.state}")
+            info.append(f"    Amount: {calc.commission_amount}")
+        
+        message = '\n'.join(info)
+        
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': _('Commission Debug Info'),
+                'message': message,
+                'type': 'info',
+                'sticky': True,
+            }
+        }
