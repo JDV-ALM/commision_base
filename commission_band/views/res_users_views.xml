@@ -15,7 +15,7 @@
                         icon="fa-calculator"
                         groups="commission_band.group_commission_band_user">
                     <div class="o_stat_info">
-                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <field name="commission_calculation_count" widget="statinfo"/>
                         <span class="o_stat_text">Commissions</span>
                     </div>
                 </button>
@@ -34,23 +34,23 @@
                     <group>
                         <group string="Commission Configuration">
                             <field name="commission_band_active" widget="boolean_toggle"/>
-                            <field name="current_commission_config_id" readonly="1" attrs="{'invisible': [('current_commission_config_id', '=', False)]}"/>
+                            <field name="current_commission_config_id" readonly="1" invisible="not current_commission_config_id"/>
                         </group>
                         <group string="Commission Statistics">
                             <field name="total_commission_amount" widget="monetary"/>
                             <field name="avg_collection_days" widget="float" digits="[5,1]"/>
                         </group>
                     </group>
-                    <group string="Commission Configurations by Company" attrs="{'invisible': [('commission_config_ids', '=', [])]}">
+                    <group string="Commission Configurations by Company" invisible="not commission_config_ids">
                         <field name="commission_config_ids" readonly="1" nolabel="1">
-                            <tree>
+                            <list>
                                 <field name="company_id"/>
                                 <field name="commission_active" widget="boolean_toggle"/>
                                 <field name="default_rule_id"/>
                                 <field name="calculation_count"/>
                                 <field name="total_commission" widget="monetary"/>
                                 <button name="action_view_calculations" type="object" string="View" class="btn-link"/>
-                            </tree>
+                            </list>
                         </field>
                     </group>
                 </page>
@@ -82,10 +82,10 @@
                         type="object" 
                         class="oe_stat_button" 
                         icon="fa-calculator"
-                        attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"
+                        invisible="commission_calculation_count == 0"
                         groups="commission_band.group_commission_band_user">
                     <div class="o_stat_info">
-                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <field name="commission_calculation_count" widget="statinfo"/>
                         <span class="o_stat_text">Commissions</span>
                     </div>
                 </button>
@@ -100,7 +100,7 @@
                     </group>
                     <group>
                         <field name="commission_override_rule_id" options="{'no_create': True}" groups="commission_band.group_commission_band_manager"/>
-                        <field name="avg_collection_days" widget="float" digits="[5,1]" attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"/>
+                        <field name="avg_collection_days" widget="float" digits="[5,1]" invisible="commission_calculation_count == 0"/>
                     </group>
                 </group>
             </xpath>
@@ -119,10 +119,10 @@
                         type="object" 
                         class="oe_stat_button" 
                         icon="fa-calculator"
-                        attrs="{'invisible': [('commission_calculation_count', '=', 0)]}"
+                        invisible="commission_calculation_count == 0"
                         groups="commission_band.group_commission_band_user">
                     <div class="o_stat_info">
-                        <field name="commission_calculation_count" class="o_stat_value"/>
+                        <field name="commission_calculation_count" widget="statinfo"/>
                         <span class="o_stat_text">Commissions</span>
                     </div>
                 </button>
@@ -130,12 +130,12 @@
             
             <!-- Add commission fields -->
             <xpath expr="//group[last()]" position="after">
-                <group string="Commission Information" name="commission_info" groups="commission_band.group_commission_band_user" attrs="{'invisible': [('payment_type', '!=', 'inbound')]}">
+                <group string="Commission Information" name="commission_info" groups="commission_band.group_commission_band_user" invisible="payment_type != 'inbound'">
                     <group>
                         <field name="skip_commission_calculation"/>
                         <field name="has_commission_calculations" readonly="1"/>
                     </group>
-                    <group attrs="{'invisible': [('has_commission_calculations', '=', False)]}">
+                    <group invisible="not has_commission_calculations">
                         <field name="total_commission_amount" widget="monetary"/>
                         <button name="action_recalculate_commissions" 
                                 type="object" 
