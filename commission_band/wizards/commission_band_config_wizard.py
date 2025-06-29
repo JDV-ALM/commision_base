@@ -186,8 +186,8 @@ class CommissionBandConfigWizard(models.TransientModel):
                     'name': range_data['name'],
                     'day_from': range_data['from'],
                     'day_to': range_data['to'],
-                    'commission_rate': range_data['rate'],
-                    'indicator_rate': range_data['indicator'],
+                    'commission_rate': range_data['rate'],  # Ya no se multiplica por 100
+                    'indicator_rate': range_data['indicator'],  # Ya no se multiplica por 100
                     'sequence': idx * 10,
                 })
             
@@ -337,11 +337,11 @@ class CommissionBandConfigWizard(models.TransientModel):
         self.ensure_one()
         
         if self.state == 'done':
-            # Open commission bands list view - CORREGIDO: tree -> list
+            # Open commission bands list view
             return {
                 'type': 'ir.actions.act_window',
                 'res_model': 'commission.band',
-                'view_mode': 'list,form',  # CAMBIADO DE tree,form a list,form
+                'view_mode': 'list,form',
                 'target': 'current',
             }
         
