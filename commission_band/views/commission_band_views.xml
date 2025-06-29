@@ -3,12 +3,12 @@
     
     <!-- Commission Band Views -->
     
-    <!-- Tree View -->
+    <!-- List View -->
     <record id="view_commission_band_tree" model="ir.ui.view">
         <field name="name">commission.band.tree</field>
         <field name="model">commission.band</field>
         <field name="arch" type="xml">
-            <tree string="Commission Bands" decoration-muted="not active">
+            <list string="Commission Bands" decoration-muted="not active">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="code"/>
@@ -18,7 +18,7 @@
                 <field name="calculation_count"/>
                 <field name="active" widget="boolean_toggle"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
-            </tree>
+            </list>
         </field>
     </record>
     
@@ -29,7 +29,7 @@
         <field name="arch" type="xml">
             <form string="Commission Band">
                 <sheet>
-                    <widget name="web_ribbon" title="Archived" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <widget name="web_ribbon" title="Archived" invisible="not active"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_rules" type="object" class="oe_stat_button" icon="fa-list-alt">
                             <field name="rule_count" widget="statinfo" string="Rules"/>
@@ -52,7 +52,7 @@
                         </group>
                         <group>
                             <field name="currency_specific"/>
-                            <field name="currency_id" attrs="{'invisible': [('currency_specific', '=', False)], 'required': [('currency_specific', '=', True)]}"/>
+                            <field name="currency_id" invisible="not currency_specific" required="currency_specific"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                     </group>
@@ -61,8 +61,8 @@
                     </group>
                     <notebook>
                         <page string="Day Ranges" name="ranges">
-                            <field name="range_ids" widget="one2many" context="{'default_band_id': active_id}">
-                                <tree editable="bottom" decoration-success="commission_rate >= 3" decoration-warning="commission_rate >= 2 and commission_rate &lt; 3" decoration-danger="commission_rate &lt; 1">
+                            <field name="range_ids" widget="one2many" context="{'default_band_id': id}">
+                                <list editable="bottom" decoration-success="commission_rate >= 3" decoration-warning="commission_rate >= 2 and commission_rate &lt; 3" decoration-danger="commission_rate &lt; 1">
                                     <field name="sequence" widget="handle"/>
                                     <field name="name"/>
                                     <field name="day_from"/>
@@ -71,7 +71,7 @@
                                     <field name="indicator_rate" widget="percentage" optional="show"/>
                                     <field name="apply_only_currency_id" optional="hide"/>
                                     <field name="min_payment_amount" optional="hide"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -116,7 +116,7 @@
     <record id="action_commission_band" model="ir.actions.act_window">
         <field name="name">Commission Bands</field>
         <field name="res_model">commission.band</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="search_view_id" ref="view_commission_band_search"/>
         <field name="context">{'search_default_active': 1}</field>
         <field name="help" type="html">
@@ -132,12 +132,12 @@
     
     <!-- Commission Range Views (for standalone access if needed) -->
     
-    <!-- Tree View -->
+    <!-- List View -->
     <record id="view_commission_range_tree" model="ir.ui.view">
         <field name="name">commission.range.tree</field>
         <field name="model">commission.range</field>
         <field name="arch" type="xml">
-            <tree string="Commission Ranges" editable="bottom">
+            <list string="Commission Ranges" editable="bottom">
                 <field name="band_id"/>
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
@@ -147,7 +147,7 @@
                 <field name="indicator_rate" widget="percentage"/>
                 <field name="apply_only_currency_id" optional="show"/>
                 <field name="min_payment_amount" optional="show"/>
-            </tree>
+            </list>
         </field>
     </record>
     

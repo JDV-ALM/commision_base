@@ -160,10 +160,11 @@ class CommissionRule(models.Model):
         help="Apply only to payments from these journals"
     )
     
-    # Statistics
+    # Statistics - Made searchable with store=True
     calculation_count = fields.Integer(
         string='Number of Calculations',
-        compute='_compute_calculation_count'
+        compute='_compute_calculation_count',
+        store=True
     )
     
     _sql_constraints = [
@@ -197,6 +198,7 @@ class CommissionRule(models.Model):
                 raise ValidationError(_("'Minimum Amount' must be less than or equal to 'Maximum Amount'"))
 
     def _compute_calculation_count(self):
+        """Compute the number of calculations using this rule"""
         for rule in self:
             rule.calculation_count = self.env['commission.calculation'].search_count([
                 ('rule_id', '=', rule.id)
@@ -219,7 +221,7 @@ class CommissionRule(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'tree,form,graph,pivot',
+            'view_mode': 'list,form,graph,pivot',
             'domain': [('rule_id', '=', self.id)],
         }
 

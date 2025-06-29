@@ -57,12 +57,7 @@
                     </div>
                     <group attrs="{'invisible': [('band_ids', '=', [])]}">
                         <separator string="Created Bands"/>
-                        <field name="band_ids" readonly="1" nolabel="1">
-                            <tree>
-                                <field name="name"/>
-                                <field name="code"/>
-                            </tree>
-                        </field>
+                        <field name="band_ids" readonly="1" nolabel="1"/>
                     </group>
                 </group>
                 
@@ -85,14 +80,7 @@
                     </div>
                     <group attrs="{'invisible': [('rule_ids', '=', [])]}">
                         <separator string="Created Rules"/>
-                        <field name="rule_ids" readonly="1" nolabel="1">
-                            <tree>
-                                <field name="name"/>
-                                <field name="priority"/>
-                                <field name="commission_type"/>
-                                <field name="band_id"/>
-                            </tree>
-                        </field>
+                        <field name="rule_ids" readonly="1" nolabel="1"/>
                     </group>
                 </group>
                 

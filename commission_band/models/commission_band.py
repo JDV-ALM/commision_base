@@ -66,14 +66,16 @@ class CommissionBand(models.Model):
         help="Define the commission percentages for different day ranges"
     )
     
-    # Statistics
+    # Statistics - Made searchable with store=True
     rule_count = fields.Integer(
         string='Number of Rules',
-        compute='_compute_rule_count'
+        compute='_compute_rule_count',
+        store=True
     )
     calculation_count = fields.Integer(
         string='Number of Calculations',
-        compute='_compute_calculation_count'
+        compute='_compute_calculation_count',
+        store=True
     )
     
     # Display
@@ -99,12 +101,14 @@ class CommissionBand(models.Model):
             band.display_name = name
 
     def _compute_rule_count(self):
+        """Compute the number of rules using this band"""
         for band in self:
             band.rule_count = self.env['commission.rule'].search_count([
                 ('band_id', '=', band.id)
             ])
 
     def _compute_calculation_count(self):
+        """Compute the number of calculations using this band"""
         for band in self:
             band.calculation_count = self.env['commission.calculation'].search_count([
                 ('band_id', '=', band.id)
@@ -159,7 +163,7 @@ class CommissionBand(models.Model):
             'name': _('Commission Rules'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.rule',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('band_id', '=', self.id)],
             'context': {'default_band_id': self.id},
         }
@@ -171,7 +175,7 @@ class CommissionBand(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'tree,form,graph,pivot',
+            'view_mode': 'list,form,graph,pivot',
             'domain': [('band_id', '=', self.id)],
         }
 

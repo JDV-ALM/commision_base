@@ -3,12 +3,12 @@
     
     <!-- Commission Calculation Views -->
     
-    <!-- Tree View -->
+    <!-- List View -->
     <record id="view_commission_calculation_tree" model="ir.ui.view">
         <field name="name">commission.calculation.tree</field>
         <field name="model">commission.calculation</field>
         <field name="arch" type="xml">
-            <tree string="Commission Calculations" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'" decoration-muted="state == 'cancelled'">
+            <list string="Commission Calculations" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'" decoration-muted="state == 'cancelled'">
                 <field name="payment_date"/>
                 <field name="salesperson_id" widget="many2one_avatar_user"/>
                 <field name="partner_id"/>
@@ -21,7 +21,7 @@
                 <field name="currency_id" optional="show"/>
                 <field name="state" widget="badge" decoration-success="state == 'paid'" decoration-info="state == 'approved'" decoration-warning="state == 'validated'"/>
                 <field name="company_id" groups="base.group_multi_company" optional="show"/>
-            </tree>
+            </list>
         </field>
     </record>
     
@@ -32,12 +32,12 @@
         <field name="arch" type="xml">
             <form string="Commission Calculation">
                 <header>
-                    <button name="action_calculate" type="object" string="Calculate" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
-                    <button name="action_validate" type="object" string="Validate" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'calculated')]}"/>
-                    <button name="action_approve" type="object" string="Approve" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'validated')]}" groups="commission_band.group_commission_band_manager"/>
-                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'approved')]}" groups="commission_band.group_commission_band_manager"/>
-                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': [('state', 'in', ['cancelled', 'paid'])]}"/>
-                    <button name="action_reset_draft" type="object" string="Reset to Draft" attrs="{'invisible': [('state', 'in', ['draft', 'paid'])]}" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_calculate" type="object" string="Calculate" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_validate" type="object" string="Validate" class="oe_highlight" invisible="state != 'calculated'"/>
+                    <button name="action_approve" type="object" string="Approve" class="oe_highlight" invisible="state != 'validated'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="oe_highlight" invisible="state != 'approved'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="state in ['cancelled', 'paid']"/>
+                    <button name="action_reset_draft" type="object" string="Reset to Draft" invisible="state in ['draft', 'paid']" groups="commission_band.group_commission_band_manager"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,calculated,validated,approved,paid"/>
                 </header>
                 <sheet>
@@ -54,7 +54,7 @@
                             <field name="currency_id"/>
                             <field name="journal_id"/>
                             <field name="is_reconciled" widget="boolean_toggle"/>
-                            <field name="reconciliation_date" attrs="{'invisible': [('is_reconciled', '=', False)]}"/>
+                            <field name="reconciliation_date" invisible="not is_reconciled"/>
                         </group>
                         <group string="Invoice Information">
                             <field name="invoice_id" options="{'no_create': True}"/>
@@ -69,15 +69,15 @@
                         <group string="Commission Details">
                             <field name="salesperson_id" widget="many2one_avatar_user" options="{'no_create': True}"/>
                             <field name="rule_id" options="{'no_create': True}"/>
-                            <field name="band_id" attrs="{'invisible': [('band_id', '=', False)]}" options="{'no_create': True}"/>
-                            <field name="range_id" attrs="{'invisible': [('range_id', '=', False)]}" options="{'no_create': True}"/>
+                            <field name="band_id" invisible="not band_id" options="{'no_create': True}"/>
+                            <field name="range_id" invisible="not range_id" options="{'no_create': True}"/>
                         </group>
                         <group string="Commission Calculation">
                             <field name="commission_rate" widget="percentage"/>
                             <field name="commission_amount" widget="monetary"/>
-                            <field name="exchange_rate" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
-                            <field name="payment_amount_company" widget="monetary" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
-                            <field name="commission_amount_company" widget="monetary" attrs="{'invisible': [('currency_id', '=', company_currency_id)]}"/>
+                            <field name="exchange_rate" invisible="currency_id == company_currency_id"/>
+                            <field name="payment_amount_company" widget="monetary" invisible="currency_id == company_currency_id"/>
+                            <field name="commission_amount_company" widget="monetary" invisible="currency_id == company_currency_id"/>
                             <field name="company_currency_id" invisible="1"/>
                         </group>
                     </group>
@@ -171,7 +171,7 @@
     <record id="action_commission_calculation" model="ir.actions.act_window">
         <field name="name">Commission Calculations</field>
         <field name="res_model">commission.calculation</field>
-        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_mode">list,form,graph,pivot</field>
         <field name="search_view_id" ref="view_commission_calculation_search"/>
         <field name="context">{'search_default_current_year': 1}</field>
         <field name="help" type="html">
@@ -188,7 +188,7 @@
     <record id="action_my_commission_calculation" model="ir.actions.act_window">
         <field name="name">My Commissions</field>
         <field name="res_model">commission.calculation</field>
-        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_mode">list,form,graph,pivot</field>
         <field name="search_view_id" ref="view_commission_calculation_search"/>
         <field name="domain">[('salesperson_id', '=', uid)]</field>
         <field name="context">{'search_default_current_year': 1, 'search_default_group_state': 1}</field>
