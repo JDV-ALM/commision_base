@@ -29,7 +29,7 @@
         <field name="arch" type="xml">
             <form string="Commission Band">
                 <sheet>
-                    <widget name="web_ribbon" title="Archived" invisible="not active"/>
+                    <widget name="web_ribbon" title="Archived" invisible="active"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_rules" type="object" class="oe_stat_button" icon="fa-list-alt">
                             <field name="rule_count" widget="statinfo" string="Rules"/>

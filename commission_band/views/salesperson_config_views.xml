@@ -32,19 +32,19 @@
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-calculator">
                             <div class="o_stat_info">
-                                <field name="calculation_count" class="o_stat_value"/>
+                                <field name="calculation_count" widget="statinfo"/>
                                 <span class="o_stat_text">Calculations</span>
                             </div>
                         </button>
                         <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-money">
                             <div class="o_stat_info">
-                                <field name="total_commission" class="o_stat_value" widget="monetary"/>
+                                <field name="total_commission" widget="statinfo" options="{'value_class': 'monetary'}"/>
                                 <span class="o_stat_text">Total Commission</span>
                             </div>
                         </button>
                         <button name="action_view_calculations" type="object" class="oe_stat_button" icon="fa-clock-o">
                             <div class="o_stat_info">
-                                <field name="avg_collection_days" class="o_stat_value" widget="float" digits="[5,1]"/>
+                                <field name="avg_collection_days" widget="statinfo" options="{'value_class': 'number'}"/>
                                 <span class="o_stat_text">Avg. Days</span>
                             </div>
                         </button>
