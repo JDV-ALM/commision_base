@@ -3,14 +3,14 @@
     
     <!-- Main Menu -->
     <menuitem id="menu_commission_band_root"
-              name="Commission Bands"
+              name="Bandas de Comisiones"
               parent="sale.sale_menu_root"
               sequence="40"
               groups="commission_band.group_commission_band_user"/>
     
     <!-- My Commissions (for all users) -->
     <menuitem id="menu_my_commission_calculation"
-              name="My Commissions"
+              name="Mis Comisiones"
               parent="menu_commission_band_root"
               action="action_my_commission_calculation"
               sequence="10"
@@ -18,7 +18,7 @@
     
     <!-- All Commissions (for managers) -->
     <menuitem id="menu_commission_calculation"
-              name="All Commissions"
+              name="Todas las Comisiones"
               parent="menu_commission_band_root"
               action="action_commission_calculation"
               sequence="20"
@@ -26,67 +26,67 @@
     
     <!-- Configuration Menu -->
     <menuitem id="menu_commission_band_config"
-              name="Configuration"
+              name="Configuración"
               parent="menu_commission_band_root"
               sequence="100"
               groups="commission_band.group_commission_band_manager"/>
     
     <!-- Commission Bands -->
     <menuitem id="menu_commission_band"
-              name="Commission Bands"
+              name="Bandas de Comisiones"
               parent="menu_commission_band_config"
               action="action_commission_band"
               sequence="10"/>
     
     <!-- Commission Rules -->
     <menuitem id="menu_commission_rule"
-              name="Commission Rules"
+              name="Reglas de Comisiones"
               parent="menu_commission_band_config"
               action="action_commission_rule"
               sequence="20"/>
     
     <!-- Salesperson Config -->
     <menuitem id="menu_salesperson_config"
-              name="Salesperson Config"
+              name="Configuración de Vendedores"
               parent="menu_commission_band_config"
               action="action_salesperson_config"
               sequence="30"/>
     
     <!-- Configuration Wizard -->
     <menuitem id="menu_commission_band_wizard"
-              name="Configuration Wizard"
+              name="Asistente de Configuración"
               parent="menu_commission_band_config"
               action="action_commission_band_config_wizard"
               sequence="100"/>
     
     <!-- Add to Sales Configuration -->
     <menuitem id="menu_sale_config_commission_band"
-              name="Commission Bands"
+              name="Bandas de Comisiones"
               parent="sale.menu_sale_config"
               sequence="50"
               groups="commission_band.group_commission_band_manager"/>
     
     <menuitem id="menu_sale_config_commission_band_bands"
-              name="Commission Bands"
+              name="Bandas de Comisiones"
               parent="menu_sale_config_commission_band"
               action="action_commission_band"
               sequence="10"/>
     
     <menuitem id="menu_sale_config_commission_band_rules"
-              name="Commission Rules"
+            name="Reglas de Comisiones"
               parent="menu_sale_config_commission_band"
               action="action_commission_rule"
               sequence="20"/>
     
     <!-- Reports Menu -->
     <menuitem id="menu_commission_band_reports"
-              name="Commission Reports"
+              name="Reportes de Comisiones"
               parent="sale.menu_sale_report"
               sequence="40"
               groups="commission_band.group_commission_band_user"/>
     
     <menuitem id="menu_commission_calculation_report"
-              name="Commission Analysis"
+              name="Análisis de Comisiones"
               parent="menu_commission_band_reports"
               action="action_commission_calculation"
               sequence="10"/>

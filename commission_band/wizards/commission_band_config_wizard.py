@@ -337,11 +337,11 @@ class CommissionBandConfigWizard(models.TransientModel):
         self.ensure_one()
         
         if self.state == 'done':
-            # Open commission bands list view
+            # Open commission bands list view - CORREGIDO: tree -> list
             return {
                 'type': 'ir.actions.act_window',
                 'res_model': 'commission.band',
-                'view_mode': 'tree,form',
+                'view_mode': 'list,form',  # CAMBIADO DE tree,form a list,form
                 'target': 'current',
             }
         

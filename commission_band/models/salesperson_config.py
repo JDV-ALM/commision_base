@@ -188,7 +188,7 @@ class SalespersonConfig(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'tree,form,graph,pivot',
+            'view_mode': 'list,form,graph,pivot',  # CAMBIADO DE tree,form,graph,pivot
             'domain': [
                 ('salesperson_id', '=', self.user_id.id),
                 ('company_id', '=', self.company_id.id)

@@ -147,7 +147,7 @@ class ResUsers(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'tree,form,graph,pivot',
+            'view_mode': 'list,form,graph,pivot',  # CAMBIADO DE tree,form,graph,pivot
             'domain': [('salesperson_id', '=', self.id)],
             'context': {
                 'default_salesperson_id': self.id,

@@ -163,7 +163,7 @@ class CommissionBand(models.Model):
             'name': _('Commission Rules'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.rule',
-            'view_mode': 'list,form',
+            'view_mode': 'list,form',  # CAMBIADO DE tree,form
             'domain': [('band_id', '=', self.id)],
             'context': {'default_band_id': self.id},
         }
@@ -175,7 +175,7 @@ class CommissionBand(models.Model):
             'name': _('Commission Calculations'),
             'type': 'ir.actions.act_window',
             'res_model': 'commission.calculation',
-            'view_mode': 'list,form,graph,pivot',
+            'view_mode': 'list,form,graph,pivot',  # CAMBIADO DE tree,form,graph,pivot
             'domain': [('band_id', '=', self.id)],
         }
 
