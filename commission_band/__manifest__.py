@@ -48,20 +48,20 @@ Main Components:
         # Data
         'data/commission_band_data.xml',
         
-        # Wizards
-        'wizards/commission_band_config_wizard_views.xml',
-        'wizards/commission_batch_create_wizard_views.xml',
-        
-        # Views
+        # Views (orden importante: primero las vistas base, luego las que heredan)
         'views/commission_band_views.xml',
         'views/commission_rule_views.xml',
         'views/salesperson_config_views.xml',
         'views/commission_calculation_views.xml',
-        'views/commission_calculation_batch_views.xml',
         'views/commission_batch_views.xml',
         'views/commission_payment_document_views.xml',
+        'views/commission_calculation_batch_views.xml',
         'views/res_users_views.xml',
         'views/commission_band_menu.xml',
+        
+        # Wizards (después de las vistas que heredan)
+        'wizards/commission_band_config_wizard_views.xml',
+        'wizards/commission_batch_create_wizard_views.xml',
     ],
     'demo': [],
     'installable': True,

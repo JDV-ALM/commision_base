@@ -76,7 +76,7 @@
     <record id="view_commission_batch_tree_inherit_wizard" model="ir.ui.view">
         <field name="name">commission.batch.tree.inherit.wizard</field>
         <field name="model">commission.batch</field>
-        <field name="inherit_id" ref="view_commission_batch_tree"/>
+        <field name="inherit_id" ref="commission_band.view_commission_batch_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//list" position="before">
                 <header>
