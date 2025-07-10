@@ -228,12 +228,11 @@ class CommissionBatch(models.Model):
         # Assign calculations to this batch
         calculations.write({'batch_id': self.id})
         
-        self.write({
-            'state': 'calculated',
-            'message_post': self.message_post(
-                body=_("Batch calculated with %d commission calculations.") % len(calculations)
-            )
-        })
+        self.write({'state': 'calculated'})
+        
+        self.message_post(
+            body=_("Batch calculated with %d commission calculations.") % len(calculations)
+        )
         
         return {
             'type': 'ir.actions.client',
