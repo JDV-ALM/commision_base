@@ -16,12 +16,36 @@
               sequence="10"
               groups="commission_band.group_commission_band_user"/>
     
+    <!-- Commission Batches Menu (for managers) -->
+    <menuitem id="menu_commission_batch"
+              name="Lotes de Comisiones"
+              parent="menu_commission_band_root"
+              action="action_commission_batch"
+              sequence="15"
+              groups="commission_band.group_commission_band_manager"/>
+    
     <!-- All Commissions (for managers) -->
     <menuitem id="menu_commission_calculation"
               name="Todas las Comisiones"
               parent="menu_commission_band_root"
               action="action_commission_calculation"
               sequence="20"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <!-- Payment Documents Menu (for managers) -->
+    <menuitem id="menu_commission_payment_document"
+              name="Documentos de Pago"
+              parent="menu_commission_band_root"
+              action="action_commission_payment_document"
+              sequence="25"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <!-- Calculations without batch (for managers) -->
+    <menuitem id="menu_commission_calculation_no_batch"
+              name="Comisiones sin Lote"
+              parent="menu_commission_band_root"
+              action="action_commission_calculation_no_batch"
+              sequence="30"
               groups="commission_band.group_commission_band_manager"/>
     
     <!-- Configuration Menu -->
@@ -52,6 +76,25 @@
               action="action_salesperson_config"
               sequence="30"/>
     
+    <!-- Batch Management submenu -->
+    <menuitem id="menu_commission_batch_config"
+              name="Gestión de Lotes"
+              parent="menu_commission_band_config"
+              sequence="40"
+              groups="commission_band.group_commission_band_manager"/>
+    
+    <menuitem id="menu_commission_batch_config_batches"
+              name="Lotes de Comisiones"
+              parent="menu_commission_batch_config"
+              action="action_commission_batch"
+              sequence="10"/>
+    
+    <menuitem id="menu_commission_batch_config_documents"
+              name="Documentos de Pago"
+              parent="menu_commission_batch_config"
+              action="action_commission_payment_document"
+              sequence="20"/>
+    
     <!-- Configuration Wizard -->
     <menuitem id="menu_commission_band_wizard"
               name="Asistente de Configuración"
@@ -73,7 +116,7 @@
               sequence="10"/>
     
     <menuitem id="menu_sale_config_commission_band_rules"
-            name="Reglas de Comisiones"
+              name="Reglas de Comisiones"
               parent="menu_sale_config_commission_band"
               action="action_commission_rule"
               sequence="20"/>

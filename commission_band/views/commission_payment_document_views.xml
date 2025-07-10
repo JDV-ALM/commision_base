@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Commission Payment Document Views -->
+    
+    <!-- List View -->
+    <record id="view_commission_payment_document_tree" model="ir.ui.view">
+        <field name="name">commission.payment.document.tree</field>
+        <field name="model">commission.payment.document</field>
+        <field name="arch" type="xml">
+            <list string="Payment Documents" decoration-warning="state == 'draft'" decoration-info="state == 'confirmed'" decoration-success="state == 'paid'">
+                <field name="name"/>
+                <field name="batch_id"/>
+                <field name="payment_date"/>
+                <field name="total_salespersons"/>
+                <field name="total_lines"/>
+                <field name="state" widget="badge"/>
+                <field name="company_id" groups="base.group_multi_company" optional="show"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Form View -->
+    <record id="view_commission_payment_document_form" model="ir.ui.view">
+        <field name="name">commission.payment.document.form</field>
+        <field name="model">commission.payment.document</field>
+        <field name="arch" type="xml">
+            <form string="Commission Payment Document">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" invisible="state != 'draft'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_mark_paid" type="object" string="Mark as Paid" class="oe_highlight" invisible="state != 'confirmed'" groups="commission_band.group_commission_band_manager"/>
+                    <button name="action_export_excel" type="object" string="Export to Excel" icon="fa-download" class="btn-secondary"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,paid"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="batch_id"/>
+                            <field name="payment_date"/>
+                            <field name="generation_date"/>
+                        </group>
+                        <group>
+                            <field name="total_salespersons"/>
+                            <field name="total_lines"/>
+                            <field name="exchange_rate_usd_ves" digits="[16,6]" invisible="not exchange_rate_usd_ves"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Payment Lines" name="lines">
+                            <field name="line_ids" readonly="1">
+                                <list string="Payment Lines" editable="bottom">
+                                    <field name="salesperson_id" widget="many2one_avatar_user"/>
+                                    <field name="commission_count"/>
+                                    <field name="amount_usd_original" widget="monetary" sum="Total USD Original"/>
+                                    <field name="amount_ves_original" widget="monetary" sum="Total VES Original"/>
+                                    <field name="amount_usd_payment" widget="monetary" sum="Total USD Payment"/>
+                                    <field name="amount_ves_payment" widget="monetary" sum="Total VES Payment"/>
+                                    <button name="action_view_calculations" type="object" string="View Details" class="btn-link" icon="fa-search-plus"/>
+                                </list>
+                            </field>
+                        </page>
+                        
+                        <page string="Summary" name="summary">
+                            <group>
+                                <group string="Original Amounts">
+                                    <label for="total_usd_original"/>
+                                    <div>
+                                        <field name="total_usd_original" class="oe_inline" widget="monetary" compute="_compute_totals"/> USD
+                                    </div>
+                                    <label for="total_ves_original"/>
+                                    <div>
+                                        <field name="total_ves_original" class="oe_inline" widget="monetary" compute="_compute_totals"/> VES
+                                    </div>
+                                </group>
+                                <group string="Payment Amounts">
+                                    <label for="total_usd_payment"/>
+                                    <div>
+                                        <field name="total_usd_payment" class="oe_inline" widget="monetary" compute="_compute_totals"/> USD
+                                    </div>
+                                    <label for="total_ves_payment"/>
+                                    <div>
+                                        <field name="total_ves_payment" class="oe_inline" widget="monetary" compute="_compute_totals"/> VES
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Payment Line List View (for popup) -->
+    <record id="view_commission_payment_line_tree" model="ir.ui.view">
+        <field name="name">commission.payment.line.tree</field>
+        <field name="model">commission.payment.line</field>
+        <field name="arch" type="xml">
+            <list string="Payment Lines" create="false" edit="false">
+                <field name="salesperson_id" widget="many2one_avatar_user"/>
+                <field name="commission_count"/>
+                <field name="amount_usd_original" widget="monetary"/>
+                <field name="amount_ves_original" widget="monetary"/>
+                <field name="amount_usd_payment" widget="monetary"/>
+                <field name="amount_ves_payment" widget="monetary"/>
+                <field name="total_payment" widget="monetary"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Search View -->
+    <record id="view_commission_payment_document_search" model="ir.ui.view">
+        <field name="name">commission.payment.document.search</field>
+        <field name="model">commission.payment.document</field>
+        <field name="arch" type="xml">
+            <search string="Payment Documents">
+                <field name="name"/>
+                <field name="batch_id"/>
+                <field name="payment_date"/>
+                <separator/>
+                <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed" domain="[('state', '=', 'confirmed')]"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <separator/>
+                <filter string="Current Month" name="current_month" date="payment_date"/>
+                <filter string="Previous Month" name="previous_month" date="payment_date"/>
+                <group expand="0" string="Group By">
+                    <filter string="State" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Batch" name="group_batch" context="{'group_by': 'batch_id'}"/>
+                    <filter string="Payment Date" name="group_payment_date" context="{'group_by': 'payment_date:month'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}" groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_commission_payment_document" model="ir.actions.act_window">
+        <field name="name">Payment Documents</field>
+        <field name="res_model">commission.payment.document</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_commission_payment_document_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No payment documents found
+            </p>
+            <p>
+                Payment documents are generated from commission batches after they have been reviewed.
+                They contain the final amounts to be paid to each salesperson.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Add computed fields to payment document model -->
+    <record id="add_payment_document_totals" model="ir.model.fields">
+        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
+        <field name="name">total_usd_original</field>
+        <field name="field_description">Total USD Original</field>
+        <field name="ttype">float</field>
+        <field name="compute">
+            for doc in self:
+                doc.total_usd_original = sum(doc.line_ids.mapped('amount_usd_original'))
+        </field>
+    </record>
+    
+    <record id="add_payment_document_totals_ves" model="ir.model.fields">
+        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
+        <field name="name">total_ves_original</field>
+        <field name="field_description">Total VES Original</field>
+        <field name="ttype">float</field>
+        <field name="compute">
+            for doc in self:
+                doc.total_ves_original = sum(doc.line_ids.mapped('amount_ves_original'))
+        </field>
+    </record>
+    
+    <record id="add_payment_document_totals_usd_payment" model="ir.model.fields">
+        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
+        <field name="name">total_usd_payment</field>
+        <field name="field_description">Total USD Payment</field>
+        <field name="ttype">float</field>
+        <field name="compute">
+            for doc in self:
+                doc.total_usd_payment = sum(doc.line_ids.mapped('amount_usd_payment'))
+        </field>
+    </record>
+    
+    <record id="add_payment_document_totals_ves_payment" model="ir.model.fields">
+        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
+        <field name="name">total_ves_payment</field>
+        <field name="field_description">Total VES Payment</field>
+        <field name="ttype">float</field>
+        <field name="compute">
+            for doc in self:
+                doc.total_ves_payment = sum(doc.line_ids.mapped('amount_ves_payment'))
+        </field>
+    </record>
+    
+</odoo>

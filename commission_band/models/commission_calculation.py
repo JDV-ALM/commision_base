@@ -53,6 +53,12 @@ class CommissionCalculation(models.Model):
         string='Applied Range',
         tracking=True
     )
+    batch_id = fields.Many2one(
+        'commission.batch',
+        string='Commission Batch',
+        index=True,
+        help="Batch this calculation belongs to"
+    )
     
     # Date fields
     invoice_date = fields.Date(
@@ -200,6 +206,12 @@ class CommissionCalculation(models.Model):
         string='Color Index',
         compute='_compute_color'
     )
+    in_batch = fields.Boolean(
+        string='In Batch',
+        compute='_compute_in_batch',
+        store=True,
+        help="Indicates if this calculation is included in a batch"
+    )
 
     @api.depends('salesperson_id', 'invoice_id', 'commission_amount', 'currency_id')
     def _compute_display_name(self):
@@ -264,6 +276,11 @@ class CommissionCalculation(models.Model):
                 calc.payment_amount_company = calc.payment_amount
                 calc.commission_amount_company = calc.commission_amount
 
+    @api.depends('batch_id')
+    def _compute_in_batch(self):
+        for calc in self:
+            calc.in_batch = bool(calc.batch_id)
+
     @api.constrains('commission_amount')
     def _check_commission_amount(self):
         """Ensure commission amount is not negative"""
@@ -288,6 +305,10 @@ class CommissionCalculation(models.Model):
         for calc in self:
             if calc.state != 'calculated':
                 raise UserError(_("Only calculated commissions can be validated."))
+            
+            # If calculation is in a batch, check batch state
+            if calc.batch_id and calc.batch_id.state not in ['calculated', 'reviewed']:
+                raise UserError(_("Cannot validate commission in a batch that is not in 'Calculated' or 'Reviewed' state."))
             
             # Additional validation checks
             if not calc.is_reconciled:
@@ -338,6 +359,24 @@ class CommissionCalculation(models.Model):
             if calc.state == 'paid':
                 raise UserError(_("Cannot reset paid commissions to draft."))
         self.write({'state': 'draft'})
+
+    def action_remove_from_batch(self):
+        """Remove calculation from batch"""
+        for calc in self:
+            if calc.batch_id and calc.batch_id.state in ['payment_generated', 'paid']:
+                raise UserError(_("Cannot remove calculation from a batch that has a payment document generated or is paid."))
+            calc.batch_id = False
+        
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': _('Removed from Batch'),
+                'message': _('Commission calculation(s) removed from batch.'),
+                'type': 'success',
+                'sticky': False,
+            }
+        }
 
     # Calculation methods
     @api.model
@@ -445,4 +484,5 @@ class CommissionCalculation(models.Model):
             'rule': self.rule_id.name if self.rule_id else _("Direct"),
             'band': self.band_id.name if self.band_id else _("N/A"),
             'range': self.range_id.display_name if self.range_id else _("N/A"),
+            'batch': self.batch_id.name if self.batch_id else _("N/A"),
         }

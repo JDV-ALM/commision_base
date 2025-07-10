@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Update Commission Calculation Views to include Batch information -->
+    
+    <!-- Inherit List View to add batch field -->
+    <record id="view_commission_calculation_tree_batch" model="ir.ui.view">
+        <field name="name">commission.calculation.tree.batch</field>
+        <field name="model">commission.calculation</field>
+        <field name="inherit_id" ref="commission_band.view_commission_calculation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_date']" position="after">
+                <field name="batch_id" optional="show" groups="commission_band.group_commission_band_manager"/>
+                <field name="in_batch" widget="boolean_field" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Inherit Form View to add batch information -->
+    <record id="view_commission_calculation_form_batch" model="ir.ui.view">
+        <field name="name">commission.calculation.form.batch</field>
+        <field name="model">commission.calculation</field>
+        <field name="inherit_id" ref="commission_band.view_commission_calculation_form"/>
+        <field name="arch" type="xml">
+            <!-- Add batch field in header if in batch -->
+            <xpath expr="//sheet/div[@class='oe_title']" position="before">
+                <div class="alert alert-info" role="alert" invisible="not batch_id" groups="commission_band.group_commission_band_manager">
+                    <p>
+                        This commission is included in batch: <field name="batch_id" class="oe_inline" readonly="1"/>
+                    </p>
+                </div>
+            </xpath>
+            
+            <!-- Add remove from batch button in header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_remove_from_batch" 
+                        type="object" 
+                        string="Remove from Batch" 
+                        invisible="not batch_id or state in ['paid']"
+                        groups="commission_band.group_commission_band_manager"
+                        confirm="Are you sure you want to remove this calculation from the batch?"/>
+            </xpath>
+            
+            <!-- Add batch field in form -->
+            <xpath expr="//group[@string='Commission Details']" position="inside">
+                <field name="batch_id" 
+                       readonly="1" 
+                       invisible="not batch_id"
+                       groups="commission_band.group_commission_band_manager"
+                       options="{'no_create': True}"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Inherit Search View to add batch filters -->
+    <record id="view_commission_calculation_search_batch" model="ir.ui.view">
+        <field name="name">commission.calculation.search.batch</field>
+        <field name="model">commission.calculation</field>
+        <field name="inherit_id" ref="commission_band.view_commission_calculation_search"/>
+        <field name="arch" type="xml">
+            <!-- Add filters -->
+            <xpath expr="//filter[@name='late']" position="after">
+                <separator/>
+                <filter string="In Batch" name="in_batch" domain="[('batch_id', '!=', False)]" groups="commission_band.group_commission_band_manager"/>
+                <filter string="Not in Batch" name="not_in_batch" domain="[('batch_id', '=', False)]" groups="commission_band.group_commission_band_manager"/>
+            </xpath>
+            
+            <!-- Add batch field to searchable fields -->
+            <xpath expr="//field[@name='payment_id']" position="after">
+                <field name="batch_id" groups="commission_band.group_commission_band_manager"/>
+            </xpath>
+            
+            <!-- Add group by batch -->
+            <xpath expr="//filter[@name='group_company']" position="before">
+                <filter string="Batch" name="group_batch" context="{'group_by': 'batch_id'}" groups="commission_band.group_commission_band_manager"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <!-- Action for calculations without batch (useful for managers) -->
+    <record id="action_commission_calculation_no_batch" model="ir.actions.act_window">
+        <field name="name">Calculations Without Batch</field>
+        <field name="res_model">commission.calculation</field>
+        <field name="view_mode">list,form,graph,pivot</field>
+        <field name="search_view_id" ref="commission_band.view_commission_calculation_search"/>
+        <field name="domain">[('batch_id', '=', False), ('state', 'not in', ['cancelled', 'paid'])]</field>
+        <field name="context">{'search_default_current_month': 1, 'search_default_group_by_salesperson': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No calculations without batch found
+            </p>
+            <p>
+                All commission calculations have been assigned to batches.
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menu item for calculations without batch -->
+    <menuitem id="menu_commission_calculation_no_batch"
+              name="Comisiones sin Lote"
+              parent="commission_band.menu_commission_band_root"
+              action="action_commission_calculation_no_batch"
+              sequence="30"
+              groups="commission_band.group_commission_band_manager"/>
+    
+</odoo>

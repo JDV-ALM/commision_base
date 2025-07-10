@@ -2,6 +2,15 @@
 <odoo>
     <data noupdate="1">
         
+        <!-- Sequence for Payment Documents -->
+        <record id="seq_commission_payment_document" model="ir.sequence">
+            <field name="name">Commission Payment Document</field>
+            <field name="code">commission.payment.document</field>
+            <field name="prefix">CPD/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        
         <!-- Cron Job for Pending Commission Calculations -->
         <record id="ir_cron_calculate_pending_commissions" model="ir.cron">
             <field name="name">Commission Band: Calculate Pending Commissions</field>
@@ -23,6 +32,21 @@
             <field name="user_id" ref="base.user_root"/>
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
+            <field name="active" eval="False"/>
+        </record>
+        
+        <!-- Cron Job for Creating Monthly Batches -->
+        <record id="ir_cron_create_monthly_batch" model="ir.cron">
+            <field name="name">Commission Band: Create Monthly Batch</field>
+            <field name="model_id" ref="model_commission_batch"/>
+            <field name="state">code</field>
+            <field name="code">model.create_monthly_batch()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="nextcall" eval="(DateTime.now().replace(day=1) + relativedelta(months=1)).strftime('%Y-%m-%d 06:00:00')"/>
             <field name="active" eval="False"/>
         </record>
         

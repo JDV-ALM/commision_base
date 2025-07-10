@@ -8,3 +8,5 @@ from . import commission_calculation
 from . import res_users
 from . import account_payment
 from . import account_move
+from . import commission_batch
+from . import commission_payment_document

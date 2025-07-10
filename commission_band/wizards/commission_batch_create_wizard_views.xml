@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Commission Batch Create Wizard Form -->
+    <record id="view_commission_batch_create_wizard_form" model="ir.ui.view">
+        <field name="name">commission.batch.create.wizard.form</field>
+        <field name="model">commission.batch.create.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Commission Batch">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="period_type" widget="radio"/>
+                    </group>
+                </group>
+                
+                <group invisible="period_type != 'month'">
+                    <group>
+                        <field name="month" required="period_type == 'month'"/>
+                        <field name="year" required="period_type == 'month'"/>
+                    </group>
+                </group>
+                
+                <group>
+                    <group>
+                        <field name="date_from" required="1"/>
+                        <field name="date_to" required="1"/>
+                    </group>
+                    <group>
+                        <field name="payment_date" required="1"/>
+                    </group>
+                </group>
+                
+                <separator string="Calculation Filters"/>
+                <group>
+                    <group>
+                        <field name="include_validated"/>
+                        <field name="include_approved"/>
+                    </group>
+                </group>
+                
+                <separator string="Preview"/>
+                <group>
+                    <div class="alert alert-info" role="alert" invisible="calculation_count == 0">
+                        <p>
+                            Found <strong><field name="calculation_count" class="oe_inline"/></strong> commission calculations
+                            for <strong><field name="salesperson_count" class="oe_inline"/></strong> salespersons
+                            with a total amount of <strong><field name="total_amount" class="oe_inline" widget="monetary"/></strong>.
+                        </p>
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="calculation_count > 0">
+                        <p>
+                            <i class="fa fa-warning"/> No commission calculations found for the selected period and criteria.
+                        </p>
+                    </div>
+                </group>
+                
+                <footer>
+                    <button name="action_create_batch" type="object" string="Create Batch" class="btn-primary" invisible="calculation_count == 0"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_commission_batch_create_wizard" model="ir.actions.act_window">
+        <field name="name">Create Commission Batch</field>
+        <field name="res_model">commission.batch.create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_commission_batch_create_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+    
+    <!-- Add wizard action to batch list view -->
+    <record id="view_commission_batch_tree_inherit_wizard" model="ir.ui.view">
+        <field name="name">commission.batch.tree.inherit.wizard</field>
+        <field name="model">commission.batch</field>
+        <field name="inherit_id" ref="view_commission_batch_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="before">
+                <header>
+                    <button name="%(action_commission_batch_create_wizard)d" type="action" string="Create New Batch" class="btn-primary" groups="commission_band.group_commission_band_manager"/>
+                </header>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

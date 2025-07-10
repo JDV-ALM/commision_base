@@ -20,6 +20,8 @@ Key Features:
 * Multi-currency support (commission in payment currency)
 * Individual salesperson configuration
 * Complete audit trail and approval workflow
+* **NEW: Commission batch management for monthly processing**
+* **NEW: Payment document generation with currency conversion**
 
 Main Components:
 ---------------
@@ -27,11 +29,13 @@ Main Components:
 * Commission Rules: Apply bands based on multiple criteria
 * Automatic Calculation: Triggered on payment reconciliation
 * Flexible Configuration: Manual setup for all parameters
+* **Commission Batches: Group monthly commissions for review and payment**
+* **Payment Documents: Generate payment instructions with proper currency handling**
     """,
     'author': 'Your Company',
     'website': 'https://www.yourcompany.com',
     'depends': [
-        'sale',  # Cambiado de sale_commission que puede no existir
+        'sale',
         'account',
         'sales_team',
         'sale_management',
@@ -46,12 +50,16 @@ Main Components:
         
         # Wizards
         'wizards/commission_band_config_wizard_views.xml',
+        'wizards/commission_batch_create_wizard_views.xml',
         
         # Views
         'views/commission_band_views.xml',
         'views/commission_rule_views.xml',
         'views/salesperson_config_views.xml',
         'views/commission_calculation_views.xml',
+        'views/commission_calculation_batch_views.xml',
+        'views/commission_batch_views.xml',
+        'views/commission_payment_document_views.xml',
         'views/res_users_views.xml',
         'views/commission_band_menu.xml',
     ],
