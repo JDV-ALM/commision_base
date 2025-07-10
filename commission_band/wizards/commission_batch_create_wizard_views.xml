@@ -72,17 +72,21 @@
         <field name="target">new</field>
     </record>
     
-    <!-- Add wizard action to batch list view -->
-    <record id="view_commission_batch_tree_inherit_wizard" model="ir.ui.view">
-        <field name="name">commission.batch.tree.inherit.wizard</field>
-        <field name="model">commission.batch</field>
-        <field name="inherit_id" ref="commission_band.view_commission_batch_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//list" position="before">
-                <header>
-                    <button name="%(action_commission_batch_create_wizard)d" type="action" string="Create New Batch" class="btn-primary" groups="commission_band.group_commission_band_manager"/>
-                </header>
-            </xpath>
+    <!-- Add server action for creating batch -->
+    <record id="action_create_commission_batch" model="ir.actions.server">
+        <field name="name">Create New Batch</field>
+        <field name="model_id" ref="model_commission_batch"/>
+        <field name="binding_model_id" ref="model_commission_batch"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+                'type': 'ir.actions.act_window',
+                'res_model': 'commission.batch.create.wizard',
+                'view_mode': 'form',
+                'target': 'new',
+                'name': 'Create Commission Batch',
+            }
         </field>
     </record>
     
