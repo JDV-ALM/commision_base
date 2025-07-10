@@ -373,6 +373,17 @@ class CommissionBatch(models.Model):
         }
 
     @api.model
+    def action_open_create_wizard(self):
+        """Open the create batch wizard"""
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'commission.batch.create.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'name': _('Create Commission Batch'),
+        }
+
+    @api.model
     def create_monthly_batch(self, date=None):
         """Helper method to create monthly batch (can be called from cron)"""
         if not date:

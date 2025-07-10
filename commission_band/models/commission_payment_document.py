@@ -85,6 +85,32 @@ class CommissionPaymentDocument(models.Model):
         help="Exchange rate used for USD to VES conversion"
     )
     
+    # Total fields for summary
+    total_usd_original = fields.Float(
+        string='Total USD Original',
+        compute='_compute_totals',
+        digits=(16, 2),
+        help="Total commission amount originally in USD"
+    )
+    total_ves_original = fields.Float(
+        string='Total VES Original',
+        compute='_compute_totals',
+        digits=(16, 2),
+        help="Total commission amount originally in VES"
+    )
+    total_usd_payment = fields.Float(
+        string='Total USD Payment',
+        compute='_compute_totals',
+        digits=(16, 2),
+        help="Total amount to pay in USD"
+    )
+    total_ves_payment = fields.Float(
+        string='Total VES Payment',
+        compute='_compute_totals',
+        digits=(16, 2),
+        help="Total amount to pay in VES"
+    )
+    
     @api.model
     def create(self, vals):
         if vals.get('name', 'New') == 'New':
@@ -92,11 +118,18 @@ class CommissionPaymentDocument(models.Model):
             vals['name'] = IrSequence.next_by_code('commission.payment.document') or 'New'
         return super().create(vals)
 
-    @api.depends('line_ids')
+    @api.depends('line_ids', 'line_ids.amount_usd_original', 'line_ids.amount_ves_original',
+                 'line_ids.amount_usd_payment', 'line_ids.amount_ves_payment')
     def _compute_totals(self):
         for doc in self:
             doc.total_lines = len(doc.line_ids)
             doc.total_salespersons = len(doc.line_ids.mapped('salesperson_id'))
+            
+            # Calculate totals
+            doc.total_usd_original = sum(doc.line_ids.mapped('amount_usd_original'))
+            doc.total_ves_original = sum(doc.line_ids.mapped('amount_ves_original'))
+            doc.total_usd_payment = sum(doc.line_ids.mapped('amount_usd_payment'))
+            doc.total_ves_payment = sum(doc.line_ids.mapped('amount_ves_payment'))
 
     def _generate_payment_lines(self):
         """Generate payment lines from batch calculations"""

@@ -73,21 +73,21 @@
                                 <group string="Original Amounts">
                                     <label for="total_usd_original"/>
                                     <div>
-                                        <field name="total_usd_original" class="oe_inline" widget="monetary" compute="_compute_totals"/> USD
+                                        <field name="total_usd_original" class="oe_inline" widget="monetary"/> USD
                                     </div>
                                     <label for="total_ves_original"/>
                                     <div>
-                                        <field name="total_ves_original" class="oe_inline" widget="monetary" compute="_compute_totals"/> VES
+                                        <field name="total_ves_original" class="oe_inline" widget="monetary"/> VES
                                     </div>
                                 </group>
                                 <group string="Payment Amounts">
                                     <label for="total_usd_payment"/>
                                     <div>
-                                        <field name="total_usd_payment" class="oe_inline" widget="monetary" compute="_compute_totals"/> USD
+                                        <field name="total_usd_payment" class="oe_inline" widget="monetary"/> USD
                                     </div>
                                     <label for="total_ves_payment"/>
                                     <div>
-                                        <field name="total_ves_payment" class="oe_inline" widget="monetary" compute="_compute_totals"/> VES
+                                        <field name="total_ves_payment" class="oe_inline" widget="monetary"/> VES
                                     </div>
                                 </group>
                             </group>
@@ -160,51 +160,6 @@
                 Payment documents are generated from commission batches after they have been reviewed.
                 They contain the final amounts to be paid to each salesperson.
             </p>
-        </field>
-    </record>
-    
-    <!-- Add computed fields to payment document model -->
-    <record id="add_payment_document_totals" model="ir.model.fields">
-        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
-        <field name="name">total_usd_original</field>
-        <field name="field_description">Total USD Original</field>
-        <field name="ttype">float</field>
-        <field name="compute">
-            for doc in self:
-                doc.total_usd_original = sum(doc.line_ids.mapped('amount_usd_original'))
-        </field>
-    </record>
-    
-    <record id="add_payment_document_totals_ves" model="ir.model.fields">
-        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
-        <field name="name">total_ves_original</field>
-        <field name="field_description">Total VES Original</field>
-        <field name="ttype">float</field>
-        <field name="compute">
-            for doc in self:
-                doc.total_ves_original = sum(doc.line_ids.mapped('amount_ves_original'))
-        </field>
-    </record>
-    
-    <record id="add_payment_document_totals_usd_payment" model="ir.model.fields">
-        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
-        <field name="name">total_usd_payment</field>
-        <field name="field_description">Total USD Payment</field>
-        <field name="ttype">float</field>
-        <field name="compute">
-            for doc in self:
-                doc.total_usd_payment = sum(doc.line_ids.mapped('amount_usd_payment'))
-        </field>
-    </record>
-    
-    <record id="add_payment_document_totals_ves_payment" model="ir.model.fields">
-        <field name="model_id" ref="commission_band.model_commission_payment_document"/>
-        <field name="name">total_ves_payment</field>
-        <field name="field_description">Total VES Payment</field>
-        <field name="ttype">float</field>
-        <field name="compute">
-            for doc in self:
-                doc.total_ves_payment = sum(doc.line_ids.mapped('amount_ves_payment'))
         </field>
     </record>
     
