@@ -39,7 +39,11 @@ Main Components:
         'account',
         'sales_team',
         'sale_management',
+        'web',
     ],
+    'external_dependencies': {
+        'python': ['xlsxwriter'],
+    },
     'data': [
         # Security
         'security/commission_band_security.xml',
@@ -62,6 +66,7 @@ Main Components:
         # Wizards (después de las vistas que heredan)
         'wizards/commission_band_config_wizard_views.xml',
         'wizards/commission_batch_create_wizard_views.xml',
+        'wizards/commission_payment_export_wizard_views.xml',
     ],
     'demo': [],
     'installable': True,

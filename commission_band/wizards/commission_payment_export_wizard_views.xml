@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Export Wizard Form -->
+    <record id="view_commission_payment_export_wizard_form" model="ir.ui.view">
+        <field name="name">commission.payment.export.wizard.form</field>
+        <field name="model">commission.payment.export.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export Payment Document">
+                <group>
+                    <field name="document_id" invisible="1"/>
+                    <field name="export_format" widget="radio"/>
+                </group>
+                <footer>
+                    <button name="action_export" type="object" string="Export" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_commission_payment_export_wizard" model="ir.actions.act_window">
+        <field name="name">Export Payment Document</field>
+        <field name="res_model">commission.payment.export.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_commission_payment_export_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+    
+</odoo>
