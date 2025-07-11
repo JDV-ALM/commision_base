@@ -251,18 +251,21 @@ class CommissionPaymentDocument(models.Model):
         """Export payment document to Excel"""
         self.ensure_one()
         
-        # Use wizard for export
-        return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'commission.payment.export.wizard',
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {
-                'default_document_id': self.id,
-                'active_model': 'commission.payment.document',
-                'active_id': self.id,
-            }
-        }
+        # Option 1: Use the standard report that can be exported to Excel
+        return self.env.ref('commission_band.action_report_commission_payment_document').report_action(self)
+        
+        # Option 2: Use wizard (commented out for now)
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'res_model': 'commission.payment.export.wizard',
+        #     'view_mode': 'form',
+        #     'target': 'new',
+        #     'context': {
+        #         'default_document_id': self.id,
+        #         'active_model': 'commission.payment.document',
+        #         'active_id': self.id,
+        #     }
+        # }
 
     def get_summary_by_currency(self):
         """Get payment summary by currency"""

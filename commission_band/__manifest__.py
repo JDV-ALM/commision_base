@@ -67,6 +67,9 @@ Main Components:
         'wizards/commission_band_config_wizard_views.xml',
         'wizards/commission_batch_create_wizard_views.xml',
         'wizards/commission_payment_export_wizard_views.xml',
+        
+        # Reports
+        'reports/commission_payment_report.xml',
     ],
     'demo': [],
     'installable': True,

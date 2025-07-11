@@ -52,12 +52,21 @@ class CommissionPaymentExportWizard(models.TransientModel):
         if self.export_format == 'xlsx':
             if not XLSXWRITER_AVAILABLE:
                 raise UserError(_("xlsxwriter library is not installed. Please install it or use CSV format."))
-            return self._export_xlsx()
+            self._generate_xlsx()
         else:
-            return self._export_csv()
+            self._generate_csv()
+        
+        # Return action to download the file
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/web/content/?model=%s&id=%s&field=file_data&filename_field=file_name&download=true' % (
+                self._name, self.id
+            ),
+            'target': 'self',
+        }
 
-    def _export_xlsx(self):
-        """Export to Excel format"""
+    def _generate_xlsx(self):
+        """Generate Excel file"""
         # Create Excel file in memory
         output = io.BytesIO()
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
@@ -119,16 +128,9 @@ class CommissionPaymentExportWizard(models.TransientModel):
         # Save file
         self.file_data = base64.b64encode(output.getvalue())
         self.file_name = f"Documento_Pago_{self.document_id.name}.xlsx"
-        
-        # Return download action
-        return {
-            'type': 'ir.actions.act_url',
-            'url': f'/web/content/{self._name}/{self.id}/file_data/{self.file_name}?download=true',
-            'target': 'self',
-        }
 
-    def _export_csv(self):
-        """Export to CSV format"""
+    def _generate_csv(self):
+        """Generate CSV file"""
         output = io.StringIO()
         
         # Headers
@@ -150,10 +152,3 @@ class CommissionPaymentExportWizard(models.TransientModel):
         # Save file
         self.file_data = base64.b64encode(output.getvalue().encode())
         self.file_name = f"Documento_Pago_{self.document_id.name}.csv"
-        
-        # Return download action
-        return {
-            'type': 'ir.actions.act_url',
-            'url': f'/web/content/{self._name}/{self.id}/file_data/{self.file_name}?download=true',
-            'target': 'self',
-        }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Report Action -->
+    <record id="action_report_commission_payment_document" model="ir.actions.report">
+        <field name="name">Payment Document</field>
+        <field name="model">commission.payment.document</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">commission_band.report_commission_payment_document</field>
+        <field name="report_file">commission_band.report_commission_payment_document</field>
+        <field name="print_report_name">'Payment_Document_%s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_commission_payment_document"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+    <!-- Report Template -->
+    <template id="report_commission_payment_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Commission Payment Document: <span t-field="doc.name"/></h2>
+                        
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td><strong>Batch:</strong></td>
+                                        <td><span t-field="doc.batch_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Period:</strong></td>
+                                        <td>
+                                            <span t-field="doc.batch_id.date_from"/> - 
+                                            <span t-field="doc.batch_id.date_to"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <td><strong>Payment Date:</strong></td>
+                                        <td><span t-field="doc.payment_date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Exchange Rate USD/VES:</strong></td>
+                                        <td><span t-field="doc.exchange_rate_usd_ves"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <h3 class="mt-4">Payment Details</h3>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Salesperson</th>
+                                    <th class="text-center">Commissions</th>
+                                    <th class="text-right">USD Original</th>
+                                    <th class="text-right">USD to Pay</th>
+                                    <th class="text-right">VES Original</th>
+                                    <th class="text-right">VES to Pay</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="line_num" t-value="1"/>
+                                <tr t-foreach="doc.line_ids" t-as="line">
+                                    <td><t t-esc="line_num"/></td>
+                                    <t t-set="line_num" t-value="line_num + 1"/>
+                                    <td><span t-field="line.salesperson_id.name"/></td>
+                                    <td class="text-center"><span t-field="line.commission_count"/></td>
+                                    <td class="text-right"><span t-field="line.amount_usd_original"/></td>
+                                    <td class="text-right"><span t-field="line.amount_usd_payment"/></td>
+                                    <td class="text-right"><span t-field="line.amount_ves_original"/></td>
+                                    <td class="text-right"><span t-field="line.amount_ves_payment"/></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="3">TOTALS</th>
+                                    <th class="text-right"><span t-field="doc.total_usd_original"/></th>
+                                    <th class="text-right"><span t-field="doc.total_usd_payment"/></th>
+                                    <th class="text-right"><span t-field="doc.total_ves_original"/></th>
+                                    <th class="text-right"><span t-field="doc.total_ves_payment"/></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <p><strong>Total Salespersons:</strong> <span t-field="doc.total_salespersons"/></p>
+                                <p><strong>Total Lines:</strong> <span t-field="doc.total_lines"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+</odoo>
