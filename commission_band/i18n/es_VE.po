@@ -1,68 +1,122 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# * commission_band
+# Spanish (Venezuela) translation for commission_band module.
+# This file is distributed under the same license as the commission_band package.
+# Translation specific for Venezuelan Spanish (es_VE)
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: commission_band 18.0.1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-01 00:00:00\n"
-"PO-Revision-Date: 2025-01-01 00:00:00\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"POT-Creation-Date: 2025-01-11 12:00+0000\n"
+"PO-Revision-Date: 2025-01-11 12:00+0000\n"
+"Last-Translator: Almus Dev <info@almusdev.com>\n"
+"Language-Team: Spanish (Venezuela)\n"
 "Language: es_VE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__active
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__active
-msgid "Active"
-msgstr "Activo"
+#: model:ir.actions.act_window,name:commission_band.action_commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band
+msgid "Commission Bands"
+msgstr "Bandas de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Active"
-msgstr "Activo"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Active Status"
-msgstr "Estado Activo"
+#: model:ir.actions.act_window,name:commission_band.action_commission_rule
+#: model:ir.ui.menu,name:commission_band.menu_commission_rule
+msgid "Commission Rules"
+msgstr "Reglas de Comisiones"
 
 #. module: commission_band
 #: model:ir.actions.act_window,name:commission_band.action_commission_calculation
-msgid "All Commissions"
-msgstr "Todas las Comisiones"
-
-#. module: commission_band
 #: model:ir.ui.menu,name:commission_band.menu_commission_calculation
-msgid "All Commissions"
-msgstr "Todas las Comisiones"
+msgid "Commission Calculations"
+msgstr "Cálculos de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__min_amount
-msgid "Minimum Amount"
-msgstr "Monto Mínimo"
+#: model:ir.actions.act_window,name:commission_band.action_my_commission_calculation
+#: model:ir.ui.menu,name:commission_band.menu_my_commission_calculation
+msgid "My Commissions"
+msgstr "Mis Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__max_amount
-msgid "Maximum Amount"
-msgstr "Monto Máximo"
+#: model:ir.actions.act_window,name:commission_band.action_commission_batch
+#: model:ir.ui.menu,name:commission_band.menu_commission_batch
+msgid "Commission Batches"
+msgstr "Lotes de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Amount Limits"
-msgstr "Límites de Monto"
+#: model:ir.actions.act_window,name:commission_band.action_commission_payment_document
+#: model:ir.ui.menu,name:commission_band.menu_commission_payment_document
+msgid "Payment Documents"
+msgstr "Documentos de Pago"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Application Criteria"
-msgstr "Criterios de Aplicación"
+#: model:ir.actions.act_window,name:commission_band.action_salesperson_config
+#: model:ir.ui.menu,name:commission_band.menu_salesperson_config
+msgid "Salesperson Configurations"
+msgstr "Configuración de Vendedores"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band_config
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band_wizard
+msgid "Configuration Wizard"
+msgstr "Asistente de Configuración"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_calculation_no_batch
+msgid "Calculations Without Batch"
+msgstr "Comisiones sin Lote"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band_reports
+msgid "Commission Reports"
+msgstr "Reportes de Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_calculation_report
+msgid "Commission Analysis"
+msgstr "Análisis de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__name
+msgid "Band Name"
+msgstr "Nombre de la Banda"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__code
+msgid "Code"
+msgstr "Código"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__currency_specific
+msgid "Currency Specific"
+msgstr "Específico por Moneda"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_band__currency_id
+msgid "Specific Currency"
+msgstr "Moneda Específica"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_band__range_ids
@@ -70,9 +124,9 @@ msgid "Day Ranges"
 msgstr "Rangos de Días"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
-msgid "Day Ranges"
-msgstr "Rangos de Días"
+#: model:ir.model.fields,field_description:commission_band.field_commission_range__name
+msgid "Range Description"
+msgstr "Descripción del Rango"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_range__day_from
@@ -80,45 +134,247 @@ msgid "Days From"
 msgstr "Días Desde"
 
 #. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_range__day_from
+msgid "Start of day range (negative for days before due date)"
+msgstr "Inicio del rango de días (negativo para días antes del vencimiento)"
+
+#. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_range__day_to
 msgid "Days To"
 msgstr "Días Hasta"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__days_overdue
-msgid "Days Overdue"
-msgstr "Días Vencidos"
+#: model:ir.model.fields,help:commission_band.field_commission_range__day_to
+msgid "End of day range (positive for days after due date)"
+msgstr "Final del rango de días (positivo para días después del vencimiento)"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__due_date
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__invoice_date_due
-msgid "Due Date"
-msgstr "Fecha de Vencimiento"
+#: model:ir.model.fields,field_description:commission_band.field_commission_range__commission_rate
+msgid "Commission Rate (%)"
+msgstr "Tasa de Comisión (%)"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
-msgid "Archived"
-msgstr "Archivado"
+#: model:ir.model.fields,help:commission_band.field_commission_range__commission_rate
+msgid "Base commission percentage for this range"
+msgstr "Porcentaje base de comisión para este rango"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Archived"
-msgstr "Archivado"
+#: model:ir.model.fields,field_description:commission_band.field_commission_range__indicator_rate
+msgid "Indicator Rate (%)"
+msgstr "Tasa de Indicador (%)"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Approved"
-msgstr "Aprobado"
+#: model:ir.model.fields,help:commission_band.field_commission_range__indicator_rate
+msgid "Additional rate for performance indicators"
+msgstr "Tasa adicional para indicadores de rendimiento"
 
 #. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__approved
-msgid "Approved"
-msgstr "Aprobado"
+#: model:ir.model.fields,field_description:commission_band.field_commission_range__apply_only_currency_id
+msgid "Apply Only to Currency"
+msgstr "Aplicar Solo a Moneda"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_range__apply_only_currency_id
+msgid "If set, this range only applies to payments in this currency"
+msgstr "Si se establece, este rango solo aplica a pagos en esta moneda"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_range__min_payment_amount
+msgid "Minimum Payment Amount"
+msgstr "Monto Mínimo de Pago"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_range__min_payment_amount
+msgid "Minimum payment amount for this range to apply"
+msgstr "Monto mínimo de pago para que aplique este rango"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__name
+msgid "Rule Name"
+msgstr "Nombre de la Regla"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__name
+msgid "Descriptive name for this commission rule"
+msgstr "Nombre descriptivo para esta regla de comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__priority
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__priority
+msgid "Lower number means higher priority. Rules are evaluated in priority order."
+msgstr "Número menor significa mayor prioridad. Las reglas se evalúan en orden de prioridad."
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__commission_type
+msgid "Commission Type"
+msgstr "Tipo de Comisión"
+
+#. module: commission_band
+#: selection:commission.rule,commission_type:0
+msgid "Fixed Percentage"
+msgstr "Porcentaje Fijo"
+
+#. module: commission_band
+#: selection:commission.rule,commission_type:0
+msgid "Fixed Amount"
+msgstr "Monto Fijo"
+
+#. module: commission_band
+#: selection:commission.rule,commission_type:0
+msgid "Prelation Band"
+msgstr "Banda de Prelación"
+
+#. module: commission_band
+#: selection:commission.rule,commission_type:0
+msgid "No Commission"
+msgstr "Sin Comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__salesperson_ids
+msgid "Specific Salespersons"
+msgstr "Vendedores Específicos"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__salesperson_ids
+msgid "Leave empty to apply to all salespersons"
+msgstr "Dejar vacío para aplicar a todos los vendedores"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__team_ids
+msgid "Sales Teams"
+msgstr "Equipos de Venta"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__team_ids
+msgid "Leave empty to apply to all teams"
+msgstr "Dejar vacío para aplicar a todos los equipos"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__category_ids
+msgid "Product Categories"
+msgstr "Categorías de Producto"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__category_ids
+msgid "Leave empty to apply to all categories"
+msgstr "Dejar vacío para aplicar a todas las categorías"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__product_ids
+msgid "Specific Products"
+msgstr "Productos Específicos"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__product_ids
+msgid "Leave empty to apply to all products"
+msgstr "Dejar vacío para aplicar a todos los productos"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__customer_ids
+msgid "Specific Customers"
+msgstr "Clientes Específicos"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__customer_ids
+msgid "Leave empty to apply to all customers"
+msgstr "Dejar vacío para aplicar a todos los clientes"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__date_from
+msgid "Valid From"
+msgstr "Válido Desde"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__date_from
+msgid "Start date for this rule (inclusive)"
+msgstr "Fecha de inicio para esta regla (inclusiva)"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__date_to
+msgid "Valid Until"
+msgstr "Válido Hasta"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__date_to
+msgid "End date for this rule (inclusive)"
+msgstr "Fecha de finalización para esta regla (inclusiva)"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__min_amount
+msgid "Minimum Amount"
+msgstr "Monto Mínimo"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__min_amount
+msgid "Minimum payment amount for this rule to apply"
+msgstr "Monto mínimo de pago para que aplique esta regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__max_amount
+msgid "Maximum Amount"
+msgstr "Monto Máximo"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__max_amount
+msgid "Maximum payment amount for this rule to apply"
+msgstr "Monto máximo de pago para que aplique esta regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__fixed_amount
+msgid "Fixed Amount"
+msgstr "Monto Fijo"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__fixed_amount
+msgid "Fixed commission amount (when type is 'fixed')"
+msgstr "Monto fijo de comisión (cuando el tipo es 'fijo')"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__percentage_rate
+msgid "Fixed Percentage"
+msgstr "Porcentaje Fijo"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__percentage_rate
+msgid "Fixed commission percentage (when type is 'percentage')"
+msgstr "Porcentaje fijo de comisión (cuando el tipo es 'porcentaje')"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_rule__band_id
+msgid "Prelation Band"
+msgstr "Banda de Prelación"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_rule__band_id
+msgid "Commission band to use (when type is 'band')"
+msgstr "Banda de comisión a usar (cuando el tipo es 'banda')"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_id
+msgid "Payment"
+msgstr "Pago"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__invoice_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__salesperson_id
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__rule_id
+msgid "Applied Rule"
+msgstr "Regla Aplicada"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__band_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__band_id
 msgid "Applied Band"
 msgstr "Banda Aplicada"
 
@@ -128,354 +384,14 @@ msgid "Applied Range"
 msgstr "Rango Aplicado"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__rule_id
-msgid "Applied Rule"
-msgstr "Regla Aplicada"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__batch_id
+msgid "Commission Batch"
+msgstr "Lote de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__apply_only_currency_id
-msgid "Apply Only to Currency"
-msgstr "Aplicar Solo a Moneda"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Approve"
-msgstr "Aprobar"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__avg_collection_days
-#: model:ir.model.fields,field_description:commission_band.field_account_move__avg_collection_days
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__avg_collection_days
-msgid "Avg. Collection Days"
-msgstr "Días Promedio de Cobro"
-
-#. module: commission_band
-#: model:ir.model,name:commission_band.model_commission_band
-msgid "Commission Band - Prelation Configuration"
-msgstr "Banda de Comisión - Configuración de Prelación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__name
-msgid "Band Name"
-msgstr "Nombre de Banda"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__code
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__code
-msgid "Code"
-msgstr "Código"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Calculate"
-msgstr "Calcular"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__calculated
-msgid "Calculated"
-msgstr "Calculado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Calculated"
-msgstr "Calculado"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_commission_calculation
-#: model:ir.actions.act_window,name:commission_band.action_my_commission_calculation
-msgid "Commission Calculations"
-msgstr "Cálculos de Comisión"
-
-#. module: commission_band
-#: model:ir.model,name:commission_band.model_commission_calculation
-msgid "Commission Calculation Record"
-msgstr "Registro de Cálculo de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Cancel"
-msgstr "Cancelar"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__cancelled
-msgid "Cancelled"
-msgstr "Cancelado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Cancelled"
-msgstr "Cancelado"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__display_name
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__display_name
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__display_name
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__display_name
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__display_name
-msgid "Display Name"
-msgstr "Nombre a Mostrar"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__company_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__company_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__company_id
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__company_id
-msgid "Company"
-msgstr "Compañía"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Company"
-msgstr "Compañía"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_band_config
-msgid "Configuration"
-msgstr "Configuración"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_commission_band_config_wizard
-#: model:ir.ui.menu,name:commission_band.menu_commission_band_wizard
-msgid "Configuration Wizard"
-msgstr "Asistente de Configuración"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Commission Band Configuration Wizard"
-msgstr "Asistente de Configuración de Bandas de Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__description
-msgid "Description"
-msgstr "Descripción"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Conditions"
-msgstr "Condiciones"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__created_at
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__created_at
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__created_at
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__created_at
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__created_at
-msgid "Created on"
-msgstr "Creado el"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__created_by
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__created_by
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__created_by
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__created_by
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__created_by
-msgid "Created by"
-msgstr "Creado por"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__currency_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__currency_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__currency_id
-msgid "Currency"
-msgstr "Moneda"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "Currency"
-msgstr "Moneda"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__currency_specific
-msgid "Currency Specific"
-msgstr "Específico por Moneda"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "Currency Specific"
-msgstr "Específico por Moneda"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Current Month"
-msgstr "Mes Actual"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Current Year"
-msgstr "Año Actual"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__current_commission_config_id
-msgid "Current Commission Config"
-msgstr "Configuración de Comisión Actual"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__partner_id
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__customer_ids
-msgid "Customer"
-msgstr "Cliente"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Customer"
-msgstr "Cliente"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__state
-msgid "Step"
-msgstr "Paso"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__date_from
-msgid "Valid From"
-msgstr "Válido Desde"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__date_to
-msgid "Valid Until"
-msgstr "Válido Hasta"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Date Range"
-msgstr "Rango de Fechas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__default_rule_id
-msgid "Default Rule"
-msgstr "Regla Predeterminada"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Default Rule"
-msgstr "Regla Predeterminada"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_move__delivery_date
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__delivery_date
-msgid "Delivery Date"
-msgstr "Fecha de Entrega"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__draft
-msgid "Draft"
-msgstr "Borrador"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Draft"
-msgstr "Borrador"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Early Payment"
-msgstr "Pago Anticipado"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__exchange_rate
-msgid "Exchange Rate"
-msgstr "Tasa de Cambio"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Financial"
-msgstr "Financiero"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_rule__commission_type__fixed
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__fixed
-msgid "Fixed Amount"
-msgstr "Monto Fijo"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_rule__commission_type__percentage
-msgid "Fixed Percentage"
-msgstr "Porcentaje Fijo"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Fixed Type"
-msgstr "Tipo Fijo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__fixed_amount
-msgid "Fixed Amount"
-msgstr "Monto Fijo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__percentage_rate
-msgid "Fixed Percentage"
-msgstr "Porcentaje Fijo"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "General"
-msgstr "General"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Group By"
-msgstr "Agrupar Por"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "Has Calculations"
-msgstr "Tiene Cálculos"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "Has Rules"
-msgstr "Tiene Reglas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Has Limits"
-msgstr "Tiene Límites"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Has Override"
-msgstr "Tiene Sobreescritura"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_payment__has_commission_calculations
-msgid "Has Commissions"
-msgstr "Tiene Comisiones"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__id
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__id
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__id
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__id
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__id
-msgid "ID"
-msgstr "ID"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Inactive"
-msgstr "Inactivo"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Inactive"
-msgstr "Inactivo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__indicator_rate
-msgid "Indicator Rate (%)"
-msgstr "Tasa Indicador (%)"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__invoice_id
-msgid "Invoice"
-msgstr "Factura"
+#: model:ir.model.fields,help:commission_band.field_commission_calculation__batch_id
+msgid "Batch this calculation belongs to"
+msgstr "Lote al que pertenece este cálculo"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__invoice_date
@@ -483,175 +399,34 @@ msgid "Invoice Date"
 msgstr "Fecha de Factura"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Invoice Information"
-msgstr "Información de Factura"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__due_date
+msgid "Due Date"
+msgstr "Fecha de Vencimiento"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__journal_id
-msgid "Journal"
-msgstr "Diario"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_date
+msgid "Payment Date"
+msgstr "Fecha de Pago"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Late Payment"
-msgstr "Pago Tardío"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__delivery_date
+msgid "Delivery Date"
+msgstr "Fecha de Entrega"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__last_update
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__last_update
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__last_update
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__last_update
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
+#: model:ir.model.fields,help:commission_band.field_commission_calculation__delivery_date
+msgid "Date when goods were delivered (if tracked)"
+msgstr "Fecha en que se entregaron los bienes (si se rastrea)"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__write_uid
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__write_uid
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__write_uid
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__write_uid
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__write_uid
-msgid "Last Updated by"
-msgstr "Última Actualización por"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__days_overdue
+msgid "Days Overdue"
+msgstr "Días Vencidos"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Mark as Paid"
-msgstr "Marcar como Pagado"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__max_commission_amount
-msgid "Maximum Commission"
-msgstr "Comisión Máxima"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__min_commission_amount
-msgid "Minimum Commission"
-msgstr "Comisión Mínima"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__min_payment_amount
-msgid "Minimum Payment Amount"
-msgstr "Monto Mínimo de Pago"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_my_commission_calculation
-msgid "My Commissions"
-msgstr "Mis Comisiones"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_my_commission_calculation
-msgid "My Commissions"
-msgstr "Mis Comisiones"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "My Commissions"
-msgstr "Mis Comisiones"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_rule__commission_type__none
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__none
-msgid "No Commission"
-msgstr "Sin Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "No Commission"
-msgstr "Sin Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__notes
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__notes
-msgid "Notes"
-msgstr "Notas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Notes"
-msgstr "Notas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__calculation_count
-msgid "Number of Calculations"
-msgstr "Número de Cálculos"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rule_count
-msgid "Number of Rules"
-msgstr "Número de Reglas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "On Time"
-msgstr "A Tiempo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_band_id
-msgid "Override Band"
-msgstr "Banda de Sobreescritura"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_fixed_amount
-msgid "Override Fixed Amount"
-msgstr "Monto Fijo de Sobreescritura"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_percentage
-msgid "Override Percentage"
-msgstr "Porcentaje de Sobreescritura"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Override Settings"
-msgstr "Configuración de Sobreescritura"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_commission_type
-msgid "Override Type"
-msgstr "Tipo de Sobreescritura"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Override Type"
-msgstr "Tipo de Sobreescritura"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__band
-msgid "Override with Specific Band"
-msgstr "Sobreescribir con Banda Específica"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__fixed
-msgid "Override with Fixed Amount"
-msgstr "Sobreescribir con Monto Fijo"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__percentage
-msgid "Override with Fixed Percentage"
-msgstr "Sobreescribir con Porcentaje Fijo"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__paid
-msgid "Paid"
-msgstr "Pagado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Paid"
-msgstr "Pagado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Partners"
-msgstr "Contactos"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_id
-msgid "Payment"
-msgstr "Pago"
+#: model:ir.model.fields,help:commission_band.field_commission_calculation__days_overdue
+msgid "Days between due date and payment date (negative for early payment)"
+msgstr "Días entre fecha de vencimiento y fecha de pago (negativo para pago anticipado)"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_amount
@@ -661,484 +436,12 @@ msgstr "Monto del Pago"
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_amount_company
 msgid "Payment Amount (Company Currency)"
-msgstr "Monto del Pago (Moneda de la Compañía)"
+msgstr "Monto del Pago (Moneda de la Empresa)"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__payment_date
-msgid "Payment Date"
-msgstr "Fecha de Pago"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Payment Date"
-msgstr "Fecha de Pago"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Payment Information"
-msgstr "Información de Pago"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__journal_ids
-msgid "Payment Journals"
-msgstr "Diarios de Pago"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__is_reconciled
-msgid "Payment Reconciled"
-msgstr "Pago Conciliado"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__payment_term_ids
-msgid "Payment Terms"
-msgstr "Términos de Pago"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "People"
-msgstr "Personas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Percentage Type"
-msgstr "Tipo Porcentaje"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_rule__commission_type__band
-msgid "Prelation Band"
-msgstr "Banda de Prelación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__band_id
-msgid "Prelation Band"
-msgstr "Banda de Prelación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__priority
-msgid "Priority"
-msgstr "Prioridad"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Priority"
-msgstr "Prioridad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__category_ids
-msgid "Product Categories"
-msgstr "Categorías de Producto"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Products"
-msgstr "Productos"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__band_id
-msgid "Commission Band"
-msgstr "Banda de Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__name
-msgid "Range Description"
-msgstr "Descripción del Rango"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__reconciliation_date
-msgid "Reconciliation Date"
-msgstr "Fecha de Conciliación"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Reset to Draft"
-msgstr "Restablecer a Borrador"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Rule"
-msgstr "Regla"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__name
-msgid "Rule Name"
-msgstr "Nombre de la Regla"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__team_ids
-msgid "Sales Teams"
-msgstr "Equipos de Venta"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__salesperson_id
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__user_id
-msgid "Salesperson"
-msgstr "Vendedor"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Salesperson"
-msgstr "Vendedor"
-
-#. module: commission_band
-#: model:ir.model,name:commission_band.model_salesperson_config
-msgid "Salesperson Commission Configuration"
-msgstr "Configuración de Comisión del Vendedor"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_salesperson_config
-msgid "Salesperson Configurations"
-msgstr "Configuraciones de Vendedor"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_salesperson_config
-msgid "Salesperson Config"
-msgstr "Config. de Vendedor"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__sequence
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__sequence
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__sequence
-msgid "Sequence"
-msgstr "Secuencia"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_payment__skip_commission_calculation
-msgid "Skip Commission"
-msgstr "Omitir Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_move__skip_commission
-msgid "Skip Commission"
-msgstr "Omitir Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__currency_id
-msgid "Specific Currency"
-msgstr "Moneda Específica"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__product_ids
-msgid "Specific Products"
-msgstr "Productos Específicos"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__salesperson_ids
-msgid "Specific Salespersons"
-msgstr "Vendedores Específicos"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__state
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "State"
-msgstr "Estado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Toggle Active"
-msgstr "Alternar Activo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_move__total_commission_amount
-#: model:ir.model.fields,field_description:commission_band.field_account_payment__total_commission_amount
-msgid "Total Commission"
-msgstr "Comisión Total"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__total_commission_amount
-msgid "Total Commissions"
-msgstr "Comisiones Totales"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Type"
-msgstr "Tipo"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__sale_team_id
-msgid "User Sales Team"
-msgstr "Equipo de Ventas del Usuario"
-
-#. module: commission_band
-#: model:ir.model,name:commission_band.model_res_users
-msgid "Users"
-msgstr "Usuarios"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__salesperson_config__override_commission_type__none
-msgid "Use Rule Settings"
-msgstr "Usar Configuración de Regla"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Validate"
-msgstr "Validar"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_calculation__state__validated
-msgid "Validated"
-msgstr "Validado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Validated"
-msgstr "Validado"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_list
-msgid "View"
-msgstr "Ver"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Adjunto Principal"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_has_error
-msgid "Message Delivery error"
-msgstr "Error de Entrega de Mensaje"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_has_error_counter
-msgid "Number of errors"
-msgstr "Número de errores"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Error de Entrega de SMS"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_ids
-msgid "Messages"
-msgstr "Mensajes"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_is_follower
-msgid "Is Follower"
-msgstr "Es Seguidor"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_needaction
-msgid "Action Needed"
-msgstr "Acción Necesaria"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_needaction_counter
-msgid "Number of Actions"
-msgstr "Número de Acciones"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_partner_ids
-msgid "Followers (Partners)"
-msgstr "Seguidores (Contactos)"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_ids
-msgid "Activities"
-msgstr "Actividades"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_calendar_event_id
-msgid "Next Activity Calendar Event"
-msgstr "Próximo Evento de Calendario de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_date_deadline
-msgid "Next Activity Deadline"
-msgstr "Fecha Límite de Próxima Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_exception_decoration
-msgid "Activity Exception Decoration"
-msgstr "Decoración de Excepción de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_exception_icon
-msgid "Icon"
-msgstr "Icono"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_state
-msgid "Activity State"
-msgstr "Estado de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_summary
-msgid "Next Activity Summary"
-msgstr "Resumen de Próxima Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_type_icon
-msgid "Activity Type Icon"
-msgstr "Icono de Tipo de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_type_id
-msgid "Next Activity Type"
-msgstr "Próximo Tipo de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__activity_user_id
-msgid "Responsible User"
-msgstr "Usuario Responsable"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__my_activity_date_deadline
-msgid "My Activity Deadline"
-msgstr "Mi Fecha Límite de Actividad"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__website_message_ids
-msgid "Website Messages"
-msgstr "Mensajes del Sitio Web"
-
-#. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__website_message_ids
-msgid "Website communication history"
-msgstr "Historial de comunicación del sitio web"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__message_follower_ids
-msgid "Followers"
-msgstr "Seguidores"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_ids
-msgid "Ratings"
-msgstr "Calificaciones"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_last_feedback
-msgid "Last Rating Feedback"
-msgstr "Último Comentario de Calificación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_last_image
-msgid "Last Rating Image"
-msgstr "Última Imagen de Calificación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_last_text
-msgid "Last Rating Text"
-msgstr "Último Texto de Calificación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_last_value
-msgid "Last Rating Value"
-msgstr "Último Valor de Calificación"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band__rating_count
-msgid "Rating count"
-msgstr "Cantidad de calificaciones"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_commission_band
-msgid "Commission Bands"
-msgstr "Bandas de Comisión"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_band
-#: model:ir.ui.menu,name:commission_band.menu_sale_config_commission_band_bands
-msgid "Commission Bands"
-msgstr "Bandas de Comisión"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_band_root
-#: model:ir.ui.menu,name:commission_band.menu_sale_config_commission_band
-msgid "Commission Bands"
-msgstr "Bandas de Comisión"
-
-#. module: commission_band
-#: model:ir.actions.act_window,name:commission_band.action_commission_rule
-msgid "Commission Rules"
-msgstr "Reglas de Comisión"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_rule
-#: model:ir.ui.menu,name:commission_band.menu_sale_config_commission_band_rules
-msgid "Commission Rules"
-msgstr "Reglas de Comisión"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_band_reports
-msgid "Commission Reports"
-msgstr "Reportes de Comisión"
-
-#. module: commission_band
-#: model:ir.ui.menu,name:commission_band.menu_commission_calculation_report
-msgid "Commission Analysis"
-msgstr "Análisis de Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__commission_band_active
-msgid "Commission Band Active"
-msgstr "Banda de Comisión Activa"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_res_users__commission_config_ids
-msgid "Commission Configurations"
-msgstr "Configuraciones de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-msgid "Commission Settings"
-msgstr "Configuración de Comisiones"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-msgid "Commission Configuration"
-msgstr "Configuración de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-msgid "Commission Statistics"
-msgstr "Estadísticas de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-msgid "Commission Configurations by Company"
-msgstr "Configuraciones de Comisión por Compañía"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-msgid "Commission Config"
-msgstr "Config. de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_tree_commission_band
-msgid "Commission"
-msgstr "Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_move_form_commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_account_payment_form_commission_band
-msgid "Commissions"
-msgstr "Comisiones"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_move_form_commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_account_payment_form_commission_band
-msgid "Commission Information"
-msgstr "Información de Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_account_move__commission_override_rule_id
-msgid "Override Commission Rule"
-msgstr "Regla de Comisión de Sobreescritura"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_account_payment_form_commission_band
-msgid "Recalculate Commissions"
-msgstr "Recalcular Comisiones"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_account_payment_tree_commission_band
-msgid "Commission"
-msgstr "Comisión"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__commission_rate
+msgid "Commission Rate (%)"
+msgstr "Tasa de Comisión (%)"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__commission_amount
@@ -1148,33 +451,285 @@ msgstr "Monto de Comisión"
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_commission_calculation__commission_amount_company
 msgid "Commission Amount (Company Currency)"
-msgstr "Monto de Comisión (Moneda de la Compañía)"
+msgstr "Monto de Comisión (Moneda de la Empresa)"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Commission Calculation"
-msgstr "Cálculo de Comisión"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__currency_id
+msgid "Currency"
+msgstr "Moneda"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Commission Details"
-msgstr "Detalles de Comisión"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__exchange_rate
+msgid "Exchange Rate"
+msgstr "Tasa de Cambio"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__commission_rate
-#: model:ir.model.fields,field_description:commission_band.field_commission_range__commission_rate
-msgid "Commission Rate (%)"
-msgstr "Tasa de Comisión (%)"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__is_reconciled
+msgid "Payment Reconciled"
+msgstr "Pago Conciliado"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__commission_type
-msgid "Commission Type"
-msgstr "Tipo de Comisión"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__reconciliation_date
+msgid "Reconciliation Date"
+msgstr "Fecha de Conciliación"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Commission Configuration"
-msgstr "Configuración de Comisión"
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__state
+msgid "State"
+msgstr "Estado"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+#: selection:commission.batch,state:0
+#: selection:commission.payment.document,state:0
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+#: selection:commission.batch,state:0
+msgid "Calculated"
+msgstr "Calculada"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+msgid "Validated"
+msgstr "Validada"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+msgid "Approved"
+msgstr "Aprobada"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+msgid "Paid"
+msgstr "Pagada"
+
+#. module: commission_band
+#: selection:commission.calculation,state:0
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: commission_band
+#: selection:commission.batch,state:0
+msgid "Reviewed by Sales"
+msgstr "Revisado por Ventas"
+
+#. module: commission_band
+#: selection:commission.batch,state:0
+msgid "Payment Document Generated"
+msgstr "Documento de Pago Generado"
+
+#. module: commission_band
+#: selection:commission.payment.document,state:0
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_calculation__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_calculation__notes
+msgid "Additional notes or observations about this commission"
+msgstr "Notas adicionales u observaciones sobre esta comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__name
+msgid "Batch Name"
+msgstr "Nombre del Lote"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__name
+msgid "Name defined by the client for this commission batch"
+msgstr "Nombre definido por el cliente para este lote de comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__date_from
+msgid "Date From"
+msgstr "Fecha Desde"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__date_from
+msgid "Start date of the commission period"
+msgstr "Fecha de inicio del período de comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__date_to
+msgid "Date To"
+msgstr "Fecha Hasta"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__date_to
+msgid "End date of the commission period"
+msgstr "Fecha de finalización del período de comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__payment_date
+msgid "Payment Date"
+msgstr "Fecha de Pago"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__payment_date
+msgid "Date when commissions will be paid (usually 10th of the month)"
+msgstr "Fecha en que se pagarán las comisiones (usualmente el 10 del mes)"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__calculation_ids
+msgid "Commission Calculations"
+msgstr "Cálculos de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__calculation_ids
+msgid "Commission calculations included in this batch"
+msgstr "Cálculos de comisiones incluidos en este lote"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__calculation_count
+msgid "Number of Calculations"
+msgstr "Número de Cálculos"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__salesperson_count
+msgid "Number of Salespersons"
+msgstr "Número de Vendedores"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__total_commission_usd
+msgid "Total Commission (USD)"
+msgstr "Comisión Total (USD)"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__total_commission_usd
+msgid "Total commission amount in USD"
+msgstr "Monto total de comisión en USD"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__total_commission_ves
+msgid "Total Commission (VES)"
+msgstr "Comisión Total (VES)"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch__total_commission_ves
+msgid "Total commission amount in VES"
+msgstr "Monto total de comisión en VES"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__reviewed_by_id
+msgid "Reviewed By"
+msgstr "Revisado Por"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch__reviewed_date
+msgid "Review Date"
+msgstr "Fecha de Revisión"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__name
+msgid "Document Number"
+msgstr "Número de Documento"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__batch_id
+msgid "Commission Batch"
+msgstr "Lote de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__line_ids
+msgid "Payment Lines"
+msgstr "Líneas de Pago"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__generation_date
+msgid "Generation Date"
+msgstr "Fecha de Generación"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__total_lines
+msgid "Total Lines"
+msgstr "Total de Líneas"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__total_salespersons
+msgid "Total Salespersons"
+msgstr "Total de Vendedores"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_document__exchange_rate_usd_ves
+msgid "USD to VES Rate"
+msgstr "Tasa USD a VES"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_document__exchange_rate_usd_ves
+msgid "Exchange rate used for USD to VES conversion"
+msgstr "Tasa de cambio usada para conversión de USD a VES"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__commission_count
+msgid "Number of Commissions"
+msgstr "Número de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__amount_usd_original
+msgid "USD Commissions"
+msgstr "Comisiones USD"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_line__amount_usd_original
+msgid "Total commission amount originally in USD"
+msgstr "Monto total de comisión originalmente en USD"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__amount_ves_original
+msgid "VES Commissions"
+msgstr "Comisiones VES"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_line__amount_ves_original
+msgid "Total commission amount originally in VES"
+msgstr "Monto total de comisión originalmente en VES"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__amount_usd_payment
+msgid "USD to Pay"
+msgstr "USD a Pagar"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_line__amount_usd_payment
+msgid "Amount to pay in USD"
+msgstr "Monto a pagar en USD"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__amount_ves_payment
+msgid "VES to Pay"
+msgstr "VES a Pagar"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_line__amount_ves_payment
+msgid "Amount to pay in VES (includes conversions)"
+msgstr "Monto a pagar en VES (incluye conversiones)"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_line__total_payment
+msgid "Total Payment"
+msgstr "Pago Total"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_payment_line__total_payment
+msgid "Total payment amount in company currency"
+msgstr "Monto total de pago en moneda de la empresa"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__user_id
+msgid "Salesperson"
+msgstr "Vendedor"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_salesperson_config__commission_active
@@ -1182,364 +737,668 @@ msgid "Commission Active"
 msgstr "Comisión Activa"
 
 #. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__commission_active
+msgid "If unchecked, no commissions will be calculated for this salesperson"
+msgstr "Si está desmarcado, no se calcularán comisiones para este vendedor"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__default_rule_id
+msgid "Default Rule"
+msgstr "Regla Predeterminada"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__default_rule_id
+msgid "Default commission rule for this salesperson when no other rule applies"
+msgstr "Regla de comisión predeterminada para este vendedor cuando no aplica otra regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_commission_type
+msgid "Override Type"
+msgstr "Tipo de Anulación"
+
+#. module: commission_band
+#: selection:salesperson.config,override_commission_type:0
+msgid "Use Rule Settings"
+msgstr "Usar Configuración de Regla"
+
+#. module: commission_band
+#: selection:salesperson.config,override_commission_type:0
+msgid "Override with Fixed Percentage"
+msgstr "Anular con Porcentaje Fijo"
+
+#. module: commission_band
+#: selection:salesperson.config,override_commission_type:0
+msgid "Override with Fixed Amount"
+msgstr "Anular con Monto Fijo"
+
+#. module: commission_band
+#: selection:salesperson.config,override_commission_type:0
+msgid "Override with Specific Band"
+msgstr "Anular con Banda Específica"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_percentage
+msgid "Override Percentage"
+msgstr "Porcentaje de Anulación"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__override_percentage
+msgid "Custom percentage to use instead of rule settings"
+msgstr "Porcentaje personalizado a usar en lugar de la configuración de regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_fixed_amount
+msgid "Override Fixed Amount"
+msgstr "Monto Fijo de Anulación"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__override_fixed_amount
+msgid "Custom fixed amount to use instead of rule settings"
+msgstr "Monto fijo personalizado a usar en lugar de la configuración de regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__override_band_id
+msgid "Override Band"
+msgstr "Banda de Anulación"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__override_band_id
+msgid "Custom band to use instead of rule settings"
+msgstr "Banda personalizada a usar en lugar de la configuración de regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__min_commission_amount
+msgid "Minimum Commission"
+msgstr "Comisión Mínima"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__min_commission_amount
+msgid "Minimum commission amount per calculation"
+msgstr "Monto mínimo de comisión por cálculo"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__max_commission_amount
+msgid "Maximum Commission"
+msgstr "Comisión Máxima"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__max_commission_amount
+msgid "Maximum commission amount per calculation"
+msgstr "Monto máximo de comisión por cálculo"
+
+#. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_salesperson_config__notes
 msgid "Configuration Notes"
 msgstr "Notas de Configuración"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Commission Limits"
-msgstr "Límites de Comisión"
+#: model:ir.model.fields,help:commission_band.field_salesperson_config__notes
+msgid "Internal notes about this salesperson's commission configuration"
+msgstr "Notas internas sobre la configuración de comisiones de este vendedor"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__calculation_count
-msgid "Number of Calculations"
-msgstr "Número de Cálculos"
+#: model:ir.model.fields,field_description:commission_band.field_res_users__commission_band_active
+msgid "Commission Band Active"
+msgstr "Banda de Comisión Activa"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_salesperson_config__total_commission
-msgid "Total Commission"
-msgstr "Comisión Total"
+#: model:ir.model.fields,help:commission_band.field_res_users__commission_band_active
+msgid "If unchecked, the commission band system will not calculate commissions for this user"
+msgstr "Si está desmarcado, el sistema de bandas de comisión no calculará comisiones para este usuario"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Calculations"
-msgstr "Cálculos"
+#: model:ir.model.fields,field_description:commission_band.field_res_users__commission_config_ids
+msgid "Commission Configurations"
+msgstr "Configuraciones de Comisión"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Total Commission"
-msgstr "Comisión Total"
+#: model:ir.model.fields,help:commission_band.field_res_users__commission_config_ids
+msgid "Commission configuration per company"
+msgstr "Configuración de comisión por empresa"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Avg. Days"
-msgstr "Días Prom."
+#: model:ir.model.fields,field_description:commission_band.field_res_users__current_commission_config_id
+msgid "Current Commission Config"
+msgstr "Configuración de Comisión Actual"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Salesperson Configuration"
-msgstr "Configuración del Vendedor"
+#: model:ir.model.fields,help:commission_band.field_res_users__current_commission_config_id
+msgid "Commission configuration for current company"
+msgstr "Configuración de comisión para la empresa actual"
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_res_users__commission_calculation_count
-#: model:ir.model.fields,field_description:commission_band.field_account_move__commission_calculation_count
-#: model:ir.model.fields,field_description:commission_band.field_account_payment__commission_calculation_count
-msgid "Commission Count"
-msgstr "Cantidad de Comisiones"
+msgid "Commission Calculations"
+msgstr "Cálculos de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_res_users__total_commission_amount
+msgid "Total Commissions"
+msgstr "Comisiones Totales"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_res_users__avg_collection_days
+msgid "Avg. Collection Days"
+msgstr "Días Promedio de Cobranza"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_res_users__avg_collection_days
+msgid "Average days between invoice due date and payment"
+msgstr "Días promedio entre fecha de vencimiento de factura y pago"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__delivery_date
+msgid "Delivery Date"
+msgstr "Fecha de Entrega"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__delivery_date
+msgid "Date when goods/services were delivered to customer. Used for commission calculations if needed."
+msgstr "Fecha en que se entregaron los bienes/servicios al cliente. Se usa para cálculos de comisión si es necesario."
 
 #. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_account_move__commission_calculation_ids
+msgid "Commission Calculations"
+msgstr "Cálculos de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__commission_calculation_ids
+msgid "Commission calculations related to this invoice"
+msgstr "Cálculos de comisiones relacionados con esta factura"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__commission_calculation_count
+msgid "Commission Count"
+msgstr "Conteo de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__total_commission_amount
+msgid "Total Commission"
+msgstr "Comisión Total"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__total_commission_amount
+msgid "Total commission amount calculated from payments of this invoice"
+msgstr "Monto total de comisión calculado de los pagos de esta factura"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__avg_collection_days
+msgid "Avg. Collection Days"
+msgstr "Días Promedio de Cobranza"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__avg_collection_days
+msgid "Average days between due date and payment for this invoice"
+msgstr "Días promedio entre fecha de vencimiento y pago para esta factura"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__commission_override_rule_id
+msgid "Override Commission Rule"
+msgstr "Anular Regla de Comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__commission_override_rule_id
+msgid "If set, this rule will be used instead of automatic rule selection"
+msgstr "Si se establece, se usará esta regla en lugar de la selección automática de regla"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_move__skip_commission
+msgid "Skip Commission"
+msgstr "Omitir Comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_move__skip_commission
+msgid "If checked, no commission will be calculated for payments of this invoice"
+msgstr "Si está marcado, no se calculará comisión para pagos de esta factura"
+
+#. module: commission_band
 #: model:ir.model.fields,field_description:commission_band.field_account_payment__commission_calculation_ids
 msgid "Commission Calculations"
-msgstr "Cálculos de Comisión"
+msgstr "Cálculos de Comisiones"
 
 #. module: commission_band
-#: model:ir.model,name:commission_band.model_account_move
-msgid "Journal Entry"
-msgstr "Asiento Contable"
+#: model:ir.model.fields,help:commission_band.field_account_payment__commission_calculation_ids
+msgid "Commission calculations generated from this payment"
+msgstr "Cálculos de comisiones generados de este pago"
 
 #. module: commission_band
-#: model:ir.model,name:commission_band.model_account_payment
-msgid "Payments"
-msgstr "Pagos"
+#: model:ir.model.fields,field_description:commission_band.field_account_payment__commission_calculation_count
+msgid "Commission Count"
+msgstr "Conteo de Comisiones"
 
 #. module: commission_band
-#: model:ir.model,name:commission_band.model_commission_range
-msgid "Commission Range - Day-based Commission Percentage"
-msgstr "Rango de Comisión - Porcentaje de Comisión basado en Días"
+#: model:ir.model.fields,field_description:commission_band.field_account_payment__has_commission_calculations
+msgid "Has Commissions"
+msgstr "Tiene Comisiones"
 
 #. module: commission_band
-#: model:ir.model,name:commission_band.model_commission_rule
-msgid "Commission Rule - Configurable Commission Assignment"
-msgstr "Regla de Comisión - Asignación de Comisión Configurable"
+#: model:ir.model.fields,help:commission_band.field_account_payment__has_commission_calculations
+msgid "Indicates if this payment has generated commission calculations"
+msgstr "Indica si este pago ha generado cálculos de comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_rule__calculation_count
-msgid "Number of Calculations"
-msgstr "Número de Cálculos"
+#: model:ir.model.fields,field_description:commission_band.field_account_payment__total_commission_amount
+msgid "Total Commission"
+msgstr "Comisión Total"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Calculations"
-msgstr "Cálculos"
+#: model:ir.model.fields,help:commission_band.field_account_payment__total_commission_amount
+msgid "Total commission amount generated from this payment"
+msgstr "Monto total de comisión generado de este pago"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+#: model:ir.model.fields,field_description:commission_band.field_account_payment__skip_commission_calculation
+msgid "Skip Commission"
+msgstr "Omitir Comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_payment__skip_commission_calculation
+msgid "If checked, commission will not be calculated for this payment"
+msgstr "Si está marcado, no se calculará comisión para este pago"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_account_payment__can_calculate_commission
+msgid "Can Calculate Commission"
+msgstr "Puede Calcular Comisión"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_account_payment__can_calculate_commission
+msgid "Indicates if commission can be calculated for this payment"
+msgstr "Indica si se puede calcular comisión para este pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_form
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_form
 msgid "Rules"
 msgstr "Reglas"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Band Type"
-msgstr "Tipo de Banda"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_form
+msgid "Calculations"
+msgstr "Cálculos"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Band"
-msgstr "Banda"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_form
+msgid "Day Ranges"
+msgstr "Rangos de Días"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
-msgid "e.g. Premium Sales Band"
-msgstr "ej. Banda de Ventas Premium"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Calculate"
+msgstr "Calcular"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
-msgid "e.g. BAND_PREMIUM"
-msgstr "ej. BANDA_PREMIUM"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Validate"
+msgstr "Validar"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
-msgid "Describe when and how this band should be used..."
-msgstr "Describa cuándo y cómo debe usarse esta banda..."
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Approve"
+msgstr "Aprobar"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "e.g. Premium Sales Rule"
-msgstr "ej. Regla de Ventas Premium"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Mark as Paid"
+msgstr "Marcar como Pagada"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "e.g. RULE_PREMIUM"
-msgstr "ej. REGLA_PREMIUM"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
-msgid "Add any relevant notes about this salesperson's commission configuration..."
-msgstr "Agregue cualquier nota relevante sobre la configuración de comisión de este vendedor..."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Add any relevant notes about this commission calculation..."
-msgstr "Agregue cualquier nota relevante sobre este cálculo de comisión..."
-
-#. module: commission_band
-#: model:ir.model,name:commission_band.model_commission_band_config_wizard
-msgid "Commission Band Configuration Wizard"
-msgstr "Asistente de Configuración de Bandas de Comisión"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__name
-msgid "Configuration Name"
-msgstr "Nombre de Configuración"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__create_default_bands
-msgid "Create Default Bands"
-msgstr "Crear Bandas Predeterminadas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__band_ids
-msgid "Created Bands"
-msgstr "Bandas Creadas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__create_default_rules
-msgid "Create Default Rules"
-msgstr "Crear Reglas Predeterminadas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__rule_ids
-msgid "Created Rules"
-msgstr "Reglas Creadas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__user_ids
-msgid "Sales Users"
-msgstr "Usuarios de Ventas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__activate_all_users
-msgid "Activate for All Sales Users"
-msgstr "Activar para Todos los Usuarios de Ventas"
-
-#. module: commission_band
-#: model:ir.model.fields,field_description:commission_band.field_commission_band_config_wizard__summary
-msgid "Configuration Summary"
-msgstr "Resumen de Configuración"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_band_config_wizard__state__welcome
-msgid "Welcome"
-msgstr "Bienvenida"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_band_config_wizard__state__bands
-msgid "Create Bands"
-msgstr "Crear Bandas"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_band_config_wizard__state__rules
-msgid "Create Rules"
-msgstr "Crear Reglas"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_band_config_wizard__state__users
-msgid "Assign Users"
-msgstr "Asignar Usuarios"
-
-#. module: commission_band
-#: model:ir.model.fields.selection,name:commission_band.selection__commission_band_config_wizard__state__done
-msgid "Done"
-msgstr "Hecho"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Welcome to Commission Band Configuration"
-msgstr "Bienvenido a la Configuración de Bandas de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "This wizard will help you set up the commission band system with:"
-msgstr "Este asistente le ayudará a configurar el sistema de bandas de comisión con:"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Default commission bands based on your requirements"
-msgstr "Bandas de comisión predeterminadas basadas en sus requisitos"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Commission rules to apply bands automatically"
-msgstr "Reglas de comisión para aplicar bandas automáticamente"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Salesperson configurations"
-msgstr "Configuraciones de vendedor"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Click"
-msgstr "Haga clic en"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Next"
-msgstr "Siguiente"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "to begin the configuration."
-msgstr "para comenzar la configuración."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Create Commission Bands"
-msgstr "Crear Bandas de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Commission bands define percentage scales based on payment collection time."
-msgstr "Las bandas de comisión definen escalas de porcentajes basadas en el tiempo de cobro del pago."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "The following standard bands will be created:"
-msgstr "Se crearán las siguientes bandas estándar:"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Premium Sales Band (Type A)"
-msgstr "Banda de Ventas Premium (Tipo A)"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "For top performers with rates from 0.5% to 2.8%"
-msgstr "Para los mejores vendedores con tasas del 0.5% al 2.8%"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Supervision Band (Type B)"
-msgstr "Banda de Supervisión (Tipo B)"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "For supervisors with rates from 0.25% to 2.0%"
-msgstr "Para supervisores con tasas del 0.25% al 2.0%"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Office Band (Type C)"
-msgstr "Banda de Oficina (Tipo C)"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "For office staff with rates from 0% to 1.5%"
-msgstr "Para personal de oficina con tasas del 0% al 1.5%"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Created Bands"
-msgstr "Bandas Creadas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Create Commission Rules"
-msgstr "Crear Reglas de Comisión"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Commission rules determine how commissions are calculated based on various criteria."
-msgstr "Las reglas de comisión determinan cómo se calculan las comisiones basándose en varios criterios."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Default rules will be created for each band type."
-msgstr "Se crearán reglas predeterminadas para cada tipo de banda."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Created Rules"
-msgstr "Reglas Creadas"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Configure Salespersons"
-msgstr "Configurar Vendedores"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Select which salespersons should have commission calculation enabled."
-msgstr "Seleccione qué vendedores deben tener el cálculo de comisiones habilitado."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Configuration Complete!"
-msgstr "¡Configuración Completa!"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "The commission band system has been configured successfully."
-msgstr "El sistema de bandas de comisión se ha configurado exitosamente."
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Previous"
-msgstr "Anterior"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
-msgid "Close"
-msgstr "Cerrar"
-
-#. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Reset to Draft"
+msgstr "Restablecer a Borrador"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Payment Information"
+msgstr "Información del Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Invoice Information"
+msgstr "Información de la Factura"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Commission Details"
+msgstr "Detalles de la Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
+msgid "Commission Calculation"
+msgstr "Cálculo de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Calculate Commissions"
+msgstr "Calcular Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Mark as Reviewed"
+msgstr "Marcar como Revisado"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Generate Payment Document"
+msgstr "Generar Documento de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Commission Summary"
+msgstr "Resumen de Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Totals by Currency"
+msgstr "Totales por Moneda"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_form
+msgid "Payment Information"
+msgstr "Información de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Confirm"
+msgstr "Confirmar"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Export to Excel"
+msgstr "Exportar a Excel"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Payment Lines"
+msgstr "Líneas de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Summary"
+msgstr "Resumen"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Original Amounts"
+msgstr "Montos Originales"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "Payment Amounts"
+msgstr "Montos de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Commission Configuration"
+msgstr "Configuración de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Application Criteria"
+msgstr "Criterios de Aplicación"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "People"
+msgstr "Personas"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Products"
+msgstr "Productos"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Partners"
+msgstr "Socios"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Financial"
+msgstr "Financiero"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Conditions"
+msgstr "Condiciones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Date Range"
+msgstr "Rango de Fechas"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_form
+msgid "Amount Limits"
+msgstr "Límites de Monto"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
+msgid "Override Settings"
+msgstr "Configuraciones de Anulación"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
+msgid "Commission Limits"
+msgstr "Límites de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
+msgid "Toggle Active"
+msgstr "Alternar Activo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
+msgid "Avg. Days"
+msgstr "Días Promedio"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_form
+msgid "Inactive"
+msgstr "Inactivo"
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_band
+msgid ""
+"Create your first commission band\n"
+"\n"
+"Commission bands define percentage scales based on payment collection time.\n"
+"Each band contains multiple day ranges with their corresponding commission rates."
+msgstr ""
+"Crear tu primera banda de comisiones\n"
+"\n"
+"Las bandas de comisiones definen escalas de porcentaje basadas en el tiempo de cobranza de pagos.\n"
+"Cada banda contiene múltiples rangos de días con sus tasas de comisión correspondientes."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_rule
+msgid ""
+"Create your first commission rule\n"
+"\n"
+"Commission rules determine how commissions are calculated based on various criteria\n"
+"such as salesperson, customer, product category, payment terms, and more."
+msgstr ""
+"Crear tu primera regla de comisiones\n"
+"\n"
+"Las reglas de comisiones determinan cómo se calculan las comisiones basándose en varios criterios\n"
+"como vendedor, cliente, categoría de producto, términos de pago, y más."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_calculation
+msgid ""
+"No commission calculations found\n"
+"\n"
+"Commission calculations are automatically created when customers make payments.\n"
+"The system calculates commissions based on the configured rules and bands."
+msgstr ""
+"No se encontraron cálculos de comisiones\n"
+"\n"
+"Los cálculos de comisiones se crean automáticamente cuando los clientes realizan pagos.\n"
+"El sistema calcula comisiones basándose en las reglas y bandas configuradas."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_my_commission_calculation
+msgid ""
+"No commissions found\n"
+"\n"
+"Your commissions will appear here once customers make payments for your sales."
+msgstr ""
+"No se encontraron comisiones\n"
+"\n"
+"Tus comisiones aparecerán aquí una vez que los clientes realicen pagos por tus ventas."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_batch
+msgid ""
+"Create your first commission batch\n"
+"\n"
+"Commission batches group monthly commissions for review and payment processing.\n"
+"Create a batch for a specific period, review the calculations, and generate payment documents.\n"
+"\n"
+"To create a new batch, use the Action menu above."
+msgstr ""
+"Crear tu primer lote de comisiones\n"
+"\n"
+"Los lotes de comisiones agrupan comisiones mensuales para revisión y procesamiento de pagos.\n"
+"Crea un lote para un período específico, revisa los cálculos, y genera documentos de pago.\n"
+"\n"
+"Para crear un nuevo lote, usa el menú Acción arriba."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_payment_document
+msgid ""
+"No payment documents found\n"
+"\n"
+"Payment documents are generated from commission batches after they have been reviewed.\n"
+"They contain the final amounts to be paid to each salesperson."
+msgstr ""
+"No se encontraron documentos de pago\n"
+"\n"
+"Los documentos de pago se generan de lotes de comisiones después de que han sido revisados.\n"
+"Contienen los montos finales a pagar a cada vendedor."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_salesperson_config
+msgid ""
+"Configure salesperson commission settings\n"
+"\n"
+"Set up individual commission configurations for each salesperson,\n"
+"including default rules, overrides, and commission limits."
+msgstr ""
+"Configurar ajustes de comisiones de vendedores\n"
+"\n"
+"Establecer configuraciones individuales de comisión para cada vendedor,\n"
+"incluyendo reglas predeterminadas, anulaciones, y límites de comisión."
+
+#. module: commission_band
+#: model:ir.actions.act_window,help:commission_band.action_commission_calculation_no_batch
+msgid ""
+"No calculations without batch found\n"
+"\n"
+"All commission calculations have been assigned to batches."
+msgstr ""
+"No se encontraron cálculos sin lote\n"
+"\n"
+"Todos los cálculos de comisiones han sido asignados a lotes."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Commission amount cannot be negative!"
+msgstr "¡El monto de comisión no puede ser negativo!"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Payment amount must be positive!"
+msgstr "¡El monto del pago debe ser positivo!"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Only calculated commissions can be validated."
+msgstr "Solo las comisiones calculadas pueden ser validadas."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Cannot validate commission in a batch that is not in 'Calculated' or 'Reviewed' state."
+msgstr "No se puede validar comisión en un lote que no está en estado 'Calculado' o 'Revisado'."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Cannot validate commission for unreconciled payment."
+msgstr "No se puede validar comisión para pago no conciliado."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Commission is not active for salesperson %s"
+msgstr "La comisión no está activa para el vendedor %s"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Only validated commissions can be approved."
+msgstr "Solo las comisiones validadas pueden ser aprobadas."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Only approved commissions can be marked as paid."
+msgstr "Solo las comisiones aprobadas pueden marcarse como pagadas."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Cannot cancel paid commissions."
+msgstr "No se pueden cancelar comisiones pagadas."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Cannot reset paid commissions to draft."
+msgstr "No se pueden restablecer comisiones pagadas a borrador."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Cannot remove calculation from a batch that has a payment document generated or is paid."
+msgstr "No se puede remover cálculo de un lote que tiene documento de pago generado o está pagado."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Removed from Batch"
+msgstr "Removido del Lote"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_calculation.py:0
+#, python-format
+msgid "Commission calculation(s) removed from batch."
+msgstr "Cálculo(s) de comisión removidos del lote."
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_band.py:0
 #, python-format
 msgid "Day ranges cannot overlap! Range '%s' (%s to %s days) overlaps with range '%s' (%s to %s days)."
-msgstr "¡Los rangos de días no pueden superponerse! El rango '%s' (%s a %s días) se superpone con el rango '%s' (%s a %s días)."
+msgstr "¡Los rangos de días no pueden solaparse! El rango '%s' (%s a %s días) se solapa con el rango '%s' (%s a %s días)."
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_band.py:0
 #, python-format
 msgid "Commission band '%s' must have a range covering early payments (starting from -999 days or earlier)."
-msgstr "La banda de comisión '%s' debe tener un rango que cubra pagos anticipados (comenzando desde -999 días o antes)."
+msgstr "La banda de comisión '%s' debe tener un rango que cubra pagos anticipados (empezando desde -999 días o antes)."
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_band.py:0
@@ -1554,88 +1413,10 @@ msgid "%s (copy)"
 msgstr "%s (copia)"
 
 #. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
+#: code:addons/commission_band/models/commission_band.py:0
 #, python-format
-msgid "Commission for %s on %s: %s %s"
-msgstr "Comisión para %s en %s: %s %s"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Unknown"
-msgstr "Desconocido"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Commission amount cannot be negative!"
-msgstr "¡El monto de la comisión no puede ser negativo!"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Payment amount must be positive!"
-msgstr "¡El monto del pago debe ser positivo!"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Only calculated commissions can be validated."
-msgstr "Solo se pueden validar las comisiones calculadas."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Cannot validate commission for unreconciled payment."
-msgstr "No se puede validar la comisión para un pago no conciliado."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Commission is not active for salesperson %s"
-msgstr "La comisión no está activa para el vendedor %s"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Only validated commissions can be approved."
-msgstr "Solo se pueden aprobar las comisiones validadas."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Only approved commissions can be marked as paid."
-msgstr "Solo se pueden marcar como pagadas las comisiones aprobadas."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Cannot cancel paid commissions."
-msgstr "No se pueden cancelar comisiones pagadas."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_calculation.py:0
-#, python-format
-msgid "Cannot reset paid commissions to draft."
-msgstr "No se pueden restablecer a borrador las comisiones pagadas."
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_range.py:0
-#, python-format
-msgid "Up to %s days"
-msgstr "Hasta %s días"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_range.py:0
-#, python-format
-msgid "From %s days onwards"
-msgstr "Desde %s días en adelante"
-
-#. module: commission_band
-#: code:addons/commission_band/models/commission_range.py:0
-#, python-format
-msgid "%s to %s days"
-msgstr "%s a %s días"
+msgid "%s_COPY"
+msgstr "%s_COPIA"
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_range.py:0
@@ -1653,7 +1434,7 @@ msgstr "¡La tasa de comisión no puede ser negativa!"
 #: code:addons/commission_band/models/commission_range.py:0
 #, python-format
 msgid "Indicator rate cannot be negative!"
-msgstr "¡La tasa del indicador no puede ser negativa!"
+msgstr "¡La tasa de indicador no puede ser negativa!"
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_range.py:0
@@ -1694,6 +1475,24 @@ msgstr "Retraso crítico"
 #. module: commission_band
 #: code:addons/commission_band/models/commission_range.py:0
 #, python-format
+msgid "Up to %s days"
+msgstr "Hasta %s días"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_range.py:0
+#, python-format
+msgid "From %s days onwards"
+msgstr "Desde %s días en adelante"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_range.py:0
+#, python-format
+msgid "%s to %s days"
+msgstr "%s a %s días"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_range.py:0
+#, python-format
 msgid "Only for %s"
 msgstr "Solo para %s"
 
@@ -1707,19 +1506,19 @@ msgstr "Monto mínimo: %s"
 #: code:addons/commission_band/models/commission_rule.py:0
 #, python-format
 msgid "Please select a commission band for rule '%s'"
-msgstr "Por favor seleccione una banda de comisión para la regla '%s'"
+msgstr "Por favor selecciona una banda de comisión para la regla '%s'"
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_rule.py:0
 #, python-format
 msgid "Please set a fixed amount for rule '%s'"
-msgstr "Por favor establezca un monto fijo para la regla '%s'"
+msgstr "Por favor establece un monto fijo para la regla '%s'"
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_rule.py:0
 #, python-format
 msgid "Please set a percentage rate for rule '%s'"
-msgstr "Por favor establezca una tasa de porcentaje para la regla '%s'"
+msgstr "Por favor establece un porcentaje para la regla '%s'"
 
 #. module: commission_band
 #: code:addons/commission_band/models/commission_rule.py:0
@@ -1734,6 +1533,138 @@ msgid "'Minimum Amount' must be less than or equal to 'Maximum Amount'"
 msgstr "'Monto Mínimo' debe ser menor o igual a 'Monto Máximo'"
 
 #. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "The start date must be before or equal to the end date!"
+msgstr "¡La fecha de inicio debe ser anterior o igual a la fecha de finalización!"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "There is already a batch covering this period!"
+msgstr "¡Ya existe un lote que cubre este período!"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Commissions %s"
+msgstr "Comisiones %s"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Only draft batches can be calculated."
+msgstr "Solo los lotes en borrador pueden ser calculados."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "No commission calculations found for the selected period."
+msgstr "No se encontraron cálculos de comisiones para el período seleccionado."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Batch calculated with %d commission calculations."
+msgstr "Lote calculado con %d cálculos de comisiones."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Batch Calculated"
+msgstr "Lote Calculado"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "%d commission calculations have been added to this batch."
+msgstr "%d cálculos de comisiones han sido agregados a este lote."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Only calculated batches can be reviewed."
+msgstr "Solo los lotes calculados pueden ser revisados."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Cannot review a batch without calculations."
+msgstr "No se puede revisar un lote sin cálculos."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Batch reviewed by %s"
+msgstr "Lote revisado por %s"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Only reviewed batches can generate payment documents."
+msgstr "Solo los lotes revisados pueden generar documentos de pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Please set a payment date before generating the payment document."
+msgstr "Por favor establece una fecha de pago antes de generar el documento de pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Only batches with payment documents can be marked as paid."
+msgstr "Solo los lotes con documentos de pago pueden marcarse como pagados."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Batch marked as paid"
+msgstr "Lote marcado como pagado"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Cannot reset paid batches to draft."
+msgstr "No se pueden restablecer lotes pagados a borrador."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_batch.py:0
+#, python-format
+msgid "Create Commission Batch"
+msgstr "Crear Lote de Comisiones"
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_payment_document.py:0
+#, python-format
+msgid "Payment lines already generated for this document."
+msgstr "Las líneas de pago ya han sido generadas para este documento."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_payment_document.py:0
+#, python-format
+msgid "Only draft documents can be confirmed."
+msgstr "Solo los documentos en borrador pueden ser confirmados."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_payment_document.py:0
+#, python-format
+msgid "Cannot confirm a document without payment lines."
+msgstr "No se puede confirmar un documento sin líneas de pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/commission_payment_document.py:0
+#, python-format
+msgid "Only confirmed documents can be marked as paid."
+msgstr "Solo los documentos confirmados pueden marcarse como pagados."
+
+#. module: commission_band
+#: code:addons/commission_band/models/salesperson_config.py:0
+#, python-format
+msgid "Unknown"
+msgstr "Desconocido"
+
+#. module: commission_band
 #: code:addons/commission_band/models/salesperson_config.py:0
 #, python-format
 msgid " (Inactive)"
@@ -1742,20 +1673,26 @@ msgstr " (Inactivo)"
 #. module: commission_band
 #: code:addons/commission_band/models/salesperson_config.py:0
 #, python-format
+msgid "Only one configuration per salesperson per company is allowed!"
+msgstr "¡Solo se permite una configuración por vendedor por empresa!"
+
+#. module: commission_band
+#: code:addons/commission_band/models/salesperson_config.py:0
+#, python-format
 msgid "Please set an override percentage"
-msgstr "Por favor establezca un porcentaje de sobreescritura"
+msgstr "Por favor establece un porcentaje de anulación"
 
 #. module: commission_band
 #: code:addons/commission_band/models/salesperson_config.py:0
 #, python-format
 msgid "Please set an override fixed amount"
-msgstr "Por favor establezca un monto fijo de sobreescritura"
+msgstr "Por favor establece un monto fijo de anulación"
 
 #. module: commission_band
 #: code:addons/commission_band/models/salesperson_config.py:0
 #, python-format
 msgid "Please select an override band"
-msgstr "Por favor seleccione una banda de sobreescritura"
+msgstr "Por favor selecciona una banda de anulación"
 
 #. module: commission_band
 #: code:addons/commission_band/models/salesperson_config.py:0
@@ -1766,62 +1703,92 @@ msgstr "La comisión mínima debe ser menor o igual a la comisión máxima"
 #. module: commission_band
 #: code:addons/commission_band/models/res_users.py:0
 #, python-format
-msgid "Early (< 0 days)"
-msgstr "Anticipado (< 0 días)"
+msgid "Commission for %s on %s: %s %s"
+msgstr "Comisión para %s en %s: %s %s"
 
 #. module: commission_band
 #: code:addons/commission_band/models/res_users.py:0
 #, python-format
-msgid "On Time (0-15 days)"
-msgstr "A Tiempo (0-15 días)"
+msgid "Unknown"
+msgstr "Desconocido"
 
 #. module: commission_band
 #: code:addons/commission_band/models/res_users.py:0
-#, python-format
-msgid "Minor Delay (16-30 days)"
-msgstr "Retraso Menor (16-30 días)"
-
-#. module: commission_band
-#: code:addons/commission_band/models/res_users.py:0
-#, python-format
-msgid "Moderate Delay (31-60 days)"
-msgstr "Retraso Moderado (31-60 días)"
-
-#. module: commission_band
-#: code:addons/commission_band/models/res_users.py:0
-#, python-format
-msgid "Major Delay (61-120 days)"
-msgstr "Retraso Mayor (61-120 días)"
-
-#. module: commission_band
-#: code:addons/commission_band/models/res_users.py:0
-#, python-format
-msgid "Critical Delay (> 120 days)"
-msgstr "Retraso Crítico (> 120 días)"
-
-#. module: commission_band
-#: code:addons/commission_band/models/account_move.py:0
 #, python-format
 msgid "Not assigned"
 msgstr "No asignado"
 
 #. module: commission_band
-#: code:addons/commission_band/models/account_move.py:0
+#: code:addons/commission_band/models/res_users.py:0
 #, python-format
 msgid "None"
 msgstr "Ninguno"
 
 #. module: commission_band
-#: code:addons/commission_band/models/account_move.py:0
+#: code:addons/commission_band/models/res_users.py:0
+#, python-format
+msgid "N/A"
+msgstr "N/A"
+
+#. module: commission_band
+#: code:addons/commission_band/models/res_users.py:0
 #, python-format
 msgid "Direct"
 msgstr "Directo"
 
 #. module: commission_band
-#: code:addons/commission_band/models/account_move.py:0
+#: code:addons/commission_band/models/res_users.py:0
 #, python-format
-msgid "N/A"
-msgstr "N/D"
+msgid "Commission Configuration"
+msgstr "Configuración de Comisión"
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission can only be calculated for incoming payments."
+msgstr "La comisión solo puede calcularse para pagos entrantes."
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Payment must be reconciled before calculating commission."
+msgstr "El pago debe ser conciliado antes de calcular la comisión."
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission calculation is disabled for this payment."
+msgstr "El cálculo de comisión está deshabilitado para este pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission has already been calculated for this payment."
+msgstr "La comisión ya ha sido calculada para este pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Cannot calculate commission for this payment."
+msgstr "No se puede calcular comisión para este pago."
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission Calculation"
+msgstr "Cálculo de Comisión"
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission calculation process has been executed for payment %s"
+msgstr "El proceso de cálculo de comisión ha sido ejecutado para el pago %s"
+
+#. module: commission_band
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "No commissions to recalculate."
+msgstr "No hay comisiones para recalcular."
 
 #. module: commission_band
 #: code:addons/commission_band/models/account_payment.py:0
@@ -1836,251 +1803,956 @@ msgid "Commission has been recalculated for payment %s"
 msgstr "La comisión ha sido recalculada para el pago %s"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__active
-msgid "If unchecked, this band will not be available for new rules"
-msgstr "Si no está marcado, esta banda no estará disponible para nuevas reglas"
+#: code:addons/commission_band/models/account_payment.py:0
+#, python-format
+msgid "Commission Debug Info"
+msgstr "Información de Depuración de Comisión"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__code
-msgid "Unique code to identify this band"
-msgstr "Código único para identificar esta banda"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Initial Commission Configuration"
+msgstr "Configuración Inicial de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__currency_specific
-msgid "Check if this band should only apply to a specific currency"
-msgstr "Marque si esta banda solo debe aplicarse a una moneda específica"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Welcome to Commission Band Configuration"
+msgstr "Bienvenido a la Configuración de Bandas de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__currency_id
-msgid "If set, this band will only apply to payments in this currency"
-msgstr "Si se establece, esta banda solo se aplicará a pagos en esta moneda"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Create Commission Bands"
+msgstr "Crear Bandas de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__description
-msgid "Detailed description of when and how this band applies"
-msgstr "Descripción detallada de cuándo y cómo se aplica esta banda"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Create Commission Rules"
+msgstr "Crear Reglas de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__name
-msgid "Descriptive name for this commission band"
-msgstr "Nombre descriptivo para esta banda de comisión"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Configure Salespersons"
+msgstr "Configurar Vendedores"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__range_ids
-msgid "Define the commission percentages for different day ranges"
-msgstr "Define los porcentajes de comisión para diferentes rangos de días"
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Configuration Complete!"
+msgstr "¡Configuración Completa!"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band__sequence
-msgid "Used to order bands in lists"
-msgstr "Usado para ordenar las bandas en las listas"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Welcome to Commission Band Configuration"
+msgstr "Bienvenido a la Configuración de Bandas de Comisiones"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band_config_wizard__create_default_bands
-msgid "Create the standard commission bands based on Excel template"
-msgstr "Crear las bandas de comisión estándar basadas en la plantilla de Excel"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "This wizard will help you set up the commission band system with:"
+msgstr "Este asistente te ayudará a configurar el sistema de bandas de comisiones con:"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band_config_wizard__create_default_rules
-msgid "Create standard commission rules"
-msgstr "Crear reglas de comisión estándar"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Default commission bands based on your requirements"
+msgstr "Bandas de comisiones predeterminadas basadas en tus requisitos"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band_config_wizard__user_ids
-msgid "Select users to configure for commission calculation"
-msgstr "Seleccione usuarios para configurar el cálculo de comisiones"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Commission rules to apply bands automatically"
+msgstr "Reglas de comisiones para aplicar bandas automáticamente"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_band_config_wizard__activate_all_users
-msgid "Automatically activate commission for all users with sales teams"
-msgstr "Activar automáticamente la comisión para todos los usuarios con equipos de ventas"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Salesperson configurations"
+msgstr "Configuraciones de vendedores"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_calculation__days_overdue
-msgid "Days between due date and payment date (negative for early payment)"
-msgstr "Días entre la fecha de vencimiento y la fecha de pago (negativo para pago anticipado)"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Click Next to begin the configuration."
+msgstr "Haz clic en Siguiente para comenzar la configuración."
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_calculation__delivery_date
-msgid "Date when goods/services were delivered to customer. Used for commission calculations if needed."
-msgstr "Fecha en que se entregaron los bienes/servicios al cliente. Se usa para cálculos de comisión si es necesario."
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Commission bands define percentage scales based on payment collection time."
+msgstr "Las bandas de comisiones definen escalas de porcentaje basadas en el tiempo de cobranza de pagos."
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_calculation__notes
-msgid "Additional notes or observations about this commission"
-msgstr "Notas u observaciones adicionales sobre esta comisión"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "The following standard bands will be created:"
+msgstr "Se crearán las siguientes bandas estándar:"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_calculation__payment_amount_company
-msgid "Total commission amount calculated from payments of this invoice"
-msgstr "Monto total de comisión calculado de los pagos de esta factura"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Premium Sales Band (Type A) - For top performers with rates from 0.5% to 2.8%"
+msgstr "Banda Premium de Ventas (Tipo A) - Para los mejores con tasas del 0.5% al 2.8%"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__commission_rate
-msgid "Base commission percentage for this range"
-msgstr "Porcentaje de comisión base para este rango"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Supervision Band (Type B) - For supervisors with rates from 0.25% to 2.0%"
+msgstr "Banda de Supervisión (Tipo B) - Para supervisores con tasas del 0.25% al 2.0%"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__day_from
-msgid "Start of day range (negative for days before due date)"
-msgstr "Inicio del rango de días (negativo para días antes del vencimiento)"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Office Band (Type C) - For office staff with rates from 0% to 1.5%"
+msgstr "Banda de Oficina (Tipo C) - Para personal de oficina con tasas del 0% al 1.5%"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__day_to
-msgid "End of day range (positive for days after due date)"
-msgstr "Fin del rango de días (positivo para días después del vencimiento)"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Created Bands"
+msgstr "Bandas Creadas"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__indicator_rate
-msgid "Additional rate for performance indicators"
-msgstr "Tasa adicional para indicadores de rendimiento"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Commission rules determine how commissions are calculated based on various criteria."
+msgstr "Las reglas de comisiones determinan cómo se calculan las comisiones basándose en varios criterios."
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__min_payment_amount
-msgid "Minimum payment amount for this range to apply"
-msgstr "Monto mínimo de pago para que se aplique este rango"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Default rules will be created for each band type."
+msgstr "Se crearán reglas predeterminadas para cada tipo de banda."
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__name
-msgid "Description of this day range (e.g., 'Early Payment', 'On Time', 'Late')"
-msgstr "Descripción de este rango de días (ej., 'Pago Anticipado', 'A Tiempo', 'Tardío')"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Created Rules"
+msgstr "Reglas Creadas"
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__apply_only_currency_id
-msgid "If set, this range only applies to payments in this currency"
-msgstr "Si se establece, este rango solo se aplica a pagos en esta moneda"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Select which salespersons should have commission calculation enabled."
+msgstr "Selecciona qué vendedores deben tener el cálculo de comisiones habilitado."
 
 #. module: commission_band
-#: model:ir.model.fields,help:commission_band.field_commission_range__sequence
-msgid "Used to order ranges within the band"
-msgstr "Usado para ordenar los rangos dentro de la banda"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "The commission band system has been configured successfully."
+msgstr "El sistema de bandas de comisiones ha sido configurado exitosamente."
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_search
-msgid "Commission Bands"
-msgstr "Bandas de Comisión"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Previous"
+msgstr "Anterior"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_form
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Next"
+msgstr "Siguiente"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_band_config_wizard_form
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "Batch Name"
+msgstr "Nombre del Lote"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "Name for the new commission batch"
+msgstr "Nombre para el nuevo lote de comisiones"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "Period Type"
+msgstr "Tipo de Período"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,period_type:0
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,period_type:0
+msgid "Custom Period"
+msgstr "Período Personalizado"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "January"
+msgstr "Enero"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "February"
+msgstr "Febrero"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "March"
+msgstr "Marzo"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "April"
+msgstr "Abril"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "May"
+msgstr "Mayo"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "June"
+msgstr "Junio"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "July"
+msgstr "Julio"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "August"
+msgstr "Agosto"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "September"
+msgstr "Septiembre"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "October"
+msgstr "Octubre"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "November"
+msgstr "Noviembre"
+
+#. module: commission_band
+#: selection:commission.batch.create.wizard,month:0
+msgid "December"
+msgstr "Diciembre"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__month
+msgid "Month"
+msgstr "Mes"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__year
+msgid "Year"
+msgstr "Año"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__calculation_count
+msgid "Calculations Found"
+msgstr "Cálculos Encontrados"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch_create_wizard__calculation_count
+msgid "Number of commission calculations found for the period"
+msgstr "Número de cálculos de comisiones encontrados para el período"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__salesperson_count
+msgid "Salespersons"
+msgstr "Vendedores"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__total_amount
+msgid "Total Amount"
+msgstr "Monto Total"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__include_validated
+msgid "Include Validated Calculations"
+msgstr "Incluir Cálculos Validados"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch_create_wizard__include_validated
+msgid "Include calculations in 'validated' state"
+msgstr "Incluir cálculos en estado 'validado'"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_batch_create_wizard__include_approved
+msgid "Include Approved Calculations"
+msgstr "Incluir Cálculos Aprobados"
+
+#. module: commission_band
+#: model:ir.model.fields,help:commission_band.field_commission_batch_create_wizard__include_approved
+msgid "Include calculations in 'approved' state (not yet paid)"
+msgstr "Incluir cálculos en estado 'aprobado' (aún no pagados)"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "Create Commission Batch"
+msgstr "Crear Lote de Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "Calculation Filters"
+msgstr "Filtros de Cálculo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "Preview"
+msgstr "Vista Previa"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "Found"
+msgstr "Encontrados"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_batch_create_wizard_form
+msgid "commission calculations for"
+msgstr "cálculos de comisiones para"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "salespersons with a total amount of"
+msgstr "vendedores con un monto total de"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "No commission calculations found for the selected period and criteria."
+msgstr "No se encontraron cálculos de comisiones para el período y criterios seleccionados."
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_create_wizard_form
+msgid "Create Batch"
+msgstr "Crear Lote"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "'Date From' must be before or equal to 'Date To'"
+msgstr "'Fecha Desde' debe ser anterior o igual a 'Fecha Hasta'"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "Commissions %s"
+msgstr "Comisiones %s"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "A batch already exists for this period: %s"
+msgstr "Ya existe un lote para este período: %s"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "Please select a different period or modify the existing batch."
+msgstr "Por favor selecciona un período diferente o modifica el lote existente."
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_batch_create_wizard.py:0
+#, python-format
+msgid "No commission calculations found for the selected period and criteria."
+msgstr "No se encontraron cálculos de comisiones para el período y criterios seleccionados."
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_payment_export_wizard.py:0
+#, python-format
+msgid "Export Commission Payment Document"
+msgstr "Exportar Documento de Pago de Comisiones"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_export_wizard__document_id
+msgid "Payment Document"
+msgstr "Documento de Pago"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_export_wizard__export_format
+msgid "Export Format"
+msgstr "Formato de Exportación"
+
+#. module: commission_band
+#: selection:commission.payment.export.wizard,export_format:0
+msgid "Excel (XLSX)"
+msgstr "Excel (XLSX)"
+
+#. module: commission_band
+#: selection:commission.payment.export.wizard,export_format:0
+msgid "CSV"
+msgstr "CSV"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_export_wizard__file_data
+msgid "File"
+msgstr "Archivo"
+
+#. module: commission_band
+#: model:ir.model.fields,field_description:commission_band.field_commission_payment_export_wizard__file_name
+msgid "Filename"
+msgstr "Nombre del Archivo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_export_wizard_form
+msgid "Export Payment Document"
+msgstr "Exportar Documento de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_export_wizard_form
+msgid "Export"
+msgstr "Exportar"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_payment_export_wizard.py:0
+#, python-format
+msgid "xlsxwriter library is not installed. Please install it or use CSV format."
+msgstr "La librería xlsxwriter no está instalada. Por favor instálala o usa formato CSV."
+
+#. module: commission_band
+#: model:ir.module.category,name:commission_band.module_category_commission_band
 msgid "Commission Band"
-msgstr "Banda de Comisión"
+msgstr "Banda de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_band_tree
-msgid "Commission Bands"
-msgstr "Bandas de Comisión"
+#: model:ir.module.category,description:commission_band.module_category_commission_band
+msgid "Commission Band Management"
+msgstr "Gestión de Bandas de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_range_tree
-msgid "Commission Ranges"
-msgstr "Rangos de Comisión"
+#: model:res.groups,name:commission_band.group_commission_band_user
+msgid "User"
+msgstr "Usuario"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_range_form
-msgid "Commission Range"
-msgstr "Rango de Comisión"
+#: model:res.groups,name:commission_band.group_commission_band_manager
+msgid "Manager"
+msgstr "Gerente"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_search
-msgid "Commission Rules"
-msgstr "Reglas de Comisión"
+#: model:res.groups,comment:commission_band.group_commission_band_user
+msgid "Can view own commission calculations"
+msgstr "Puede ver sus propios cálculos de comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_form
-msgid "Commission Rule"
-msgstr "Regla de Comisión"
+#: model:res.groups,comment:commission_band.group_commission_band_manager
+msgid "Can manage commission bands, rules, and calculations"
+msgstr "Puede gestionar bandas de comisiones, reglas y cálculos"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_rule_tree
-msgid "Commission Rules"
-msgstr "Reglas de Comisión"
+#: model:ir.rule,name:commission_band.commission_calculation_personal_rule
+msgid "Personal Commission Calculations"
+msgstr "Cálculos de Comisiones Personales"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
-msgid "Commission Calculations"
-msgstr "Cálculos de Comisión"
+#: model:ir.rule,name:commission_band.commission_calculation_manager_rule
+msgid "All Commission Calculations"
+msgstr "Todos los Cálculos de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_form
-msgid "Commission Calculation"
-msgstr "Cálculo de Comisión"
+#: model:ir.rule,name:commission_band.salesperson_config_personal_rule
+msgid "Personal Salesperson Config"
+msgstr "Configuración Personal de Vendedor"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_tree
-msgid "Commission Calculations"
-msgstr "Cálculos de Comisión"
+#: model:ir.rule,name:commission_band.salesperson_config_manager_rule
+msgid "All Salesperson Configs"
+msgstr "Todas las Configuraciones de Vendedores"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_tree
-msgid "Total Commission"
-msgstr "Comisión Total"
+#: model:ir.rule,name:commission_band.commission_band_company_rule
+msgid "Commission Band Multi-company"
+msgstr "Banda de Comisiones Multi-empresa"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_graph
-msgid "Commission Analysis"
-msgstr "Análisis de Comisión"
+#: model:ir.rule,name:commission_band.commission_rule_company_rule
+msgid "Commission Rule Multi-company"
+msgstr "Regla de Comisiones Multi-empresa"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_commission_calculation_pivot
-msgid "Commission Analysis"
-msgstr "Análisis de Comisión"
+#: model:ir.rule,name:commission_band.commission_calculation_company_rule
+msgid "Commission Calculation Multi-company"
+msgstr "Cálculo de Comisiones Multi-empresa"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
-msgid "Salesperson Configurations"
-msgstr "Configuraciones de Vendedor"
+#: model:ir.rule,name:commission_band.salesperson_config_company_rule
+msgid "Salesperson Config Multi-company"
+msgstr "Configuración de Vendedor Multi-empresa"
 
 #. module: commission_band
-#: model_terms:ir.ui.view,arch_db:commission_band.view_salesperson_config_tree
-msgid "Salesperson Configurations"
-msgstr "Configuraciones de Vendedor"
+#: model:ir.cron,name:commission_band.ir_cron_calculate_pending_commissions
+msgid "Commission Band: Calculate Pending Commissions"
+msgstr "Banda de Comisiones: Calcular Comisiones Pendientes"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_band
-msgid "Create your first commission band"
-msgstr "Cree su primera banda de comisión"
+#: model:ir.cron,name:commission_band.ir_cron_validate_commissions
+msgid "Commission Band: Auto-validate Commissions"
+msgstr "Banda de Comisiones: Auto-validar Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_band
-msgid "Commission bands define percentage scales based on payment collection time. Each band contains multiple day ranges with their corresponding commission rates."
-msgstr "Las bandas de comisión definen escalas de porcentajes basadas en el tiempo de cobro del pago. Cada banda contiene múltiples rangos de días con sus tasas de comisión correspondientes."
+#: model:ir.cron,name:commission_band.ir_cron_create_monthly_batch
+msgid "Commission Band: Create Monthly Batch"
+msgstr "Banda de Comisiones: Crear Lote Mensual"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_rule
-msgid "Create your first commission rule"
-msgstr "Cree su primera regla de comisión"
+#: model:ir.sequence,name:commission_band.seq_commission_payment_document
+msgid "Commission Payment Document"
+msgstr "Documento de Pago de Comisiones"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_rule
-msgid "Commission rules determine how commissions are calculated based on various criteria such as salesperson, customer, product category, payment terms, and more."
-msgstr "Las reglas de comisión determinan cómo se calculan las comisiones basándose en varios criterios como vendedor, cliente, categoría de producto, términos de pago y más."
+#: model:ir.actions.report,name:commission_band.action_report_commission_payment_document
+msgid "Payment Document"
+msgstr "Documento de Pago"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_calculation
-msgid "No commission calculations found"
-msgstr "No se encontraron cálculos de comisión"
+#: model:ir.actions.server,name:commission_band.action_server_create_commission_batch
+msgid "Create New Batch"
+msgstr "Crear Nuevo Lote"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_commission_calculation
-msgid "Commission calculations are automatically created when customers make payments. The system calculates commissions based on the configured rules and bands."
-msgstr "Los cálculos de comisión se crean automáticamente cuando los clientes realizan pagos. El sistema calcula las comisiones basándose en las reglas y bandas configuradas."
+#: model:ir.actions.server,name:commission_band.action_create_commission_batch
+msgid "Create New Batch"
+msgstr "Crear Nuevo Lote"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_my_commission_calculation
-msgid "No commissions found"
-msgstr "No se encontraron comisiones"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Active"
+msgstr "Activo"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_my_commission_calculation
-msgid "Your commissions will appear here once customers make payments for your sales."
-msgstr "Sus comisiones aparecerán aquí una vez que los clientes realicen pagos por sus ventas."
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Archived"
+msgstr "Archivado"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_salesperson_config
-msgid "Configure salesperson commission settings"
-msgstr "Configure los ajustes de comisión del vendedor"
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Currency Specific"
+msgstr "Específico por Moneda"
 
 #. module: commission_band
-#: model_terms:ir.actions.act_window,help:commission_band.action_salesperson_config
-msgid "Set up individual commission configurations for each salesperson, including default rules, overrides, and commission limits."
-msgstr "Configure las configuraciones de comisión individuales para cada vendedor, incluyendo reglas predeterminadas, sobreescrituras y límites de comisión."
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "General"
+msgstr "General"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Has Rules"
+msgstr "Tiene Reglas"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Has Calculations"
+msgstr "Tiene Cálculos"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Group By"
+msgstr "Agrupar Por"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_search
+msgid "Company"
+msgstr "Empresa"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "My Commissions"
+msgstr "Mis Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Early Payment"
+msgstr "Pago Anticipado"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "On Time"
+msgstr "A Tiempo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Late Payment"
+msgstr "Pago Tardío"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Current Month"
+msgstr "Mes Actual"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Current Year"
+msgstr "Año Actual"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Rule"
+msgstr "Regla"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Band"
+msgstr "Banda"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "In Batch"
+msgstr "En Lote"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Not in Batch"
+msgstr "No en Lote"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_search
+msgid "Batch"
+msgstr "Lote"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_batch_search
+msgid "Previous Month"
+msgstr "Mes Anterior"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "Band Type"
+msgstr "Tipo de Banda"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "Percentage Type"
+msgstr "Tipo Porcentaje"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "Fixed Type"
+msgstr "Tipo Fijo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "No Commission"
+msgstr "Sin Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "Type"
+msgstr "Tipo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_rule_search
+msgid "Priority"
+msgstr "Prioridad"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Inactive"
+msgstr "Inactivo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Has Override"
+msgstr "Tiene Anulación"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Has Limits"
+msgstr "Tiene Límites"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Active Status"
+msgstr "Estado Activo"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Default Rule"
+msgstr "Regla Predeterminada"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_salesperson_config_search
+msgid "Override Type"
+msgstr "Tipo de Anulación"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commissions"
+msgstr "Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commission Config"
+msgstr "Configuración de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commission Settings"
+msgstr "Configuraciones de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commission Configuration"
+msgstr "Configuración de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commission Statistics"
+msgstr "Estadísticas de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "Commission Configurations by Company"
+msgstr "Configuraciones de Comisión por Empresa"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_users_form_commission_band
+msgid "View"
+msgstr "Ver"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_move_form_commission_band
+msgid "Commission Information"
+msgstr "Información de Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_account_payment_form_commission_band
+msgid "Recalculate Commissions"
+msgstr "Recalcular Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_account_payment_tree_commission_band
+msgid "Commission"
+msgstr "Comisión"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form_batch
+msgid "This commission is included in batch:"
+msgstr "Esta comisión está incluida en el lote:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form_batch
+msgid "Remove from Batch"
+msgstr "Remover del Lote"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_calculation_form_batch
+msgid "Are you sure you want to remove this calculation from the batch?"
+msgstr "¿Estás seguro de que quieres remover este cálculo del lote?"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_document_form
+msgid "View Details"
+msgstr "Ver Detalles"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.view_commission_payment_line_tree
+msgid "Payment Lines"
+msgstr "Líneas de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Commission Payment Document:"
+msgstr "Documento de Pago de Comisiones:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Batch:"
+msgstr "Lote:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Period:"
+msgstr "Período:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Payment Date:"
+msgstr "Fecha de Pago:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Exchange Rate USD/VES:"
+msgstr "Tasa de Cambio USD/VES:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Payment Details"
+msgstr "Detalles de Pago"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "USD Original"
+msgstr "USD Original"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "USD to Pay"
+msgstr "USD a Pagar"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "VES Original"
+msgstr "VES Original"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "VES to Pay"
+msgstr "VES a Pagar"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "TOTALS"
+msgstr "TOTALES"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Total Salespersons:"
+msgstr "Total de Vendedores:"
+
+#. module: commission_band
+#: model:ir.ui.view,arch_db:commission_band.report_commission_payment_document
+msgid "Total Lines:"
+msgstr "Total de Líneas:"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band_root
+msgid "Bandas de Comisiones"
+msgstr "Bandas de Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_batch_config
+msgid "Gestión de Lotes"
+msgstr "Gestión de Lotes"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_sale_config_commission_band
+msgid "Bandas de Comisiones"
+msgstr "Bandas de Comisiones"
+
+#. module: commission_band
+#: model:ir.ui.menu,name:commission_band.menu_commission_band_reports
+msgid "Reportes de Comisiones"
+msgstr "Reportes de Comisiones"
+
+#. module: commission_band
+#: model:ir.actions.act_window,name:commission_band.action_commission_band_config_wizard
+msgid "Commission Band Configuration Wizard"
+msgstr "Asistente de Configuración de Bandas de Comisiones"
+
+#. module: commission_band
+#: model:ir.actions.act_window,name:commission_band.action_commission_batch_create_wizard
+msgid "Create Commission Batch"
+msgstr "Crear Lote de Comisiones"
+
+#. module: commission_band
+#: model:ir.actions.act_window,name:commission_band.action_commission_payment_export_wizard
+msgid "Export Payment Document"
+msgstr "Exportar Documento de Pago"
+
+# Commission Range display names based on day ranges
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Early payment"
+msgstr "Pago anticipado"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "On time"
+msgstr "A tiempo"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Acceptable delay"
+msgstr "Retraso aceptable"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Late payment"
+msgstr "Pago tardío"
+
+# Additional wizard terms
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission for premium salespersons with experience > 2 years"
+msgstr "Comisión para vendedores premium con experiencia > 2 años"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission for supervisors and team leads"
+msgstr "Comisión para supervisores y líderes de equipo"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission for office sales staff"
+msgstr "Comisión para personal de ventas de oficina"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission Bands Created:"
+msgstr "Bandas de Comisiones Creadas:"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission Rules Created:"
+msgstr "Reglas de Comisiones Creadas:"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Users Configured:"
+msgstr "Usuarios Configurados:"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "All %d sales users"
+msgstr "Todos los %d usuarios de ventas"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "%d selected users"
+msgstr "%d usuarios seleccionados"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Configuration completed successfully!"
+msgstr "¡Configuración completada exitosamente!"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Commission Configuration Summary"
+msgstr "Resumen de Configuración de Comisiones"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "%s ranges"
+msgstr "%s rangos"
+
+#. module: commission_band
+#: code:addons/commission_band/wizards/commission_band_config_wizard.py:0
+#, python-format
+msgid "Type: %s"
+msgstr "Tipo: %s"
