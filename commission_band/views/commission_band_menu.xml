@@ -16,13 +16,6 @@
               sequence="10"
               groups="commission_band.group_commission_band_user"/>
     
-    <!-- Commission Batches Menu (for managers) -->
-    <menuitem id="menu_commission_batch"
-              name="Lotes de Comisiones"
-              parent="menu_commission_band_root"
-              action="action_commission_batch"
-              sequence="15"
-              groups="commission_band.group_commission_band_manager"/>
     
     <!-- All Commissions (for managers) -->
     <menuitem id="menu_commission_calculation"
@@ -32,13 +25,6 @@
               sequence="20"
               groups="commission_band.group_commission_band_manager"/>
     
-    <!-- Payment Documents Menu (for managers) -->
-    <menuitem id="menu_commission_payment_document"
-              name="Documentos de Pago"
-              parent="menu_commission_band_root"
-              action="action_commission_payment_document"
-              sequence="25"
-              groups="commission_band.group_commission_band_manager"/>
     
     <!-- Calculations without batch (for managers) -->
     <menuitem id="menu_commission_calculation_no_batch"
@@ -95,12 +81,6 @@
               action="action_commission_payment_document"
               sequence="20"/>
     
-    <!-- Configuration Wizard -->
-    <menuitem id="menu_commission_band_wizard"
-              name="Asistente de Configuración"
-              parent="menu_commission_band_config"
-              action="action_commission_band_config_wizard"
-              sequence="100"/>
     
     <!-- Add to Sales Configuration -->
     <menuitem id="menu_sale_config_commission_band"
@@ -120,18 +100,11 @@
               parent="menu_sale_config_commission_band"
               action="action_commission_rule"
               sequence="20"/>
-    
-    <!-- Reports Menu -->
-    <menuitem id="menu_commission_band_reports"
-              name="Reportes de Comisiones"
-              parent="sale.menu_sale_report"
-              sequence="40"
-              groups="commission_band.group_commission_band_user"/>
-    
-    <menuitem id="menu_commission_calculation_report"
-              name="Análisis de Comisiones"
-              parent="menu_commission_band_reports"
-              action="action_commission_calculation"
-              sequence="10"/>
+
+    <menuitem id="menu_sale_config_commission_band_rules"
+              name="Asistente de Configuración"
+              parent="menu_sale_config_commission_band"
+              action="action_commission_band_config_wizard"
+              sequence="30"/>          
     
 </odoo>
