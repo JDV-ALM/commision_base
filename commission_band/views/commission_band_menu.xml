@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<odoo noupdate="0">
     
     <!-- Main Menu -->
     <menuitem id="menu_commission_band_root"
@@ -101,10 +101,12 @@
               action="action_commission_rule"
               sequence="20"/>
 
-    <menuitem id="menu_sale_config_commission_band_rules"
-              name="Asistente de Configuración"
-              parent="menu_sale_config_commission_band"
-              action="action_commission_band_config_wizard"
-              sequence="30"/>          
+    <!-- Additional menu for calculations without batch -->
+    <menuitem id="menu_commission_calculation_no_batch_alt"
+              name="Comisiones sin Lote"
+              parent="menu_commission_band_root"
+              action="action_commission_calculation_no_batch"
+              sequence="30"
+              groups="commission_band.group_commission_band_manager"/>          
     
 </odoo>

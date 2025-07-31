@@ -1,39 +1,39 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Commission Band - Prelation System',
+    'name': 'Bandas de Comisiones - Sistema de Prelación',
     'version': '18.0.1.0.0',
     'category': 'Sales/Commission',
     'summary': 'Advanced commission calculation based on payment collection time bands',
     'description': """
-Commission Band Management System
+Sistema de Bandas de Comisiones 
 =================================
 
-This module extends Odoo's commission system to implement a "Prelation Band" system
-that calculates commissions based on the time elapsed between invoice due date and
-actual payment collection.
+Este módulo extiende el sistema de comisiones de Odoo para implementar un sistema de "Bandas de Comisiones"
+que calcula las comisiones basado en el tiempo transcurrido entre la fecha de vencimiento de la factura y la fecha de recolección de la
+pago.   
 
-Key Features:
+Características Clave:
 -------------
-* Configurable commission bands with time-based ranges
-* Rule-based commission assignment with priorities
-* Automatic calculation upon payment reconciliation
-* Multi-currency support (commission in payment currency)
-* Individual salesperson configuration
-* Complete audit trail and approval workflow
-* **NEW: Commission batch management for monthly processing**
-* **NEW: Payment document generation with currency conversion**
+* Configuración de bandas de comisiones con rangos de tiempo
+* Asignación de comisiones basada en reglas
+* Cálculo automático al reconciliar el pago
+* Soporte para múltiples monedas (comisión en la moneda del pago)
+* Configuración individual para cada vendedor
+* Trazabilidad completa y flujo de aprobación
+* **Nuevo: Gestión de lotes de comisiones para el procesamiento mensual**
+* **Nuevo: Generación de documentos de pago con conversión de moneda**
 
-Main Components:
+Componentes Principales:
 ---------------
-* Commission Bands: Define percentage scales based on collection days
-* Commission Rules: Apply bands based on multiple criteria
-* Automatic Calculation: Triggered on payment reconciliation
-* Flexible Configuration: Manual setup for all parameters
-* **Commission Batches: Group monthly commissions for review and payment**
-* **Payment Documents: Generate payment instructions with proper currency handling**
+* Bandas de Comisiones: Define porcentajes basados en los días de recolección
+* Reglas de Comisiones: Aplica bandas basadas en múltiples criterios
+* Cálculo Automático: Activado al reconciliar el pago
+* Configuración Flexible: Configuración manual para todos los parámetros
+* **Lotes de Comisiones: Agrupa comisiones mensuales para revisión y pago**
+* **Documentos de Pago: Genera instrucciones de pago con manejo adecuado de monedas**
     """,
-    'author': 'Your Company',
-    'website': 'https://www.yourcompany.com',
+    'author': 'Almus Dev',
+    'website': 'https://www.almus.dev',
     'depends': [
         'sale',
         'account',

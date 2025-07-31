@@ -94,12 +94,4 @@
         </field>
     </record>
     
-    <!-- Menu item for calculations without batch -->
-    <menuitem id="menu_commission_calculation_no_batch"
-              name="Comisiones sin Lote"
-              parent="commission_band.menu_commission_band_root"
-              action="action_commission_calculation_no_batch"
-              sequence="30"
-              groups="commission_band.group_commission_band_manager"/>
-    
 </odoo>
