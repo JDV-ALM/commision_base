@@ -86,7 +86,7 @@ class AccountPayment(models.Model):
                 payment.partner_type == 'customer' and
                 payment.is_reconciled and
                 not payment.skip_commission_calculation and
-                payment.state == 'posted'
+                payment.state in ['posted', 'paid']  # Aceptar posted o paid
             )
             
             # Check if there are already calculations
@@ -105,6 +105,18 @@ class AccountPayment(models.Model):
             if payment.payment_type == 'inbound' and not payment.skip_commission_calculation:
                 # Try to calculate immediately if already reconciled
                 payment._trigger_commission_calculation()
+        
+        return res
+
+    def write(self, vals):
+        """Override to handle skip_commission_calculation changes"""
+        res = super().write(vals)
+        
+        # Solo manejar el caso donde skip_commission_calculation se desactiva
+        if 'skip_commission_calculation' in vals and not vals['skip_commission_calculation']:
+            for payment in self.filtered(lambda p: p.is_reconciled and p.payment_type == 'inbound'):
+                if not payment.commission_calculation_ids.filtered(lambda c: c.state != 'cancelled'):
+                    payment._trigger_commission_calculation()
         
         return res
 
@@ -159,18 +171,6 @@ class AccountPayment(models.Model):
                         len(new_calculations), self.name)
         else:
             _logger.warning("No commission calculations were created for payment %s", self.name)
-
-    def _reconcile_create_hook(self, counterpart_aml, payment_aml):
-        """Hook called when payment is reconciled"""
-        res = super()._reconcile_create_hook(counterpart_aml, payment_aml)
-        
-        _logger.info("Payment %s reconciled. Triggering commission calculation.", self.name)
-        
-        # Trigger commission calculation after reconciliation
-        if not self.skip_commission_calculation:
-            self._trigger_commission_calculation()
-        
-        return res
 
     def action_view_commission_calculations(self):
         """Action to view commission calculations for this payment"""
@@ -257,15 +257,15 @@ class AccountPayment(models.Model):
             ('partner_type', '=', 'customer'),
             ('is_reconciled', '=', True),
             ('skip_commission_calculation', '=', False),
-            ('state', '=', 'posted'),
+            ('state', 'in', ['posted', 'paid']),  # Incluir tanto posted como paid
         ]
         
         payments = self.search(domain)
         
         # Filter payments without valid commission calculations
+        # Usar la misma lógica que skip_commission
         pending_payments = payments.filtered(
-            lambda p: not p.commission_calculation_ids or 
-            all(c.state == 'cancelled' for c in p.commission_calculation_ids)
+            lambda p: not p.commission_calculation_ids.filtered(lambda c: c.state != 'cancelled')
         )
         
         _logger.info("Found %d payments pending commission calculation", len(pending_payments))
@@ -278,18 +278,6 @@ class AccountPayment(models.Model):
                 continue
         
         return True
-
-    def write(self, vals):
-        """Override to handle skip_commission_calculation changes"""
-        res = super().write(vals)
-        
-        # If skip_commission_calculation is turned off, trigger calculation
-        if 'skip_commission_calculation' in vals and not vals['skip_commission_calculation']:
-            for payment in self.filtered(lambda p: p.is_reconciled and p.payment_type == 'inbound'):
-                if not payment.commission_calculation_ids.filtered(lambda c: c.state != 'cancelled'):
-                    payment._trigger_commission_calculation()
-        
-        return res
 
     # Debug method
     def action_debug_commission_info(self):

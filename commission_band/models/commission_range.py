@@ -101,13 +101,13 @@ class CommissionRange(models.Model):
     def _compute_color(self):
         """Compute color based on commission rate for visual identification"""
         for range_rec in self:
-            if range_rec.commission_rate >= 3:
+            if range_rec.commission_rate >= 2.5:      # Verde si >= 2.5%
                 range_rec.color = 10  # Green
-            elif range_rec.commission_rate >= 2:
+            elif range_rec.commission_rate >= 1.5:    # Amarillo si >= 1.5%
                 range_rec.color = 3   # Yellow
-            elif range_rec.commission_rate >= 1:
+            elif range_rec.commission_rate >= 0.75:   # Naranja si >= 0.75%
                 range_rec.color = 2   # Orange
-            else:
+            else:                                      # Rojo si < 0.75%
                 range_rec.color = 1   # Red
 
     @api.constrains('day_from', 'day_to')
